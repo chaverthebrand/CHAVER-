@@ -1,1 +1,49 @@
-<section class="section"><div class="page-width"><div class="eyebrow">Search</div><h1 class="section-title">Find your piece.</h1><form action="{{ routes.search_url }}" method="get" role="search" class="search-form"><input class="field" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search CHAVÉR"><button class="btn" type="submit">Search</button></form>{% if search.performed %}<div class="shop-grid search-results">{% for item in search.results %}<a class="shop-card" href="{{ item.url }}">{% if item.featured_image %}<div class="shop-image">{{ item.featured_image | image_url: width: 900 | image_tag: loading: 'lazy' }}</div>{% endif %}<div class="shop-meta"><span>{{ item.title }}</span><span>{% if item.price %}{{ item.price | money }}{% else %}View{% endif %}</span></div></a>{% else %}<p>No results found for “{{ search.terms }}”.</p>{% endfor %}</div>{% endif %}</div></section>{% schema %}{"name":"Main search","settings":[]}{% endschema %}
+<section class="section search-page">
+  <div class="page-width">
+    <div class="eyebrow">SEARCH CHAVÉR</div>
+    <h1 class="section-title">Find what you’re looking for.</h1>
+    <p class="section-intro">Search the collection, pages and stories behind CHAVÉR.</p>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+      <label class="visually-hidden" for="SearchInput">Search CHAVÉR</label>
+      <div class="search-row">
+        <input id="SearchInput" class="field" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search CHAVÉR" autocomplete="off">
+        <button class="btn" type="submit">Search</button>
+      </div>
+    </form>
+
+    {% if search.performed %}
+      {% if search.results_count > 0 %}
+        <div class="search-summary">{{ search.results_count }} result{% unless search.results_count == 1 %}s{% endunless %} for “{{ search.terms }}”</div>
+        <div class="shop-grid search-results">
+          {% for item in search.results %}
+            <a class="shop-card" href="{{ item.url }}">
+              <div class="shop-image">
+                {% if item.featured_image %}
+                  {{ item.featured_image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+                {% else %}
+                  <div class="placeholder-product"><span>CHAVÉR</span></div>
+                {% endif %}
+              </div>
+              <div class="shop-meta">
+                <span>{{ item.title }}</span>
+                <span>{% if item.object_type == 'product' %}Coming soon{% else %}View{% endif %}</span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <div class="eyebrow">NO RESULTS</div>
+          <h2>Nothing found for “{{ search.terms }}”.</h2>
+          <p>Try a different search term or explore the Foundations Collection.</p>
+          <a class="btn" href="{{ routes.all_products_collection_url }}">Explore collection</a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{"name":"Main search","settings":[]}
+{% endschema %}
