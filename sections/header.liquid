@@ -1,6 +1,32 @@
 <header class="site-header">
-  <nav class="nav"><a href="{{ routes.root_url }}">Home</a><a href="/collections/all">Collection</a><a href="/pages/founder-story">Founder Story</a></nav>
-  <a class="brand" href="{{ routes.root_url }}">CHAVÉR</a>
-  <nav class="nav right"><a href="/pages/contact">Contact</a><a href="{{ routes.search_url }}">Search</a></nav>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="{{ routes.root_url }}">Home</a>
+    <a href="{{ routes.all_products_collection_url }}">Collection</a>
+    <a href="/pages/founder-story">Founder Story</a>
+  </nav>
+
+  <a class="brand" href="{{ routes.root_url }}" aria-label="CHAVÉR home">CHAVÉR</a>
+
+  <nav class="nav right" aria-label="Secondary navigation">
+    <a href="/pages/contact">Contact</a>
+    <a href="{{ routes.search_url }}">Search</a>
+    <a href="{{ routes.cart_url }}">Bag{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+  </nav>
+
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
 </header>
-{% schema %}{"name":"Header","settings":[]}{% endschema %}
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <nav aria-label="Mobile navigation">
+    <a href="{{ routes.root_url }}">Home</a>
+    <a href="{{ routes.all_products_collection_url }}">Collection</a>
+    <a href="/pages/founder-story">Founder Story</a>
+    <a href="/pages/contact">Contact</a>
+    <a href="{{ routes.search_url }}">Search</a>
+    <a href="{{ routes.cart_url }}">Bag{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+  </nav>
+</div>
+
+{% schema %}
+{"name":"Header","settings":[]}
+{% endschema %}
