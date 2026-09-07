@@ -3,15 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.background_color | default: '#eee9df' }}">
+  <link rel="canonical" href="{{ canonical_url }}">
   <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
   {{ content_for_header }}
+  <style>:root{--cream:{{ settings.background_color | default: '#eee9df' }};--ink:{{ settings.text_color | default: '#111111' }};--accent:{{ settings.accent_color | default: '#111111' }};}</style>
   {{ 'chaver.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
+  <a class="skip-link" href="#MainContent">Skip to content</a>
   {% section 'announcement-bar' %}
   {% section 'header' %}
-  <main id="MainContent" role="main">{{ content_for_layout }}</main>
+  <main id="MainContent" role="main" tabindex="-1">{{ content_for_layout }}</main>
   {% section 'footer' %}
   {% section 'newsletter-popup' %}
+  <script src="{{ 'chaver.js' | asset_url }}" defer></script>
 </body>
 </html>
