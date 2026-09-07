@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "CHAVÉR Foundations",
-    "theme_version": "1.0.0",
+    "theme_version": "1.1.0",
     "theme_author": "CHAVÉR",
     "theme_documentation_url": "https://github.com/chaverthebrand/CHAVER-",
     "theme_support_url": "https://github.com/chaverthebrand/CHAVER-/issues"
@@ -12,7 +12,24 @@
     "settings": [
       {"type":"color","id":"background_color","label":"Background","default":"#eee9df"},
       {"type":"color","id":"text_color","label":"Text","default":"#111111"},
-      {"type":"color","id":"accent_color","label":"Accent","default":"#111111"}
+      {"type":"color","id":"accent_color","label":"Accent","default":"#111111"},
+      {"type":"color","id":"muted_text_color","label":"Muted text","default":"#6f6a62"},
+      {"type":"color","id":"border_color","label":"Borders","default":"#cfc8bc"}
+    ]
+  },
+  {
+    "name": "Brand details",
+    "settings": [
+      {"type":"text","id":"brand_name","label":"Brand name","default":"CHAVÉR"},
+      {"type":"text","id":"launch_label","label":"Launch label","default":"COMING SOON"},
+      {"type":"textarea","id":"brand_statement","label":"Brand statement","default":"Timeless essentials made with patience and purpose for men building their own future."}
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {"type":"url","id":"instagram_url","label":"Instagram URL"},
+      {"type":"url","id":"tiktok_url","label":"TikTok URL"}
     ]
   }
 ]
