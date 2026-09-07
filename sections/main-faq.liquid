@@ -1,0 +1,44 @@
+<section class="section faq-section">
+  <div class="page-width narrow">
+    <div class="eyebrow">CUSTOMER CARE</div>
+    <h1 class="section-title">Frequently asked questions.</h1>
+    <p class="section-intro">Everything you need to know about CHAVÉR, our upcoming launch and the Foundations Collection.</p>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <details class="faq-item" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="faq-answer rte">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {"type":"text","id":"question","label":"Question","default":"When does CHAVÉR launch?"},
+        {"type":"richtext","id":"answer","label":"Answer","default":"<p>CHAVÉR is preparing for launch. Join the newsletter to be the first to receive official launch updates.</p>"}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {"type":"question","settings":{"question":"When does CHAVÉR launch?","answer":"<p>We are preparing the Foundations Collection for launch. Join our newsletter to receive the official date first.</p>"}},
+        {"type":"question","settings":{"question":"Can I order already?","answer":"<p>Not yet. The webshop is currently available to discover CHAVÉR, the collection and the story behind the brand.</p>"}},
+        {"type":"question","settings":{"question":"What is the fit of the collection?","answer":"<p>Our core pieces are designed with a balanced oversized silhouette: relaxed and contemporary without feeling excessively long or wide.</p>"}},
+        {"type":"question","settings":{"question":"Where can I find product updates?","answer":"<p>Follow CHAVÉR on social media and subscribe to the newsletter for product, sample and launch updates.</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
