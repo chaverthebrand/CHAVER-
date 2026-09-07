@@ -1,2 +1,20 @@
-<div class="popup" id="chaver-newsletter"><span class="popup-close" onclick="document.getElementById('chaver-newsletter').classList.add('hidden');localStorage.setItem('chaverPopup','closed')">×</span><div class="eyebrow">Stay close</div><h3>BE FIRST TO KNOW.</h3><p>Join the CHAVÉR list for collection updates, development notes and early access.</p>{% form 'customer' %}<input type="hidden" name="contact[tags]" value="newsletter"><div><input type="email" name="contact[email]" placeholder="Email address" required><button type="submit">Join</button></div>{% endform %}</div><script>if(localStorage.getItem('chaverPopup')==='closed')document.getElementById('chaver-newsletter').classList.add('hidden')</script>
+<div class="popup" id="chaver-newsletter" role="dialog" aria-label="CHAVÉR newsletter">
+  <button class="popup-close" type="button" aria-label="Close newsletter">×</button>
+  <div class="eyebrow">Stay close</div>
+  <h3>BE FIRST TO KNOW.</h3>
+  <p>Join the CHAVÉR list for collection updates, development notes and early access.</p>
+  {% form 'customer', id: 'ChaverNewsletter' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    {% if form.posted_successfully? %}
+      <p class="form-success" role="status">Thank you. You’re on the list.</p>
+    {% else %}
+      <div class="newsletter-field">
+        <label class="visually-hidden" for="ChaverNewsletterEmail">Email address</label>
+        <input id="ChaverNewsletterEmail" type="email" name="contact[email]" value="{{ form.email }}" placeholder="Email address" autocomplete="email" required>
+        <button type="submit">Join</button>
+      </div>
+      {% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+    {% endif %}
+  {% endform %}
+</div>
 {% schema %}{"name":"Newsletter popup","settings":[]}{% endschema %}
