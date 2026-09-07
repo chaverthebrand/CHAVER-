@@ -1,1 +1,12 @@
-<section class="section error-page"><div class="page-width"><div class="eyebrow">404 / Page not found</div><h1 class="section-title">This page<br>doesn’t exist.</h1><p>Return to CHAVÉR and continue exploring the Foundations Collection.</p><a class="btn" href="{{ routes.root_url }}">Back home</a></div></section>{% schema %}{"name":"Main 404","settings":[]}{% endschema %}
+<section class="section error-page">
+  <div class="page-width narrow">
+    <div class="eyebrow">404 / PAGE NOT FOUND</div>
+    <h1 class="section-title">This page<br>isn’t part of the collection.</h1>
+    <p class="section-intro">The page may have moved or no longer exists. Continue exploring CHAVÉR below.</p>
+    <div class="error-actions">
+      <a class="btn" href="{{ routes.root_url }}">Back home</a>
+      <a class="text-link" href="{{ routes.all_products_collection_url }}">Explore collection</a>
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"Main 404","settings":[]}{% endschema %}
