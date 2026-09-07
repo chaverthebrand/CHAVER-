@@ -10,6 +10,7 @@
   {{ content_for_header }}
   <style>:root{--cream:{{ settings.background_color | default: '#eee9df' }};--ink:{{ settings.text_color | default: '#111111' }};--accent:{{ settings.accent_color | default: '#111111' }};}</style>
   {{ 'chaver.css' | asset_url | stylesheet_tag }}
+  {{ 'chaver-enhancements.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
   <a class="skip-link" href="#MainContent">Skip to content</a>
