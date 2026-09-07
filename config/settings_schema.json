@@ -1,0 +1,18 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "CHAVÉR Foundations",
+    "theme_version": "1.0.0",
+    "theme_author": "CHAVÉR",
+    "theme_documentation_url": "https://github.com/chaverthebrand/CHAVER-",
+    "theme_support_url": "https://github.com/chaverthebrand/CHAVER-/issues"
+  },
+  {
+    "name": "Brand colors",
+    "settings": [
+      {"type":"color","id":"background_color","label":"Background","default":"#eee9df"},
+      {"type":"color","id":"text_color","label":"Text","default":"#111111"},
+      {"type":"color","id":"accent_color","label":"Accent","default":"#111111"}
+    ]
+  }
+]
