@@ -1,1 +1,38 @@
-<section class="section"><div class="page-width"><div class="eyebrow">Your bag</div><h1 class="section-title">Selected pieces.</h1>{% if cart.item_count == 0 %}<div class="empty-state"><p>Your bag is currently empty. The FOUNDATIONS COLLECTION is still in development and ordering is not open yet.</p><a class="btn" href="{{ routes.all_products_collection_url }}">Explore collection</a></div>{% else %}<form action="{{ routes.cart_url }}" method="post" novalidate class="cart-form">{% for item in cart.items %}<div class="cart-row">{% if item.image %}<a href="{{ item.url }}" class="cart-image">{{ item.image | image_url: width: 400 | image_tag: loading: 'lazy' }}</a>{% endif %}<div class="cart-copy"><a href="{{ item.url }}"><strong>{{ item.product.title }}</strong></a>{% unless item.product.has_only_default_variant %}<p>{{ item.variant.title }}</p>{% endunless %}<p>{{ item.final_line_price | money }}</p><label for="updates_{{ item.key }}">Quantity</label><input id="updates_{{ item.key }}" class="quantity-input" type="number" name="updates[]" value="{{ item.quantity }}" min="0"></div></div>{% endfor %}<div class="cart-summary"><p>Subtotal <strong>{{ cart.total_price | money }}</strong></p><button class="btn" type="submit" name="update">Update bag</button><div class="launch-note"><strong>ORDERING OPENS Q1 2027</strong><p>Checkout is intentionally disabled while we complete final samples, fit and quality approval.</p></div><a class="btn btn-solid" href="#chaver-newsletter">Join for early access</a></div></form>{% endif %}</div></section>{% schema %}{"name":"Main cart","settings":[]}{% endschema %}
+{{ 'chaver-cart.css' | asset_url | stylesheet_tag }}
+
+<section class="prelaunch-cart section">
+  <div class="page-width">
+    <div class="prelaunch-cart-shell">
+      <div class="prelaunch-cart-main">
+        <div class="eyebrow">CHAVÉR / PRE-LAUNCH</div>
+        <h1>ORDERING OPENS<br>Q1 2027.</h1>
+        <p>
+          The FOUNDATIONS COLLECTION is currently being refined. Prices and ordering remain unavailable until every final sample, fit and quality detail has been approved.
+        </p>
+        <div class="prelaunch-cart-actions">
+          <a class="btn" href="{{ routes.all_products_collection_url }}">EXPLORE FOUNDATIONS</a>
+          <a class="btn btn-solid" href="#chaver-newsletter">JOIN FOR EARLY ACCESS</a>
+        </div>
+      </div>
+
+      <aside class="prelaunch-cart-status" aria-label="Collection launch status">
+        <div class="prelaunch-status-row">
+          <span>01</span>
+          <div><strong>FOUNDATIONS COLLECTION</strong><p>Six premium everyday essentials.</p></div>
+        </div>
+        <div class="prelaunch-status-row">
+          <span>02</span>
+          <div><strong>DEVELOPMENT</strong><p>Final samples, fit and quality review.</p></div>
+        </div>
+        <div class="prelaunch-status-row">
+          <span>03</span>
+          <div><strong>LAUNCH</strong><p>Planned for Q1 2027.</p></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"Main cart","settings":[]}
+{% endschema %}
