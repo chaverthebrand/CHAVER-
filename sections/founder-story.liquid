@@ -1,1 +1,61 @@
-<section class="founder-hero section"><div class="page-width"><div class="eyebrow">03 / Founder Story</div><h1 class="section-title">FROM AN IDEA.<br>TO A CONCEPT.<br>TO REALITY.</h1><div class="founder-grid"><div><p class="founder-lead">CHAVÉR began with a simple ambition: to create something of my own and build a future with more freedom.</p><p>I started without experience, a large budget or a shortcut. What followed was a process of learning, searching for the right suppliers, refining fabrics and fits, and accepting that building something properly takes time.</p></div><div><p>That process became part of the identity of CHAVÉR. We choose quality over speed and long-term vision over short-term attention.</p><p>FOUNDATIONS is the first chapter: timeless premium essentials designed to feel refined, comfortable and relevant beyond a single season.</p><div class="eyebrow" style="margin-top:40px">— Founder, CHAVÉR</div></div></div></div></section>{% schema %}{"name":"Founder Story","settings":[],"presets":[{"name":"Founder Story"}]}{% endschema %}
+{{ 'chaver-founder-story.css' | asset_url | stylesheet_tag }}
+
+<section class="founder-story-page section">
+  <div class="page-width">
+    <header class="founder-story-intro">
+      <div class="eyebrow">CHAVÉR / FOUNDER STORY</div>
+      <h1>BUILT WITH PATIENCE.<br>DRIVEN BY FREEDOM.</h1>
+      <div class="founder-story-intro-copy">
+        <p>CHAVÉR began with the ambition to create something of my own and build a future with more freedom.</p>
+        <p>Three chapters about where it started, the process behind the brand and the movement I am building for the future.</p>
+      </div>
+    </header>
+
+    <div class="founder-story-chapters">
+      <article class="founder-story-chapter">
+        <div class="founder-story-marker"><span>01</span><span>WHERE IT STARTED</span></div>
+        <a href="{{ 'chaver-founder-story-part-1.webp' | asset_url }}" target="_blank" rel="noopener" aria-label="Open Founder Story Part 1 in full size">
+          <img src="{{ 'chaver-founder-story-part-1.webp' | asset_url }}" alt="CHAVÉR Founder Story Part 1: Where It Started" width="1254" height="1254" loading="eager">
+        </a>
+      </article>
+
+      <article class="founder-story-chapter">
+        <div class="founder-story-marker"><span>02</span><span>THE STRUGGLE AND THE PROCESS</span></div>
+        <a href="{{ 'chaver-founder-story-part-2.webp' | asset_url }}" target="_blank" rel="noopener" aria-label="Open Founder Story Part 2 in full size">
+          <img src="{{ 'chaver-founder-story-part-2.webp' | asset_url }}" alt="CHAVÉR Founder Story Part 2: The Struggle and the Process" width="1254" height="1254" loading="lazy">
+        </a>
+      </article>
+
+      <article class="founder-story-chapter">
+        <div class="founder-story-marker"><span>03</span><span>THE FUTURE AND MOVEMENT</span></div>
+        <a href="{{ 'chaver-founder-story-part-3.webp' | asset_url }}" target="_blank" rel="noopener" aria-label="Open Founder Story Part 3 in full size">
+          <img src="{{ 'chaver-founder-story-part-3.webp' | asset_url }}" alt="CHAVÉR Founder Story Part 3: The Future and Movement" width="1254" height="1254" loading="lazy">
+        </a>
+      </article>
+    </div>
+  </div>
+
+  <footer class="founder-story-closing">
+    <div class="page-width founder-story-closing-inner">
+      <div>
+        <div class="eyebrow">THE FIRST CHAPTER</div>
+        <h2>FOUNDATIONS<br>COLLECTION.</h2>
+      </div>
+      <div class="founder-story-closing-copy">
+        <p>Timeless essentials made with patience and purpose. Ordering opens only when every piece is ready.</p>
+        <div class="founder-story-actions">
+          <a class="btn" href="{{ routes.all_products_collection_url }}">EXPLORE FOUNDATIONS</a>
+          <a class="btn btn-solid" href="#chaver-newsletter">JOIN FOR EARLY ACCESS</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Story",
+  "settings": [],
+  "presets": [{"name": "Founder Story"}]
+}
+{% endschema %}
