@@ -1,1 +1,80 @@
-<section class="section"><div class="page-width"><div class="eyebrow">FOUNDATIONS COLLECTION</div><h1 class="section-title">{{ collection.title | default: 'THE COLLECTION' }}</h1><div class="shop-grid">{% for product in collection.products %}<a class="shop-card" href="{{ product.url }}"><div class="shop-image">{% if product.featured_image %}{{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy' }}{% endif %}</div><div class="shop-meta"><span>{{ product.title }}</span><span>Coming soon</span></div></a>{% else %}{% assign names = 'Signature Heavyweight T-Shirt|Signature Longsleeve|Signature Crewneck Sweater|Signature Heavyweight Hoodie|Nylon 5-Panel Cap|Premium Crew Socks' | split: '|' %}{% for name in names %}<div class="shop-card"><div class="shop-image placeholder-product"><span>CHAVÉR</span></div><div class="shop-meta"><span>{{ name }}</span><span>Coming soon</span></div></div>{% endfor %}{% endfor %}</div></div></section>{% schema %}{"name":"Main collection","settings":[]}{% endschema %}
+{{ 'chaver-collection.css' | asset_url | stylesheet_tag }}
+
+{% assign collection_items = 'Signature Heavyweight T-Shirt|chaver-product-tshirt.webp|Navy Blue, 300 GSM compact cotton|Signature Heavyweight Hoodie|chaver-product-hoodie.webp|Dark Forest Green, 450 GSM fleece|Signature Crewneck Sweater|chaver-product-crewneck.webp|Jet Black, 400 GSM French terry|Signature Heavyweight Longsleeve|chaver-product-longsleeve.webp|Navy Blue, 260 GSM compact cotton|Signature Nylon Cap|chaver-product-cap.webp|Light Grey nylon|Premium Crew Socks|chaver-product-socks.webp|Off-white cotton blend' | split: '|' %}
+
+<section class="collection-showcase section" data-collection-showcase>
+  <div class="page-width">
+    <header class="collection-intro">
+      <div class="eyebrow">CHAVÉR / FOUNDATIONS COLLECTION</div>
+      <h1>THE FOUNDATIONS.</h1>
+      <p>Six everyday essentials. Refined proportions, considered fabrics and understated embroidered branding.</p>
+    </header>
+
+    <div class="collection-showcase-grid" role="list">
+      {% for item in collection_items %}
+        {% assign item_index = forloop.index0 | modulo: 3 %}
+        {% if item_index == 0 %}
+          {% assign title_index = forloop.index0 %}
+          {% assign asset_index = title_index | plus: 1 %}
+          {% assign detail_index = title_index | plus: 2 %}
+          {% assign item_title = collection_items[title_index] %}
+          {% assign item_asset = collection_items[asset_index] %}
+          {% assign item_detail = collection_items[detail_index] %}
+          {% assign item_image = item_asset | asset_url %}
+
+          <article class="collection-product" role="listitem">
+            <button
+              class="collection-product-trigger"
+              type="button"
+              data-product-open
+              data-product-title="{{ item_title | escape }}"
+              data-product-detail="{{ item_detail | escape }}"
+              data-product-image="{{ item_image }}"
+              aria-label="View full image of {{ item_title | escape }}"
+            >
+              <span class="collection-product-media">
+                <img
+                  src="{{ item_image }}"
+                  alt="{{ item_title | escape }} with embroidered CHAVÉR logo"
+                  width="1600"
+                  height="2000"
+                  loading="{% if title_index < 6 %}eager{% else %}lazy{% endif %}"
+                >
+                <span class="collection-product-view" aria-hidden="true">VIEW FULL IMAGE</span>
+              </span>
+              <span class="collection-product-copy">
+                <span class="collection-product-title">{{ item_title }}</span>
+                <span class="collection-product-status">COMING Q1 2027</span>
+              </span>
+            </button>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="product-lightbox" data-product-lightbox hidden aria-hidden="true">
+    <div class="product-lightbox-backdrop" data-product-close></div>
+    <div class="product-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="product-lightbox-title" tabindex="-1">
+      <button class="product-lightbox-close" type="button" data-product-close aria-label="Close full product image">×</button>
+      <div class="product-lightbox-media">
+        <img data-product-lightbox-image src="" alt="" width="1600" height="2000">
+      </div>
+      <div class="product-lightbox-copy">
+        <div class="eyebrow">FOUNDATIONS COLLECTION</div>
+        <h2 id="product-lightbox-title" data-product-lightbox-title></h2>
+        <p data-product-lightbox-detail></p>
+        <button class="btn btn-solid" type="button" data-newsletter-trigger>JOIN FOR EARLY ACCESS</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'chaver-collection.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": []
+}
+{% endschema %}
