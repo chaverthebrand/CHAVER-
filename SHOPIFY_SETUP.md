@@ -2,7 +2,7 @@
 
 This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use it to prepare the theme package, import it into Shopify as a draft, complete the store-specific setup, and decide whether the pre-launch storefront is safe to publish.
 
-> **Current decision:** ready for a **draft theme import**, not yet approved for public pre-launch publication.
+> **Current decision:** imported into Shopify as a **draft theme** on 8 September 2026; draft-theme QA is now the next step. The theme is not yet approved for public pre-launch publication.
 >
 > **Store mode:** PRE-LAUNCH. Ordering remains closed while products, samples, fit, quality, final specifications, and production are being approved. Current storefront messaging points to Q1 2027.
 >
@@ -14,10 +14,12 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 | --- | --- | --- |
 | Theme file structure | Complete | Required Shopify theme folders and `layout/theme.liquid` are present. |
 | JSON and section references | Checked | Theme JSON, section schema JSON, template-to-section references, asset references, and JavaScript syntax passed local static checks on 8 September 2026. |
-| Shopify-hosted import | Pending | The ZIP still needs to be uploaded to Shopify and accepted without an import error. |
+| Shopify-hosted import | Confirmed | The theme has been imported into Shopify as a draft; preview and Liquid/runtime QA are still pending. |
 | Store content and admin data | Pending | Pages, products, policies, domain, email, privacy, and store settings live in Shopify and are not supplied by this repository. |
 | Public pre-launch safety | Pending | The storefront removes normal purchase controls, but Shopify inventory and sales-channel settings must also prevent orders. |
 | Commerce launch | Not ready by design | Purchasing, final product data, payments, shipping, taxes, and order-flow testing belong to a later commerce-launch pass. |
+
+> **Current next checkpoint:** complete `IMP-02` in the Shopify draft preview by opening the home, collection, product, standard page, search, cart, and 404 templates and confirming that none shows a Liquid error.
 
 ### Included in the repository
 
@@ -90,6 +92,8 @@ zip -r CHAVER-Foundations-Prelaunch.zip assets config layout locales sections te
 Recommended archive name: `CHAVER-Foundations-Prelaunch-2026-09-08.zip`.
 
 ## 4. Import as a draft theme
+
+> **Status:** completed and confirmed on 8 September 2026. Keep the theme unpublished while the remaining checks are completed. The steps below remain the controlled re-import procedure if a new ZIP is uploaded.
 
 1. In Shopify Admin, open **Online Store > Themes**.
 2. In **Draft themes**, choose **Import theme > Upload zip file**.
@@ -279,7 +283,7 @@ Test on the Shopify draft preview with realistic product data. Record evidence f
 
 ### Import and rendering
 
-- [ ] **IMP-01:** ZIP uploads without a Shopify import error.
+- [x] **IMP-01:** ZIP uploads without a Shopify import error. *(Confirmed by the user on 8 September 2026: the theme is present in Shopify as a draft.)*
 - [ ] **IMP-02:** Home, collection, product, standard page, search, cart, and 404 templates render without a Liquid error.
 - [ ] **IMP-03:** Both CSS files and JavaScript load successfully; browser console shows no theme error.
 - [ ] **IMP-04:** Theme Customize opens and connected settings save and persist.
