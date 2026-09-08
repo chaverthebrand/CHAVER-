@@ -28,7 +28,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Product template with pre-launch messaging
 - Founder Story page template
 - Contact page and Shopify contact form
-- FAQ page with editable question blocks
+- FAQ page template with editable question blocks (kept for later; intentionally removed from the current navigation)
 - Size Guide page
 - Customer Care page
 - Search results and empty state
@@ -121,18 +121,19 @@ Complete these items in order. Check a box only after saving the setting and ver
 
 Create the following pages in **Online Store > Pages**. Keep the exact handles because header, footer, product, and customer-care links are hard-coded to them.
 
+> **Current navigation decision (8 September 2026):** FAQ is postponed. Its template remains in the repository, but it is not linked and is not required for the current pre-launch.
+
 | Page title | Required handle | Theme template | Page content field |
 | --- | --- | --- | --- |
 | Founder Story | `founder-story` | `page.founder-story` | May stay blank; the current copy is in the theme section. |
 | Contact | `contact` | `page.contact` | May stay blank; the form and introduction are in the theme section. |
-| FAQ | `faq` | `page.faq` | May stay blank; edit FAQ blocks in the theme editor. |
 | Size Guide | `size-guide` | `page.size-guide` | May stay blank; current development measurements are in the theme section. |
 | Customer Care | `customer-care` | `page.customer-care` | May stay blank; current guidance is in the theme section. |
 
 - [ ] Every page is created and visible on the Online Store channel.
 - [ ] Every handle exactly matches the table.
 - [ ] Every page has the matching template assigned.
-- [ ] All five page URLs return content instead of a 404.
+- [ ] All four required page URLs return content instead of a 404.
 - [ ] Page titles and search-engine descriptions are reviewed in Shopify.
 
 If a custom template is not available in the page selector while the theme is still a draft, do not create a second template. Verify the uploaded theme first, then assign the existing template during the controlled publication step.
@@ -271,7 +272,7 @@ These findings do not prevent ZIP preparation, but they must be accepted or reso
 | --- | --- | --- |
 | Blocker | Removing buy/checkout buttons does not disable Shopify ordering at platform level. | Apply zero tracked inventory, disable overselling and other sales channels, then pass direct-order negative tests. |
 | High | Product/cart `Join for early access` links target the popup by anchor. After a visitor closes the popup, JavaScript stores that state and does not explicitly reopen it from those links. | Test in-browser after closing the popup; fix before publication if the CTA remains hidden. |
-| Medium | The desktop footer contains four content groups, while its base grid currently defines three columns. | Verify whether the Legal group wraps unexpectedly; adjust the grid if the four-column layout is intended. |
+| Resolved | The desktop footer previously contained four content groups in a three-column grid. | The campaign homepage update changed the desktop footer to four columns; verify the final layout in the Shopify preview. |
 | Medium | Contact-form server errors are not explicitly rendered in the section. | Force an error case; add a visible error state if Shopify returns one. |
 | Medium | The newsletter dialog has basic labeling, but no focus trap, Escape-key close behavior, or focus return. | Complete keyboard and screen-reader QA; improve before publication if dialog navigation is confusing. |
 | Operational | Navigation labels, page handles, most copy, Q1 2027 messaging, and the `/collections/all` destination are hard-coded. | Preserve exact handles and record every code change required when the launch plan changes. |
@@ -295,7 +296,7 @@ Test on the Shopify draft preview with realistic product data. Record evidence f
 - [ ] **NAV-02:** Mobile menu opens, closes, updates `aria-expanded`, and closes after selecting a link.
 - [ ] **NAV-03:** Every footer page and policy link works; no accidental 404 remains.
 - [ ] **NAV-04:** Home and collection calls to action consistently reach the intended catalog.
-- [ ] **CNT-01:** Founder Story, Contact, FAQ, Size Guide, and Customer Care use the correct custom template.
+- [ ] **CNT-01:** Founder Story, Contact, Size Guide, and Customer Care use the correct custom template. FAQ remains postponed.
 - [ ] **CNT-02:** Q1 2027 and pre-launch wording is consistent across announcement, footer, collection, search, product, and cart.
 - [ ] **CNT-03:** Size tables match the latest approved sample/tech-pack measurements and remain clearly marked as development measurements until final approval.
 - [ ] **CNT-04:** Product titles, specifications, prices, colors, sizes, care wording, and photography contain no unapproved claims.
@@ -344,7 +345,7 @@ Test on the Shopify draft preview with realistic product data. Record evidence f
 The public pre-launch is **GO** only when all gates below are checked:
 
 - [ ] **PRE-01:** Shopify accepts the theme and core templates render without errors.
-- [ ] **PRE-02:** All five required pages, exact handles, and template assignments are complete.
+- [ ] **PRE-02:** All four required pages, exact handles, and template assignments are complete.
 - [ ] **PRE-03:** Only approved products and provisional claims are publicly visible.
 - [ ] **PRE-04:** All six order-blocking tests ORD-01 through ORD-06 pass.
 - [ ] **PRE-05:** Newsletter and contact delivery pass, including consent and error states.

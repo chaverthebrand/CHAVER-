@@ -1,0 +1,249 @@
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-brand);
+}
+
+body {
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand,
+.footer-brand,
+strong,
+b {
+  font-family: var(--font-brand);
+  font-weight: 700;
+}
+
+em,
+i {
+  font-family: var(--font-brand);
+  font-style: italic;
+}
+
+.brand {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -.035em;
+}
+
+.announcement {
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.announcement-track {
+  display: flex;
+  width: max-content;
+  animation: chaver-marquee var(--marquee-duration, 24s) linear infinite;
+  will-change: transform;
+}
+
+.announcement-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 36px;
+  padding: 11px 18px;
+}
+
+.announcement a {
+  border-bottom: 1px solid transparent;
+}
+
+.announcement a:hover,
+.announcement a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.announcement-separator {
+  font-size: 8px;
+  opacity: .45;
+}
+
+@keyframes chaver-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.hero--campaign {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(390px, .75fr);
+  min-height: calc(100svh - 127px);
+  padding: 0;
+  align-items: stretch;
+  background: var(--cream);
+}
+
+.hero-media {
+  min-height: calc(100svh - 127px);
+  overflow: hidden;
+  background: #d7d0c4;
+}
+
+.hero-media-image {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100svh - 127px);
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.hero-panel {
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(42px, 6vw, 92px) clamp(30px, 5vw, 76px);
+}
+
+.hero-panel-inner {
+  width: 100%;
+}
+
+.hero--campaign h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(54px, 6.4vw, 108px);
+  font-weight: 900;
+  line-height: .84;
+  letter-spacing: -.065em;
+}
+
+.hero--campaign .hero-sub {
+  max-width: 390px;
+  margin: 32px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.editorial-feature {
+  padding: clamp(64px, 9vw, 132px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.editorial-frame {
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(17, 17, 17, .08);
+}
+
+.editorial-image {
+  width: 100%;
+  height: auto;
+}
+
+.footer-grid {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 1100px) {
+  .hero--campaign {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
+  }
+
+  .hero--campaign h1 {
+    font-size: clamp(50px, 6.8vw, 76px);
+  }
+}
+
+@media (max-width: 800px) {
+  .brand {
+    font-size: 22px;
+  }
+
+  .announcement-group {
+    gap: 24px;
+    padding: 10px 12px;
+  }
+
+  .hero--campaign {
+    position: relative;
+    display: flex;
+    min-height: calc(100svh - 110px);
+    color: #fff;
+    background: #111;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+  }
+
+  .hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .02) 35%, rgba(0, 0, 0, .78) 100%);
+  }
+
+  .hero-media-image {
+    min-height: 100%;
+    object-position: center 50%;
+  }
+
+  .hero-panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: calc(100svh - 110px);
+    padding: 38px 15px 44px;
+  }
+
+  .hero--campaign h1 {
+    font-size: clamp(58px, 17vw, 82px);
+    line-height: .82;
+  }
+
+  .hero--campaign .hero-sub {
+    max-width: 335px;
+    margin-top: 24px;
+    font-size: 14px;
+  }
+
+  .hero--campaign .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .hero--campaign .btn {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(0, 0, 0, .08);
+  }
+
+  .editorial-feature {
+    padding: 58px 0;
+  }
+
+  .editorial-frame {
+    padding: 6px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-track {
+    animation: none;
+  }
+
+  .announcement-group[aria-hidden='true'] {
+    display: none;
+  }
+}

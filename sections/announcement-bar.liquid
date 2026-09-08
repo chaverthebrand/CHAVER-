@@ -1,2 +1,30 @@
-<div class="announcement">{{ section.settings.text }}</div>
-{% schema %}{"name":"Announcement bar","settings":[{"type":"text","id":"text","label":"Text","default":"FOUNDATIONS COLLECTION — ARRIVING Q1 2027"}]}{% endschema %}
+{% assign primary_text = section.settings.text | default: 'FOUNDATIONS COLLECTION — ARRIVING Q1 2027' %}
+{% assign secondary_text = section.settings.secondary_text | default: 'REFINED. RELAXED. TIMELESS.' %}
+
+<aside
+  class="announcement"
+  aria-label="{{ primary_text | append: '. ' | append: secondary_text | escape }}"
+  style="--marquee-duration: {{ section.settings.speed }}s"
+>
+  <div class="announcement-track">
+    {% for repetition in (1..2) %}
+      <div class="announcement-group"{% if repetition == 2 %} aria-hidden="true"{% endif %}>
+        <a href="{{ routes.all_products_collection_url }}">{{ primary_text }}</a>
+        <span class="announcement-separator" aria-hidden="true">•</span>
+        <a href="/pages/founder-story">{{ secondary_text }}</a>
+        <span class="announcement-separator" aria-hidden="true">•</span>
+      </div>
+    {% endfor %}
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {"type":"text","id":"text","label":"Collection message","default":"FOUNDATIONS COLLECTION — ARRIVING Q1 2027"},
+    {"type":"text","id":"secondary_text","label":"Brand quote","default":"REFINED. RELAXED. TIMELESS."},
+    {"type":"range","id":"speed","label":"Movement speed","min":16,"max":40,"step":2,"unit":"s","default":24}
+  ]
+}
+{% endschema %}

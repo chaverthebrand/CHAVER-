@@ -8,9 +8,18 @@
   <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
   {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
   {{ content_for_header }}
-  <style>:root{--cream:{{ settings.background_color | default: '#eee9df' }};--ink:{{ settings.text_color | default: '#111111' }};--accent:{{ settings.accent_color | default: '#111111' }};}</style>
+  <style>
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-regular.woff' | asset_url }}') format('woff');font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-bold.woff' | asset_url }}') format('woff');font-style:normal;font-weight:700;font-display:swap}
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-bold.woff' | asset_url }}') format('woff');font-style:normal;font-weight:900;font-display:swap}
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-italic.woff' | asset_url }}') format('woff');font-style:italic;font-weight:400;font-display:swap}
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-bold-italic.woff' | asset_url }}') format('woff');font-style:italic;font-weight:700;font-display:swap}
+    @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-bold-italic.woff' | asset_url }}') format('woff');font-style:italic;font-weight:900;font-display:swap}
+    :root{--cream:{{ settings.background_color | default: '#eee9df' }};--ink:{{ settings.text_color | default: '#111111' }};--accent:{{ settings.accent_color | default: '#111111' }};--muted:{{ settings.muted_text_color | default: '#6f6a62' }};--line:{{ settings.border_color | default: '#cfc8bc' }};--font-brand:'CHAVER Sans','Helvetica Neue',Arial,sans-serif;}
+  </style>
   {{ 'chaver.css' | asset_url | stylesheet_tag }}
   {{ 'chaver-enhancements.css' | asset_url | stylesheet_tag }}
+  {{ 'chaver-brand.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
   <a class="skip-link" href="#MainContent">Skip to content</a>

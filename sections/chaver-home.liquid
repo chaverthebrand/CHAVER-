@@ -1,4 +1,99 @@
-<section class="hero"><div class="page-width"><div class="eyebrow">CHAVÉR / FOUNDATIONS COLLECTION</div><div class="hero-copy"><h1>BUILT WITH<br>INTENTION.</h1><div class="hero-sub">Timeless essentials made with patience and purpose for men building their own future.<br><a class="btn" href="/collections/all">Discover Foundations</a></div></div></div></section>
-<section class="section"><div class="page-width"><div class="eyebrow">01 / The Collection</div><h2 class="section-title">Everyday essentials.<br>Refined with purpose.</h2><div class="product-grid"><div class="product-card"><small>Signature Heavyweight T-Shirt</small><strong>300 GSM / Oversized</strong></div><div class="product-card"><small>Signature Longsleeve</small><strong>260 GSM / Balanced Oversized</strong></div><div class="product-card"><small>Signature Crewneck</small><strong>400 GSM / French Terry</strong></div></div></div></section>
-<section class="section story"><div class="page-width" style="display:contents"><div><div class="eyebrow">02 / The Story</div><h2 class="section-title">NOT RUSHED.<br>BUILT TO LAST.</h2></div><div><p>CHAVÉR was created from a desire for freedom: the freedom to build, create and choose your own direction. Foundations is the beginning — premium essentials developed around fit, fabric and quiet confidence.</p><a class="btn" href="/pages/founder-story">Read Founder Story</a></div></div></section>
-{% schema %}{"name":"CHAVER Home","settings":[],"presets":[{"name":"CHAVER Home"}]}{% endschema %}
+<section class="hero hero--campaign">
+  <div class="hero-media">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'hero-media-image',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '(max-width: 800px) 100vw, 60vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.hero_alt
+      }}
+    {% else %}
+      <img
+        class="hero-media-image"
+        src="{{ 'chaver-hero-foundations-4k.webp' | asset_url }}"
+        width="2160"
+        height="3840"
+        alt="{{ section.settings.hero_alt | escape }}"
+        fetchpriority="high"
+      >
+    {% endif %}
+  </div>
+
+  <div class="hero-panel">
+    <div class="hero-panel-inner">
+      <div class="eyebrow">CHAVÉR / FOUNDATIONS COLLECTION</div>
+      <h1>BUILT WITH<br>INTENTION.</h1>
+      <p class="hero-sub">Timeless essentials made with patience and purpose for men building their own future.</p>
+      <a class="btn hero-button" href="{{ routes.all_products_collection_url }}">Discover Foundations</a>
+    </div>
+  </div>
+</section>
+
+<section class="editorial-feature" aria-label="CHAVÉR Foundations campaign">
+  <div class="page-width">
+    <figure class="editorial-frame">
+      {% if section.settings.editorial_image != blank %}
+        {{ section.settings.editorial_image
+          | image_url: width: 2160
+          | image_tag:
+            class: 'editorial-image',
+            widths: '600, 900, 1200, 1600, 2160',
+            sizes: '(max-width: 800px) calc(100vw - 30px), 680px',
+            loading: 'lazy',
+            alt: section.settings.editorial_alt
+        }}
+      {% else %}
+        <img
+          class="editorial-image"
+          src="{{ 'chaver-editorial-foundations-4k.webp' | asset_url }}"
+          width="2160"
+          height="3840"
+          alt="{{ section.settings.editorial_alt | escape }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page-width">
+    <div class="eyebrow">01 / The Collection</div>
+    <h2 class="section-title">Everyday essentials.<br>Refined with purpose.</h2>
+    <div class="product-grid">
+      <div class="product-card"><small>Signature Heavyweight T-Shirt</small><strong>300 GSM / Oversized</strong></div>
+      <div class="product-card"><small>Signature Longsleeve</small><strong>260 GSM / Balanced Oversized</strong></div>
+      <div class="product-card"><small>Signature Crewneck</small><strong>400 GSM / French Terry</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section story">
+  <div class="page-width" style="display:contents">
+    <div>
+      <div class="eyebrow">02 / The Story</div>
+      <h2 class="section-title">NOT RUSHED.<br>BUILT TO LAST.</h2>
+    </div>
+    <div>
+      <p>CHAVÉR was created from a desire for freedom: the freedom to build, create and choose your own direction. Foundations is the beginning — premium essentials developed around fit, fabric and quiet confidence.</p>
+      <a class="btn" href="/pages/founder-story">Read Founder Story</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CHAVER Home",
+  "settings": [
+    {"type":"image_picker","id":"hero_image","label":"Hero image"},
+    {"type":"text","id":"hero_alt","label":"Hero image alt text","default":"Two CHAVÉR models wearing navy and black Foundations essentials"},
+    {"type":"image_picker","id":"editorial_image","label":"Editorial image"},
+    {"type":"text","id":"editorial_alt","label":"Editorial image alt text","default":"CHAVÉR Foundations campaign on a warm coastal terrace"}
+  ],
+  "presets": [{"name":"CHAVER Home"}]
+}
+{% endschema %}
