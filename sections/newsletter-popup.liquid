@@ -1,20 +1,65 @@
-<div class="popup" id="chaver-newsletter" role="dialog" aria-label="CHAVÉR newsletter">
-  <button class="popup-close" type="button" aria-label="Close newsletter">×</button>
-  <div class="eyebrow">Stay close</div>
-  <h3>BE FIRST TO KNOW.</h3>
-  <p>Join the CHAVÉR list for collection updates, development notes and early access.</p>
-  {% form 'customer', id: 'ChaverNewsletter' %}
-    <input type="hidden" name="contact[tags]" value="newsletter">
-    {% if form.posted_successfully? %}
-      <p class="form-success" role="status">Thank you. You’re on the list.</p>
-    {% else %}
-      <div class="newsletter-field">
-        <label class="visually-hidden" for="ChaverNewsletterEmail">Email address</label>
-        <input id="ChaverNewsletterEmail" type="email" name="contact[email]" value="{{ form.email }}" placeholder="Email address" autocomplete="email" required>
-        <button type="submit">Join</button>
-      </div>
-      {% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
-    {% endif %}
-  {% endform %}
+<div class="popup-layer" id="chaver-newsletter-layer" aria-hidden="true" hidden>
+  <section
+    class="popup"
+    id="chaver-newsletter"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="ChaverNewsletterTitle"
+    aria-describedby="ChaverNewsletterDescription"
+    tabindex="-1"
+    data-delay="{{ section.settings.delay | times: 1000 }}"
+  >
+    <button class="popup-close" type="button" aria-label="Close newsletter popup">×</button>
+
+    <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+    <h2 id="ChaverNewsletterTitle">{{ section.settings.heading }}</h2>
+    <p id="ChaverNewsletterDescription">{{ section.settings.text }}</p>
+
+    {% form 'customer', id: 'ChaverNewsletter' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="hidden" name="contact[accepts_marketing]" value="true">
+
+      {% if form.posted_successfully? %}
+        <p class="form-success" role="status" tabindex="-1">Thank you. You’re on the CHAVÉR list.</p>
+      {% else %}
+        {% if form.errors %}
+          <div class="form-error" role="alert">{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        <div class="newsletter-field">
+          <label class="visually-hidden" for="ChaverNewsletterEmail">Email address</label>
+          <input
+            id="ChaverNewsletterEmail"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email | escape }}"
+            placeholder="Email address"
+            autocomplete="email"
+            inputmode="email"
+            required
+          >
+          <button type="submit">{{ section.settings.button_label }}</button>
+        </div>
+      {% endif %}
+    {% endform %}
+
+    <p class="popup-privacy">
+      {{ section.settings.privacy_text }}
+      <a href="/policies/privacy-policy">Privacy</a>
+    </p>
+  </section>
 </div>
-{% schema %}{"name":"Newsletter popup","settings":[]}{% endschema %}
+
+{% schema %}
+{
+  "name": "Newsletter popup",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRIVATE ACCESS"},
+    {"type":"text","id":"heading","label":"Heading","default":"JOIN THE CHAVÉR LIST."},
+    {"type":"textarea","id":"text","label":"Text","default":"Be first to receive collection updates, sample progress and launch access."},
+    {"type":"text","id":"button_label","label":"Button label","default":"JOIN"},
+    {"type":"text","id":"privacy_text","label":"Privacy note","default":"No noise. Only meaningful updates."},
+    {"type":"range","id":"delay","label":"Delay before opening","min":1,"max":12,"step":1,"unit":"s","default":3}
+  ]
+}
+{% endschema %}

@@ -150,6 +150,140 @@ i {
   grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 
+.popup-open {
+  overflow: hidden;
+}
+
+.popup-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 22px;
+  background: rgba(17, 17, 17, .2);
+  backdrop-filter: blur(2px);
+}
+
+.popup-layer[hidden] {
+  display: none;
+}
+
+.popup {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: min(410px, calc(100vw - 44px));
+  max-height: calc(100svh - 44px);
+  overflow-y: auto;
+  padding: 32px;
+  border: 1px solid rgba(17, 17, 17, .18);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .22);
+  animation: chaver-popup-rise .35s ease-out both;
+}
+
+.popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: #fff;
+}
+
+.popup .eyebrow {
+  margin-bottom: 16px;
+}
+
+.popup h2 {
+  max-width: 320px;
+  margin: 0;
+  font-size: clamp(29px, 4vw, 40px);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.045em;
+}
+
+.popup > p:not(.popup-privacy) {
+  margin: 17px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.popup .newsletter-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border: 1px solid var(--ink);
+}
+
+.popup .newsletter-field input {
+  min-width: 0;
+  padding: 14px 15px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.popup .newsletter-field input::placeholder {
+  color: var(--muted);
+}
+
+.popup .newsletter-field button {
+  padding: 0 18px;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+.popup .popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  padding: 6px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.popup .form-success,
+.popup .form-error {
+  margin: 22px 0 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.popup .form-error {
+  margin-bottom: 14px;
+}
+
+.popup-privacy {
+  margin: 15px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.popup-privacy a {
+  border-bottom: 1px solid currentColor;
+}
+
+@keyframes chaver-popup-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 1100px) {
   .hero--campaign {
     grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
@@ -236,10 +370,29 @@ i {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+
+  .popup-layer {
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  .popup {
+    width: 100%;
+    max-height: calc(100svh - 24px);
+    padding: 28px 22px 24px;
+  }
+
+  .popup h2 {
+    font-size: 31px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .announcement-track {
+    animation: none;
+  }
+
+  .popup {
     animation: none;
   }
 

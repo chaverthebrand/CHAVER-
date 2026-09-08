@@ -34,7 +34,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Search results and empty state
 - Cart and empty-cart states
 - Branded 404 page
-- Newsletter popup using Shopify's customer form
+- Compact, accessible newsletter popup using Shopify's customer form
 - Desktop and responsive mobile navigation
 - Footer navigation and standard Shopify policy URLs
 - Theme color settings and announcement-bar text setting
@@ -271,10 +271,10 @@ These findings do not prevent ZIP preparation, but they must be accepted or reso
 | Priority | Finding | Expected action |
 | --- | --- | --- |
 | Blocker | Removing buy/checkout buttons does not disable Shopify ordering at platform level. | Apply zero tracked inventory, disable overselling and other sales channels, then pass direct-order negative tests. |
-| High | Product/cart `Join for early access` links target the popup by anchor. After a visitor closes the popup, JavaScript stores that state and does not explicitly reopen it from those links. | Test in-browser after closing the popup; fix before publication if the CTA remains hidden. |
+| Resolved | Product/cart `Join for early access` links previously did not explicitly reopen the popup after dismissal. | The popup triggers now reopen it on demand; verify FRM-03 in the Shopify draft preview. |
 | Resolved | The desktop footer previously contained four content groups in a three-column grid. | The campaign homepage update changed the desktop footer to four columns; verify the final layout in the Shopify preview. |
 | Medium | Contact-form server errors are not explicitly rendered in the section. | Force an error case; add a visible error state if Shopify returns one. |
-| Medium | The newsletter dialog has basic labeling, but no focus trap, Escape-key close behavior, or focus return. | Complete keyboard and screen-reader QA; improve before publication if dialog navigation is confusing. |
+| Resolved | The newsletter dialog previously lacked a focus trap, Escape-key close behavior, and focus return. | These keyboard behaviors are implemented; verify them during accessibility QA. |
 | Operational | Navigation labels, page handles, most copy, Q1 2027 messaging, and the `/collections/all` destination are hard-coded. | Preserve exact handles and record every code change required when the launch plan changes. |
 | Operational | Several global theme settings are present but not wired to rendered content or CSS. | Configure only the connected settings or complete the wiring in a later code pass. |
 
