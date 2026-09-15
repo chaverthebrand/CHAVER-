@@ -19,7 +19,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 | Public pre-launch safety | Pending | The storefront removes normal purchase controls, but Shopify inventory and sales-channel settings must also prevent orders. |
 | Commerce launch | Not ready by design | Purchasing, final product data, payments, shipping, taxes, and order-flow testing belong to a later commerce-launch pass. |
 
-> **Current next checkpoint:** merge the approved code branch, upload the new ZIP as a fresh Shopify draft, then complete `IMP-02` by opening the home, collection, product, standard page, search, cart, and 404 templates and confirming that none shows a Liquid error.
+> **Current next checkpoint:** upload the new ZIP as a fresh Shopify draft, then complete `IMP-02` by opening the home, collection, product, standard page, search, cart, and 404 templates and confirming that none shows a Liquid error.
 
 ### Included in the repository
 
@@ -94,11 +94,11 @@ Example from the repository root:
 zip -r CHAVER-Foundations-Prelaunch.zip assets config layout locales sections templates
 ```
 
-Recommended archive name: `CHAVER-Foundations-Prelaunch-2026-09-08.zip`.
+Recommended archive name: `CHAVER-Foundations-Prelaunch-2026-09-15.zip`.
 
 ## 4. Import as a draft theme
 
-> **Status:** completed and confirmed on 8 September 2026. Keep the theme unpublished while the remaining checks are completed. The steps below remain the controlled re-import procedure if a new ZIP is uploaded.
+> **Status:** an older draft was imported on 8 September 2026. The 15 September release package must now be uploaded as a new draft and kept unpublished while the remaining checks are completed.
 
 1. In Shopify Admin, open **Online Store > Themes**.
 2. In **Draft themes**, choose **Import theme > Upload zip file**.
