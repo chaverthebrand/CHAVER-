@@ -2,11 +2,11 @@
 
 This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use it to prepare the theme package, import it into Shopify as a draft, complete the store-specific setup, and decide whether the pre-launch storefront is safe to publish.
 
-> **Current decision:** imported into Shopify as a **draft theme** on 8 September 2026; draft-theme QA is now the next step. The theme is not yet approved for public pre-launch publication.
+> **Current decision:** the earlier version was imported into Shopify as a **draft theme** on 8 September 2026. A completed pre-launch code pass was prepared on 15 September 2026 and must be imported as a new draft for final Shopify-hosted QA. The theme is not yet approved for public pre-launch publication.
 >
 > **Store mode:** PRE-LAUNCH. Ordering remains closed while products, samples, fit, quality, final specifications, and production are being approved. Current storefront messaging points to Q1 2027.
 >
-> **Reviewed baseline:** `main` at `3b113115c3d0e35c744e141eff2ec096fd8905e4` (7 September 2026).
+> **Reviewed baseline:** `main` at `3c0e9c0` plus the 15 September 2026 pre-launch completion branch. Record the final merge commit in section 10 after approval.
 
 ## 1. Status at handoff
 
@@ -14,12 +14,12 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 | --- | --- | --- |
 | Theme file structure | Complete | Required Shopify theme folders and `layout/theme.liquid` are present. |
 | JSON and section references | Checked | Theme JSON, section schema JSON, template-to-section references, asset references, and JavaScript syntax passed local static checks on 8 September 2026. |
-| Shopify-hosted import | Confirmed | The theme has been imported into Shopify as a draft; preview and Liquid/runtime QA are still pending. |
+| Shopify-hosted import | Re-import required | The 8 September draft predates the latest completion pass. Upload the new ZIP as a separate draft and run preview QA. |
 | Store content and admin data | Pending | Pages, products, policies, domain, email, privacy, and store settings live in Shopify and are not supplied by this repository. |
 | Public pre-launch safety | Pending | The storefront removes normal purchase controls, but Shopify inventory and sales-channel settings must also prevent orders. |
 | Commerce launch | Not ready by design | Purchasing, final product data, payments, shipping, taxes, and order-flow testing belong to a later commerce-launch pass. |
 
-> **Current next checkpoint:** complete `IMP-02` in the Shopify draft preview by opening the home, collection, product, standard page, search, cart, and 404 templates and confirming that none shows a Liquid error.
+> **Current next checkpoint:** merge the approved code branch, upload the new ZIP as a fresh Shopify draft, then complete `IMP-02` by opening the home, collection, product, standard page, search, cart, and 404 templates and confirming that none shows a Liquid error.
 
 ### Included in the repository
 
@@ -40,6 +40,10 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Theme color settings and announcement-bar text setting
 - English default locale
 - Storefront-level pre-launch purchase protection
+- Central pre-launch mode setting, which removes Bag navigation and blocks theme add-to-cart form submissions
+- Configurable CHAVÉR logo, favicon, launch period, brand statement, social links and social-sharing image
+- Open Graph and Twitter sharing metadata
+- Connected muted-text and border colors
 
 ### Deliberately not included or not yet connected
 
@@ -49,11 +53,11 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Payment, shipping, tax, market, domain, notification, analytics, consent, or email-marketing configuration
 - A normal add-to-cart form, variant picker, cart checkout button, or completed purchase flow
 - Blog, article, customer-account, gift-card, and list-collections templates
-- An uploaded image logo or favicon; the current storefront logo is text
+- Uploaded logo, favicon and social-sharing media; text CHAVÉR remains the logo fallback
 
 ## 2. Validation already completed
 
-The following repository-only checks passed against the reviewed baseline:
+The following repository-only checks passed on 15 September 2026:
 
 - [x] Required theme directories are present: `assets`, `config`, `layout`, `locales`, `sections`, and `templates`.
 - [x] `layout/theme.liquid`, `config/settings_schema.json`, and the core JSON templates are present.
@@ -62,6 +66,7 @@ The following repository-only checks passed against the reviewed baseline:
 - [x] Every section referenced by a JSON template exists.
 - [x] CSS and JavaScript assets referenced from `theme.liquid` exist.
 - [x] `assets/chaver.js` passes JavaScript syntax validation.
+- [x] Shopify CLI Theme Check inspected all theme files with no offenses.
 - [x] No unresolved `TODO`, `FIXME`, example-domain, or business-detail placeholder was found in storefront source.
 
 These checks do **not** prove that Shopify will accept the ZIP, that Liquid renders correctly with real store data, that forms deliver, or that purchasing is blocked at the Shopify platform level. Those items must be verified in the draft theme.
@@ -193,14 +198,18 @@ Open the imported draft in **Customize** and save the intended values.
 | Text color | Connected to the storefront. |
 | Accent color | Connected to solid buttons. |
 | Announcement-bar text | Connected and editable in the Announcement bar section. |
-| Muted text and border colors | Present in the schema but currently not connected to the CSS variables. |
-| Brand name, launch label, and brand statement | Present in the schema but storefront copy is currently hard-coded. |
-| Instagram and TikTok URLs | Present in the schema but no social links currently render. |
+| Muted text and border colors | Connected to the storefront CSS variables. |
+| Brand name, launch period, and brand statement | Connected to the header, home, product, collection and footer where applicable. |
+| Logo and favicon | Configurable; text CHAVÉR remains the fallback when no image logo is uploaded. |
+| Instagram and TikTok URLs | Render in the footer after URLs are saved. |
+| Social-sharing image | Connected to Open Graph metadata. |
+| Pre-launch mode | Enabled by default; removes Bag links and adds a theme-level add-to-cart form guard. |
 
-- [ ] Set and visually verify the three connected colors.
+- [ ] Set and visually verify all five connected colors.
 - [ ] Confirm the announcement reads `FOUNDATIONS COLLECTION — ARRIVING Q1 2027`, or replace it with the approved message.
-- [ ] Do not assume an unwired setting changed the storefront; verify every change in Preview.
-- [ ] Confirm the text-only CHAVÉR logo is acceptable for this pre-launch version.
+- [ ] Upload and verify the approved logo, favicon and social-sharing image, or confirm the text-logo fallback.
+- [ ] Keep **Pre-launch mode** enabled.
+- [ ] Add the approved Instagram and TikTok URLs and verify that both open correctly.
 
 ### F. Newsletter and contact delivery
 
@@ -262,7 +271,7 @@ In **Settings > Customer privacy**:
 - [ ] Verify the native sitemap and that unwanted draft content is not publicly discoverable.
 - [ ] Duplicate the configured draft theme before publication and keep the tested ZIP as a rollback copy.
 
-The current layout does not include dedicated Open Graph/Twitter image tags or a favicon setting. Treat branded social sharing and a custom favicon as a separate code enhancement if required for pre-launch.
+The current layout includes Open Graph/Twitter metadata plus configurable social-sharing image and favicon settings. Verify their rendered output after the final domain is primary.
 
 ## 6. Known code constraints to verify before publication
 
@@ -273,10 +282,10 @@ These findings do not prevent ZIP preparation, but they must be accepted or reso
 | Blocker | Removing buy/checkout buttons does not disable Shopify ordering at platform level. | Apply zero tracked inventory, disable overselling and other sales channels, then pass direct-order negative tests. |
 | Resolved | Product/cart `Join for early access` links previously did not explicitly reopen the popup after dismissal. | The popup triggers now reopen it on demand; verify FRM-03 in the Shopify draft preview. |
 | Resolved | The desktop footer previously contained four content groups in a three-column grid. | The campaign homepage update changed the desktop footer to four columns; verify the final layout in the Shopify preview. |
-| Medium | Contact-form server errors are not explicitly rendered in the section. | Force an error case; add a visible error state if Shopify returns one. |
+| Resolved | Contact-form server errors were not explicitly rendered in the section. | Error and success states now render; verify both in the Shopify draft. |
 | Resolved | The newsletter dialog previously lacked a focus trap, Escape-key close behavior, and focus return. | These keyboard behaviors are implemented; verify them during accessibility QA. |
-| Operational | Navigation labels, page handles, most copy, Q1 2027 messaging, and the `/collections/all` destination are hard-coded. | Preserve exact handles and record every code change required when the launch plan changes. |
-| Operational | Several global theme settings are present but not wired to rendered content or CSS. | Configure only the connected settings or complete the wiring in a later code pass. |
+| Operational | Page handles and the `/collections/all` destination remain intentionally fixed. | Preserve the required handles and verify whether the all-products catalog is the final pre-launch destination. |
+| Resolved | Several global theme settings were present but not wired to rendered content or CSS. | Colors, brand details, launch period, logo, favicon, social links and sharing image are now connected. |
 
 ## 7. Draft-theme QA checklist
 

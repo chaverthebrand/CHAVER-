@@ -1,3 +1,4 @@
+{% if section.settings.enabled %}
 <div class="popup-layer" id="chaver-newsletter-layer" aria-hidden="true" hidden>
   <section
     class="popup"
@@ -49,17 +50,19 @@
     </p>
   </section>
 </div>
+{% endif %}
 
 {% schema %}
 {
   "name": "Newsletter popup",
   "settings": [
+    {"type":"checkbox","id":"enabled","label":"Enable popup","default":true},
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRIVATE ACCESS"},
     {"type":"text","id":"heading","label":"Heading","default":"JOIN THE CHAVÉR LIST."},
     {"type":"textarea","id":"text","label":"Text","default":"Be first to receive collection updates, sample progress and launch access."},
     {"type":"text","id":"button_label","label":"Button label","default":"JOIN"},
     {"type":"text","id":"privacy_text","label":"Privacy note","default":"No noise. Only meaningful updates."},
-    {"type":"range","id":"delay","label":"Delay before opening","min":1,"max":12,"step":1,"unit":"s","default":3}
+    {"type":"range","id":"delay","label":"Delay before opening","min":1,"max":12,"step":1,"unit":"s","default":4}
   ]
 }
 {% endschema %}

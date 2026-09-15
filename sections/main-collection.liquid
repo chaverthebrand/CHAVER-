@@ -44,7 +44,7 @@
               </span>
               <span class="collection-product-copy">
                 <span class="collection-product-title">{{ item_title }}</span>
-                <span class="collection-product-status">COMING Q1 2027</span>
+                <span class="collection-product-status">COMING {{ settings.launch_label }}</span>
               </span>
             </button>
           </article>
@@ -58,7 +58,7 @@
     <div class="product-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="product-lightbox-title" tabindex="-1">
       <button class="product-lightbox-close" type="button" data-product-close aria-label="Close full product image">×</button>
       <div class="product-lightbox-media">
-        <img data-product-lightbox-image src="" alt="" width="1600" height="2000">
+        <img data-product-lightbox-image alt="" width="1600" height="2000">
       </div>
       <div class="product-lightbox-copy">
         <div class="eyebrow">FOUNDATIONS COLLECTION</div>
@@ -70,7 +70,7 @@
   </div>
 </section>
 
-{{ 'chaver-collection.js' | asset_url | script_tag }}
+<script src="{{ 'chaver-collection.js' | asset_url }}" defer></script>
 
 {% schema %}
 {

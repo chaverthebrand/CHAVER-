@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "CHAVÉR Foundations",
-    "theme_version": "1.2.1",
+    "theme_version": "1.3.0",
     "theme_author": "CHAVÉR",
     "theme_documentation_url": "https://github.com/chaverthebrand/CHAVER-",
     "theme_support_url": "https://github.com/chaverthebrand/CHAVER-/issues"
@@ -21,8 +21,12 @@
     "name": "Brand details",
     "settings": [
       {"type":"text","id":"brand_name","label":"Brand name","default":"CHAVÉR"},
-      {"type":"text","id":"launch_label","label":"Launch label","default":"COMING SOON"},
-      {"type":"textarea","id":"brand_statement","label":"Brand statement","default":"Timeless essentials made with patience and purpose for men building their own future."}
+      {"type":"image_picker","id":"logo","label":"Logo image"},
+      {"type":"range","id":"logo_width","label":"Logo width","min":80,"max":240,"step":10,"unit":"px","default":140},
+      {"type":"image_picker","id":"favicon","label":"Favicon"},
+      {"type":"text","id":"launch_label","label":"Launch period","default":"Q1 2027"},
+      {"type":"textarea","id":"brand_statement","label":"Brand statement","default":"Timeless essentials made with patience and purpose for men building their own future."},
+      {"type":"checkbox","id":"prelaunch_mode","label":"Pre-launch mode","default":true,"info":"Keeps prices, purchase controls and checkout hidden in this theme. Shopify inventory and sales channels must also be locked."}
     ]
   },
   {
@@ -30,6 +34,12 @@
     "settings": [
       {"type":"url","id":"instagram_url","label":"Instagram URL"},
       {"type":"url","id":"tiktok_url","label":"TikTok URL"}
+    ]
+  },
+  {
+    "name": "Search and sharing",
+    "settings": [
+      {"type":"image_picker","id":"social_sharing_image","label":"Social sharing image"}
     ]
   }
 ]

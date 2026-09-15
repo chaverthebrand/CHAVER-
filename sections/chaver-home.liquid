@@ -25,10 +25,10 @@
 
   <div class="hero-panel">
     <div class="hero-panel-inner">
-      <div class="eyebrow">CHAVÉR / FOUNDATIONS COLLECTION</div>
-      <h1>BUILT WITH<br>INTENTION.</h1>
-      <p class="hero-sub">Timeless essentials made with patience and purpose for men building their own future.</p>
-      <a class="btn hero-button" href="{{ routes.all_products_collection_url }}">Discover Foundations</a>
+      <div class="eyebrow">{{ settings.brand_name | default: 'CHAVÉR' }} / FOUNDATIONS COLLECTION</div>
+      <h1>{{ section.settings.heading | newline_to_br }}</h1>
+      <p class="hero-sub">{{ settings.brand_statement }}</p>
+      <a class="btn hero-button" href="{{ routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
     </div>
   </div>
 </section>
@@ -63,7 +63,7 @@
 <section class="section">
   <div class="page-width">
     <div class="eyebrow">01 / The Collection</div>
-    <h2 class="section-title">Everyday essentials.<br>Refined with purpose.</h2>
+    <h2 class="section-title">{{ section.settings.collection_heading | newline_to_br }}</h2>
     <div class="product-grid">
       <div class="product-card"><small>Signature Heavyweight T-Shirt</small><strong>300 GSM / Oversized</strong></div>
       <div class="product-card"><small>Signature Longsleeve</small><strong>260 GSM / Balanced Oversized</strong></div>
@@ -79,7 +79,7 @@
       <h2 class="section-title">NOT RUSHED.<br>BUILT TO LAST.</h2>
     </div>
     <div>
-      <p>CHAVÉR was created from a desire for freedom: the freedom to build, create and choose your own direction. Foundations is the beginning — premium essentials developed around fit, fabric and quiet confidence.</p>
+      <p>{{ section.settings.story_text }}</p>
       <a class="btn" href="/pages/founder-story">Read Founder Story</a>
     </div>
   </div>
@@ -91,8 +91,12 @@
   "settings": [
     {"type":"image_picker","id":"hero_image","label":"Hero image"},
     {"type":"text","id":"hero_alt","label":"Hero image alt text","default":"Two CHAVÉR models wearing navy and black Foundations essentials"},
+    {"type":"textarea","id":"heading","label":"Hero heading","default":"BUILT WITH\nINTENTION."},
+    {"type":"text","id":"button_label","label":"Hero button","default":"Discover Foundations"},
     {"type":"image_picker","id":"editorial_image","label":"Editorial image"},
-    {"type":"text","id":"editorial_alt","label":"Editorial image alt text","default":"CHAVÉR Foundations campaign on a warm coastal terrace"}
+    {"type":"text","id":"editorial_alt","label":"Editorial image alt text","default":"CHAVÉR Foundations campaign on a warm coastal terrace"},
+    {"type":"textarea","id":"collection_heading","label":"Collection heading","default":"Everyday essentials.\nRefined with purpose."},
+    {"type":"textarea","id":"story_text","label":"Story introduction","default":"CHAVÉR was created from a desire for freedom: the freedom to build, create and choose your own direction. Foundations is the beginning — premium essentials developed around fit, fabric and quiet confidence."}
   ],
   "presets": [{"name":"CHAVER Home"}]
 }

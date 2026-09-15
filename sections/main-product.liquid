@@ -1,1 +1,56 @@
-<section class="section"><div class="page-width product-page"><div class="product-gallery">{% for image in product.images %}<div class="product-media">{{ image | image_url: width: 1400 | image_tag: loading: 'lazy' }}</div>{% else %}<div class="product-media placeholder-product"><span>CHAVÉR</span></div>{% endfor %}</div><div class="product-info"><div class="eyebrow">FOUNDATIONS COLLECTION</div><h1>{{ product.title }}</h1><div class="product-description">{{ product.description }}</div>{% unless product.has_only_default_variant %}<div class="product-options"><div class="eyebrow">Available variants</div>{% for option in product.options_with_values %}<div class="product-option"><strong>{{ option.name }}</strong><div class="option-values">{% for value in option.values %}<span>{{ value }}</span>{% endfor %}</div></div>{% endfor %}</div>{% endunless %}<div class="product-facts"><details open><summary>Product details</summary><div class="details-copy"><p>Premium construction, refined proportions and an everyday silhouette developed for the CHAVÉR FOUNDATIONS COLLECTION.</p></div></details><details><summary>Fit & sizing</summary><div class="details-copy"><p>Designed around a balanced oversized fit. View the <a href="/pages/size-guide">size guide</a> for guidance before launch.</p></div></details><details><summary>Care</summary><div class="details-copy"><p>Care instructions will be confirmed with the final production specification. View our <a href="/pages/customer-care">customer care</a> page for general guidance.</p></div></details></div><div class="launch-note"><strong>COMING Q1 2027</strong><p>This piece is currently in development. Ordering opens only after final sample, fit and quality approval.</p></div><a class="btn btn-solid" href="#chaver-newsletter">Join for early access</a><p class="microcopy">No payment is taken. Newsletter subscribers receive launch information first.</p></div></div></section>{% schema %}{"name":"Main product","settings":[]}{% endschema %}
+<section class="section">
+  <div class="page-width product-page">
+    <div class="product-gallery">
+      {% for image in product.images %}
+        {% assign product_image_alt = image.alt | default: product.title %}
+        <div class="product-media">
+          {{ image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(max-width: 800px) 100vw, 55vw', alt: product_image_alt }}
+        </div>
+      {% else %}
+        <div class="product-media placeholder-product"><span>{{ settings.brand_name | default: 'CHAVÉR' }}</span></div>
+      {% endfor %}
+    </div>
+
+    <div class="product-info">
+      <div class="eyebrow">FOUNDATIONS COLLECTION</div>
+      <h1>{{ product.title }}</h1>
+      <div class="product-description rte">{{ product.description }}</div>
+
+      {% unless product.has_only_default_variant %}
+        <div class="product-options" aria-label="Planned product variants">
+          <div class="eyebrow">Planned variants</div>
+          {% for option in product.options_with_values %}
+            <div class="product-option">
+              <strong>{{ option.name }}</strong>
+              <div class="option-values">{% for value in option.values %}<span>{{ value }}</span>{% endfor %}</div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endunless %}
+
+      <div class="product-facts">
+        <details open><summary>Product details</summary><div class="details-copy"><p>{{ section.settings.product_details }}</p></div></details>
+        <details><summary>Fit & sizing</summary><div class="details-copy"><p>{{ section.settings.fit_text }} <a href="/pages/size-guide">View the size guide</a>.</p></div></details>
+        <details><summary>Care</summary><div class="details-copy"><p>{{ section.settings.care_text }} <a href="/pages/customer-care">View customer care</a>.</p></div></details>
+      </div>
+
+      <div class="launch-note" role="status">
+        <strong>{{ settings.launch_label }}</strong>
+        <p>Ordering is closed while final samples, fit and quality are being approved.</p>
+      </div>
+      <button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button>
+      <p class="microcopy">No payment is taken. Newsletter subscribers receive launch information first.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": [
+    {"type":"textarea","id":"product_details","label":"Product details","default":"Premium construction, refined proportions and an everyday silhouette developed for the CHAVÉR FOUNDATIONS COLLECTION."},
+    {"type":"textarea","id":"fit_text","label":"Fit text","default":"Designed around a balanced oversized fit."},
+    {"type":"textarea","id":"care_text","label":"Care text","default":"Final care instructions will be confirmed with the production specification."}
+  ]
+}
+{% endschema %}
