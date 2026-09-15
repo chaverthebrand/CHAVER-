@@ -7,6 +7,15 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
   {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  <meta property="og:site_name" content="{{ settings.brand_name | default: shop.name | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:type" content="{% if request.page_type == 'product' %}product{% else %}website{% endif %}">
+  {% if page_description %}<meta property="og:description" content="{{ page_description | escape }}">{% endif %}
+  {% assign sharing_image = page_image | default: settings.social_sharing_image %}
+  {% if sharing_image %}<meta property="og:image" content="https:{{ sharing_image | image_url: width: 1200 }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  {% if settings.favicon != blank %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64, height: 64 }}" type="image/png">{% endif %}
   {{ content_for_header }}
   <style>
     @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-regular.woff' | asset_url }}') format('woff');font-style:normal;font-weight:400;font-display:swap}
@@ -21,7 +30,7 @@
   {{ 'chaver-enhancements.css' | asset_url | stylesheet_tag }}
   {{ 'chaver-brand.css' | asset_url | stylesheet_tag }}
 </head>
-<body>
+<body class="{% if settings.prelaunch_mode %}is-prelaunch{% endif %}" data-prelaunch="{{ settings.prelaunch_mode }}">
   <a class="skip-link" href="#MainContent">Skip to content</a>
   {% section 'announcement-bar' %}
   {% section 'header' %}

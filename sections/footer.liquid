@@ -1,9 +1,9 @@
 <footer class="footer">
   <div class="page-width footer-grid">
     <div>
-      <div class="footer-brand">CHAVÉR</div>
-      <p>Timeless essentials made with patience and purpose.</p>
-      <p class="microcopy">FOUNDATIONS COLLECTION — COMING Q1 2027</p>
+      <div class="footer-brand">{{ settings.brand_name | default: 'CHAVÉR' }}</div>
+      <p>{{ settings.brand_statement }}</p>
+      <p class="microcopy">FOUNDATIONS COLLECTION — COMING {{ settings.launch_label }}</p>
     </div>
     <div>
       <div class="eyebrow">Explore</div>
@@ -24,10 +24,12 @@
       <p><a href="/policies/refund-policy">Returns</a></p>
       <p><a href="/policies/privacy-policy">Privacy</a></p>
       <p><a href="/policies/terms-of-service">Terms</a></p>
+      {% if settings.instagram_url != blank %}<p><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">Instagram</a></p>{% endif %}
+      {% if settings.tiktok_url != blank %}<p><a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener">TikTok</a></p>{% endif %}
     </div>
   </div>
   <div class="page-width footer-bottom">
-    <span>© {{ 'now' | date: '%Y' }} CHAVÉR</span>
+    <span>© {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: 'CHAVÉR' }}</span>
     <span>Built for the long term.</span>
   </div>
 </footer>

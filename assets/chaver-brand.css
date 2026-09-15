@@ -400,3 +400,20 @@ i {
     display: none;
   }
 }
+.brand-logo {
+  display: block;
+  height: auto;
+  max-width: min(48vw, 240px);
+}
+
+.form-success,
+.form-error {
+  margin: 0 0 1.25rem;
+  padding: .8rem 1rem;
+  border: 1px solid var(--line);
+}
+
+.form-error {
+  color: #7a1f1f;
+  border-color: #b68a82;
+}

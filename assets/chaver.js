@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const prelaunchEnabled = document.body.dataset.prelaunch === 'true';
+
+  if (prelaunchEnabled) {
+    document.addEventListener('submit', function (event) {
+      const form = event.target;
+      if (form instanceof HTMLFormElement && /\/cart\/add(?:\.js)?(?:\?|$)/.test(form.action)) {
+        event.preventDefault();
+      }
+    });
+  }
+
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('mobile-menu');
 

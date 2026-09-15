@@ -1,1 +1,23 @@
-<section class="section"><div class="page-width contact-grid"><div><div class="eyebrow">Contact / CHAVÉR</div><h1 class="section-title">LET'S<br>CONNECT.</h1><p>Questions about CHAVÉR, the FOUNDATIONS COLLECTION or an upcoming release? Send us a message.</p></div><div>{% form 'contact' %}<label>Name</label><input class="field" type="text" name="contact[name]"><label>Email</label><input class="field" type="email" name="contact[email]" required><label>Message</label><textarea class="field" rows="7" name="contact[body]" required></textarea><button class="btn" type="submit">Send message</button>{% if form.posted_successfully? %}<p>Thank you. We'll be in touch soon.</p>{% endif %}{% endform %}</div></div></section>{% schema %}{"name":"CHAVER Contact","settings":[],"presets":[{"name":"CHAVER Contact"}]}{% endschema %}
+<section class="section">
+  <div class="page-width contact-grid">
+    <div>
+      <div class="eyebrow">Contact / {{ settings.brand_name | default: 'CHAVÉR' }}</div>
+      <h1 class="section-title">LET'S<br>CONNECT.</h1>
+      <p>Questions about CHAVÉR, the FOUNDATIONS COLLECTION or an upcoming release? Send us a message.</p>
+    </div>
+    <div>
+      {% form 'contact' %}
+        {% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+        {% if form.posted_successfully? %}<p class="form-success" role="status">Thank you. We'll be in touch soon.</p>{% endif %}
+        <label for="ContactName">Name</label>
+        <input class="field" id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{% if form.name %}{{ form.name | escape }}{% endif %}">
+        <label for="ContactEmail">Email</label>
+        <input class="field" id="ContactEmail" type="email" name="contact[email]" autocomplete="email" value="{% if form.email %}{{ form.email | escape }}{% endif %}" required>
+        <label for="ContactMessage">Message</label>
+        <textarea class="field" id="ContactMessage" rows="7" name="contact[body]" required>{% if form.body %}{{ form.body | escape }}{% endif %}</textarea>
+        <button class="btn" type="submit">Send message</button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"CHAVER Contact","settings":[],"presets":[{"name":"CHAVER Contact"}]}{% endschema %}
