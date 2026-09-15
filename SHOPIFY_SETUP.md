@@ -6,7 +6,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 >
 > **Store mode:** PRE-LAUNCH. Ordering remains closed while products, samples, fit, quality, final specifications, and production are being approved. Current storefront messaging points to Q1 2027.
 >
-> **Reviewed baseline:** `main` at `3c0e9c0` plus the 15 September 2026 pre-launch completion branch. Record the final merge commit in section 10 after approval.
+> **Reviewed baseline:** `main` at `9024177d882231af3a238e994d710fca535b1166` (15 September 2026).
 
 ## 1. Status at handoff
 
@@ -382,8 +382,8 @@ Do not reuse the pre-launch approval as permission to accept orders. Before comm
 
 | Field | Value |
 | --- | --- |
-| Repository baseline | `3b113115c3d0e35c744e141eff2ec096fd8905e4` |
-| ZIP filename |  |
+| Repository baseline | `9024177d882231af3a238e994d710fca535b1166` |
+| ZIP filename | `CHAVER-Foundations-Prelaunch-2026-09-15.zip` |
 | Shopify store URL |  |
 | Draft theme name |  |
 | Draft preview URL |  |
