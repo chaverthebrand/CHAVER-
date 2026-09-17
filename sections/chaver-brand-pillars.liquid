@@ -1,0 +1,31 @@
+<section class="section brand-pillars" aria-labelledby="brand-pillars-title">
+  <div class="page-width">
+    <header class="brand-pillars__intro">
+      <div class="eyebrow">THE CHAVÉR STANDARD</div>
+      <h2 id="brand-pillars-title">BUILT WITH PURPOSE.</h2>
+      <p>{{ section.settings.intro }}</p>
+    </header>
+    <div class="brand-pillars__grid">
+      {% for block in section.blocks %}
+        <article class="brand-pillar" {{ block.shopify_attributes }}>
+          <span class="brand-pillar__index">0{{ forloop.index }}</span>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CHAVÉR brand pillars",
+  "settings": [
+    {"type":"textarea","id":"intro","label":"Introduction","default":"Timeless essentials made with patience and purpose for men building their own future."}
+  ],
+  "blocks": [
+    {"type":"pillar","name":"Pillar","settings":[{"type":"text","id":"title","label":"Title","default":"QUALITY"},{"type":"textarea","id":"text","label":"Text","default":"Considered fabrics, refined proportions and construction designed for everyday wear."}]}
+  ],
+  "presets": [{"name":"CHAVÉR brand pillars","blocks":[{"type":"pillar","settings":{"title":"QUALITY","text":"Considered fabrics, refined proportions and construction designed for everyday wear."}},{"type":"pillar","settings":{"title":"FREEDOM","text":"Designed for the space between work, ambition and the life you are building."}},{"type":"pillar","settings":{"title":"AUTHENTICITY","text":"Understated branding and honest essentials that do not need to shout."}},{"type":"pillar","settings":{"title":"TIMELESSNESS","text":"A restrained wardrobe foundation intended to outlast seasons and short-lived trends."}}]}]
+}
+{% endschema %}
