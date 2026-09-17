@@ -1,56 +1,21 @@
-<section class="section">
-  <div class="page-width product-page">
-    <div class="product-gallery">
-      {% for image in product.images %}
-        {% assign product_image_alt = image.alt | default: product.title %}
-        <div class="product-media">
-          {{ image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(max-width: 800px) 100vw, 55vw', alt: product_image_alt }}
-        </div>
-      {% else %}
-        <div class="product-media placeholder-product"><span>{{ settings.brand_name | default: 'CHAVÉR' }}</span></div>
-      {% endfor %}
-    </div>
+{% assign product_title_downcase = product.title | downcase %}
+{% assign material_line = section.settings.product_details %}
+{% assign fit_line = section.settings.fit_text %}
+{% if product_title_downcase contains 't-shirt' or product_title_downcase contains 'tshirt' %}{% assign material_line = '300 GSM heavyweight compact cotton with premium embroidered CHAVÉR branding.' %}{% assign fit_line = 'Balanced oversized silhouette with a substantial 2.5 cm rib neckline.' %}
+{% elsif product_title_downcase contains 'longsleeve' %}{% assign material_line = '260 GSM 100% compact cotton with centered CHAVÉR embroidery.' %}{% assign fit_line = 'Light oversized fit with a controlled length and 4 cm rib cuffs.' %}
+{% elsif product_title_downcase contains 'crewneck' or product_title_downcase contains 'sweater' %}{% assign material_line = '400 GSM 100% cotton loopback French terry with premium chest embroidery.' %}{% assign fit_line = 'Balanced oversized fit designed to feel relaxed without becoming extreme.' %}
+{% elsif product_title_downcase contains 'hoodie' %}{% assign material_line = '450 GSM heavyweight fleece with premium chest embroidery and a clean drawcord-free hood.' %}{% assign fit_line = 'Boxy fit with a regular, controlled body length.' %}
+{% elsif product_title_downcase contains 'cap' %}{% assign material_line = 'Premium matte nylon 5-panel construction with 3D CHAVÉR embroidery and concealed adjustment.' %}{% assign fit_line = 'Adjustable unisex 5-panel profile.' %}
+{% elsif product_title_downcase contains 'sock' %}{% assign material_line = '75% cotton, 22% polyamide and 3% elastane with woven CHAVÉR branding and a cushioned sole.' %}{% assign fit_line = '20 cm crew silhouette developed for everyday comfort.' %}{% endif %}
 
-    <div class="product-info">
-      <div class="eyebrow">FOUNDATIONS COLLECTION</div>
-      <h1>{{ product.title }}</h1>
-      <div class="product-description rte">{{ product.description }}</div>
-
-      {% unless product.has_only_default_variant %}
-        <div class="product-options" aria-label="Planned product variants">
-          <div class="eyebrow">Planned variants</div>
-          {% for option in product.options_with_values %}
-            <div class="product-option">
-              <strong>{{ option.name }}</strong>
-              <div class="option-values">{% for value in option.values %}<span>{{ value }}</span>{% endfor %}</div>
-            </div>
-          {% endfor %}
-        </div>
-      {% endunless %}
-
-      <div class="product-facts">
-        <details open><summary>Product details</summary><div class="details-copy"><p>{{ section.settings.product_details }}</p></div></details>
-        <details><summary>Fit & sizing</summary><div class="details-copy"><p>{{ section.settings.fit_text }} <a href="/pages/size-guide">View the size guide</a>.</p></div></details>
-        <details><summary>Care</summary><div class="details-copy"><p>{{ section.settings.care_text }} <a href="/pages/customer-care">View customer care</a>.</p></div></details>
-      </div>
-
-      <div class="launch-note" role="status">
-        <strong>{{ settings.launch_label }}</strong>
-        <p>Ordering is closed while final samples, fit and quality are being approved.</p>
-      </div>
-      <button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button>
-      <p class="microcopy">No payment is taken. Newsletter subscribers receive launch information first.</p>
-    </div>
+<section class="section"><div class="page-width product-page">
+  <div class="product-gallery">{% for image in product.images %}{% assign product_image_alt = image.alt | default: product.title %}<div class="product-media">{{ image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(max-width: 800px) 100vw, 55vw', alt: product_image_alt }}</div>{% else %}<div class="product-media placeholder-product"><span>{{ settings.brand_name | default: 'CHAVÉR' }}</span></div>{% endfor %}</div>
+  <div class="product-info">
+    <div class="eyebrow">FOUNDATIONS COLLECTION / {{ settings.launch_label }}</div><h1>{{ product.title }}</h1><div class="product-description rte">{{ product.description }}</div>
+    {% unless product.has_only_default_variant %}<div class="product-options" aria-label="Planned product variants"><div class="eyebrow">Planned variants</div>{% for option in product.options_with_values %}<div class="product-option"><strong>{{ option.name }}</strong><div class="option-values">{% for value in option.values %}<span>{{ value }}</span>{% endfor %}</div></div>{% endfor %}</div>{% endunless %}
+    <div class="product-facts"><details open><summary>Product details</summary><div class="details-copy"><p>{{ material_line }}</p></div></details><details><summary>Fit & sizing</summary><div class="details-copy"><p>{{ fit_line }} <a href="/pages/size-guide">View the size guide</a>.</p></div></details><details><summary>Care</summary><div class="details-copy"><p>{{ section.settings.care_text }} <a href="/pages/customer-care">View customer care</a>.</p></div></details><details><summary>Pre-launch status</summary><div class="details-copy"><p>Final samples, fit, construction and production specifications are still being approved. Details may be refined before the official release.</p></div></details></div>
+    <div class="launch-note" role="status"><strong>ARRIVING {{ settings.launch_label }}</strong><p>Ordering is closed during pre-launch. Explore the collection and follow the development before the official release.</p></div>
+    <button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button><p class="microcopy">No payment is taken. Newsletter subscribers receive launch information first.</p>
   </div>
-</section>
-
-{% schema %}
-{
-  "name": "Main product",
-  "settings": [
-    {"type":"textarea","id":"product_details","label":"Product details","default":"Premium construction, refined proportions and an everyday silhouette developed for the CHAVÉR FOUNDATIONS COLLECTION."},
-    {"type":"textarea","id":"fit_text","label":"Fit text","default":"Designed around a balanced oversized fit."},
-    {"type":"textarea","id":"care_text","label":"Care text","default":"Final care instructions will be confirmed with the production specification."}
-  ]
-}
-{% endschema %}
+</div></section>
+{% schema %}{"name":"Main product","settings":[{"type":"textarea","id":"product_details","label":"Fallback product details","default":"Premium construction, refined proportions and understated CHAVÉR embroidery."},{"type":"textarea","id":"fit_text","label":"Fallback fit text","default":"Designed around a balanced oversized fit."},{"type":"textarea","id":"care_text","label":"Care text","default":"Final care instructions will be confirmed with the production specification."}]}{% endschema %}
