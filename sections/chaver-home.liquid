@@ -14,36 +14,23 @@
   </div></div>
 </section>
 
-<section class="editorial-feature" aria-label="CHAVÉR Foundations campaign"><div class="page-width"><figure class="editorial-frame">
-  {% if section.settings.editorial_image != blank %}
-    {{ section.settings.editorial_image | image_url: width: 2160 | image_tag: class: 'editorial-image', widths: '600, 900, 1200, 1600, 2160', sizes: '(max-width: 800px) calc(100vw - 30px), 680px', loading: 'lazy', alt: section.settings.editorial_alt }}
-  {% else %}
-    <img class="editorial-image" src="{{ 'chaver-editorial-foundations-4k.webp' | asset_url }}" width="2160" height="3840" alt="{{ section.settings.editorial_alt | escape }}" loading="lazy">
-  {% endif %}
-</figure></div></section>
-
 <section class="section home-foundations"><div class="page-width">
-  <div class="eyebrow">01 / The Collection</div>
+  <div class="eyebrow">The Collection</div>
   <h2 class="section-title">{{ section.settings.collection_heading | newline_to_br }}</h2>
   <div class="home-product-grid" role="list">
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-tshirt.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight T-Shirt"><span><small>Signature Heavyweight T-Shirt</small><strong>300 GSM / Oversized</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-longsleeve.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Longsleeve"><span><small>Signature Longsleeve</small><strong>260 GSM / Light oversized</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-crewneck.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Crewneck Sweater"><span><small>Signature Crewneck Sweater</small><strong>400 GSM / French terry</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-hoodie.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight Hoodie"><span><small>Signature Heavyweight Hoodie</small><strong>450 GSM / Boxy fit</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-cap-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Nylon 5-Panel Cap"><span><small>Nylon 5-Panel Cap</small><strong>Matte nylon / 5-panel</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-socks-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Premium Crew Socks"><span><small>Premium Crew Socks</small><strong>Cotton blend / Cushioned</strong></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-tshirt.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight T-Shirt"><span><small>Signature Heavyweight T-Shirt</small></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-longsleeve.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Longsleeve"><span><small>Signature Longsleeve</small></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-crewneck.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Crewneck Sweater"><span><small>Signature Crewneck Sweater</small></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-hoodie.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight Hoodie"><span><small>Signature Heavyweight Hoodie</small></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-cap-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Nylon 5-Panel Cap"><span><small>Nylon 5-Panel Cap</small></span></a>
+    <a class="home-product-card" href="{{ routes.all_products_collection_url }}" role="listitem"><img src="{{ 'chaver-product-socks-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Premium Crew Socks"><span><small>Premium Crew Socks</small></span></a>
   </div>
   <div class="home-collection-action"><a class="btn" href="{{ routes.all_products_collection_url }}">View Foundations Collection</a></div>
 </div></section>
 
-<section class="section story"><div class="page-width" style="display:contents">
-  <div><div class="eyebrow">02 / The Story</div><h2 class="section-title">NOT RUSHED.<br>BUILT TO LAST.</h2></div>
-  <div><p>{{ section.settings.story_text }}</p><a class="btn" href="/pages/founder-story">Read Founder Story</a></div>
-</div></section>
-
 <section class="section home-early-access"><div class="page-width home-early-access-inner">
-  <div><div class="eyebrow">03 / Early Access</div><h2 class="section-title">FOLLOW THE<br>BUILD.</h2></div>
-  <div><p>CHAVÉR launches in {{ settings.launch_label }}. Join the list for collection updates, behind-the-scenes development and first access when the brand officially opens.</p><button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button><p class="microcopy">No orders are taken during pre-launch.</p></div>
+  <div><div class="eyebrow">Newsletter</div><h2 class="section-title">FOLLOW THE<br>BUILD.</h2></div>
+  <div><p>Sign up for the CHAVÉR newsletter to receive regular updates from the brand, including collection development, behind-the-scenes progress and launch news.</p><button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button><p class="microcopy">No orders are taken during pre-launch.</p></div>
 </div></section>
 
 {% schema %}
