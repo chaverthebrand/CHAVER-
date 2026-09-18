@@ -2,20 +2,29 @@
   <div class="page-width contact-grid">
     <div>
       <div class="eyebrow">Contact / {{ settings.brand_name | default: 'CHAVÉR' }}</div>
-      <h1 class="section-title">LET'S<br>CONNECT.</h1>
-      <p>Questions about CHAVÉR, the FOUNDATIONS COLLECTION or an upcoming release? Send us a message.</p>
+      <h1 class="section-title">CONTACT<br>CHAVÉR.</h1>
+      <p>Questions, ideas or something you want to discuss? Get in touch.</p>
+      <p class="microcopy">CHAVÉR is currently in pre-launch. Questions about the collection, collaborations, media or general information are welcome.</p>
     </div>
     <div>
       {% form 'contact' %}
         {% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
-        {% if form.posted_successfully? %}<p class="form-success" role="status">Thank you. We'll be in touch soon.</p>{% endif %}
+        {% if form.posted_successfully? %}<p class="form-success" role="status">Thank you. Your message has been received.</p>{% endif %}
+
         <label for="ContactName">Name</label>
         <input class="field" id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{% if form.name %}{{ form.name | escape }}{% endif %}">
+
         <label for="ContactEmail">Email</label>
         <input class="field" id="ContactEmail" type="email" name="contact[email]" autocomplete="email" value="{% if form.email %}{{ form.email | escape }}{% endif %}" required>
+
+        <label for="ContactSubject">Subject</label>
+        <input class="field" id="ContactSubject" type="text" name="contact[subject]" value="{% if form.subject %}{{ form.subject | escape }}{% endif %}" placeholder="Collection, collaboration, media or general">
+
         <label for="ContactMessage">Message</label>
         <textarea class="field" id="ContactMessage" rows="7" name="contact[body]" required>{% if form.body %}{{ form.body | escape }}{% endif %}</textarea>
+
         <button class="btn" type="submit">Send message</button>
+        <p class="microcopy">By sending this form, you agree that CHAVÉR may use the information provided to respond to your message. See our <a href="/policies/privacy-policy">Privacy Policy</a>.</p>
       {% endform %}
     </div>
   </div>
