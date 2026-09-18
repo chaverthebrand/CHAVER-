@@ -8,15 +8,16 @@
     <div>
       <div class="eyebrow">Explore</div>
       <p><a href="{{ routes.root_url }}">Home</a></p>
-      <p><a href="{{ routes.all_products_collection_url }}">Foundations</a></p>
+      <p><a href="{{ routes.all_products_collection_url }}">The Collection</a></p>
       <p><a href="/pages/founder-story">Founder Story</a></p>
+      {% if settings.instagram_url != blank %}<p><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">Instagram</a></p>{% endif %}
     </div>
     <div>
       <div class="eyebrow">Customer care</div>
       <p><a href="/pages/size-guide">Size Guide</a></p>
-      <p><a href="/pages/customer-care">Care & Support</a></p>
+      <p><a href="/pages/customer-care">Customer Care</a></p>
+      <p><a href="/pages/faq">FAQ</a></p>
       <p><a href="/pages/contact">Contact</a></p>
-      <p><a href="{{ routes.search_url }}">Search</a></p>
     </div>
     <div>
       <div class="eyebrow">Legal</div>
@@ -24,8 +25,7 @@
       <p><a href="/policies/refund-policy">Returns</a></p>
       <p><a href="/policies/privacy-policy">Privacy</a></p>
       <p><a href="/policies/terms-of-service">Terms</a></p>
-      {% if settings.instagram_url != blank %}<p><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">Instagram</a></p>{% endif %}
-      {% if settings.tiktok_url != blank %}<p><a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener">TikTok</a></p>{% endif %}
+
     </div>
   </div>
   <div class="page-width footer-bottom">
