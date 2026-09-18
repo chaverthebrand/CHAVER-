@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
       }
     });
+
+    document.addEventListener('click', function (event) {
+      const purchaseControl = event.target.closest('a[href*="/cart"], a[href*="/checkout"], [name="add"], [name="checkout"]');
+      if (purchaseControl) {
+        event.preventDefault();
+      }
+    });
   }
 
   const toggle = document.querySelector('.menu-toggle');
