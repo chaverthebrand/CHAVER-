@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const menu = document.getElementById('mobile-menu');
 
   if (toggle && menu) {
+    function closeMobileMenu(returnFocus) {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+      document.body.classList.remove('menu-open');
+      if (returnFocus) toggle.focus();
+    }
+
     toggle.addEventListener('click', function () {
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
@@ -23,10 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     menu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
-        toggle.setAttribute('aria-expanded', 'false');
-        menu.hidden = true;
-        document.body.classList.remove('menu-open');
+        closeMobileMenu(false);
       });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        event.preventDefault();
+        closeMobileMenu(true);
+      }
     });
   }
 
