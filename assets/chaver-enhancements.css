@@ -8,6 +8,7 @@
 .mobile-menu { display:none; border-bottom:1px solid var(--line); background:var(--cream); }
 .mobile-menu nav { display:flex; flex-direction:column; padding:18px 15px 26px; }
 .mobile-menu a { padding:13px 0; border-bottom:1px solid var(--line); text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
+.nav a[aria-current='page'],.mobile-menu a[aria-current='page'] { font-weight:700; text-decoration:underline; text-underline-offset:5px; }
 .newsletter-field { display:flex; border-bottom:1px solid #777; }
 .form-success,.form-error { font-size:12px; line-height:1.5; }
 .form-error ul { padding-left:18px; }
@@ -78,6 +79,13 @@
 .brand-pillar__index { display:block; margin-bottom:44px; color:var(--muted); font-size:10px; letter-spacing:.14em; }
 .brand-pillar h3 { margin:0 0 14px; font-size:13px; letter-spacing:.12em; }
 .brand-pillar p { margin:0; color:var(--muted); font-size:13px; line-height:1.7; }
+.collection-product { scroll-margin-top:28px; }
+.shopify-policy__container { width:min(900px,calc(100% - 48px)); max-width:none; margin:0 auto; padding:clamp(64px,8vw,112px) 0; }
+.shopify-policy__title { text-align:left; }
+.shopify-policy__title h1 { margin:0 0 52px; font-size:clamp(38px,6vw,76px); line-height:.95; letter-spacing:-.04em; }
+.shopify-policy__body h2,.shopify-policy__body h3 { margin:42px 0 14px; letter-spacing:-.02em; }
+.shopify-policy__body p,.shopify-policy__body li { color:var(--muted); line-height:1.75; }
+.shopify-policy__body a { text-decoration:underline; text-underline-offset:3px; }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
 @media (max-width:800px) {
   .site-header { grid-template-columns:auto 1fr auto; }

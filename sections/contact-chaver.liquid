@@ -24,7 +24,7 @@
         <textarea class="field" id="ContactMessage" rows="7" name="contact[body]" required>{% if form.body %}{{ form.body | escape }}{% endif %}</textarea>
 
         <button class="btn" type="submit">Send message</button>
-        <p class="microcopy">By sending this form, you agree that CHAVÉR may use the information provided to respond to your message. See our <a href="/policies/privacy-policy">Privacy Policy</a>.</p>
+        <p class="microcopy">By sending this form, you agree that CHAVÉR may use the information provided to respond to your message.{% if shop.privacy_policy != blank %} See our <a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>.{% endif %}</p>
       {% endform %}
     </div>
   </div>
