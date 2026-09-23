@@ -1,1 +1,7 @@
-<section class="section"><div class="page-width"><div class="eyebrow">CHAVÉR</div><h1 class="section-title">{{ page.title }}</h1><div class="rte">{{ page.content }}</div></div></section>{% schema %}{"name":"Main page","settings":[]}{% endschema %}
+{% if page.handle == 'founder-story' %}
+  {{ 'chaver-founder-story.css' | asset_url | stylesheet_tag }}
+  {% render 'founder-story-content' %}
+{% else %}
+  <section class="section"><div class="page-width"><div class="eyebrow">CHAVÉR</div><h1 class="section-title">{{ page.title }}</h1><div class="rte">{{ page.content }}</div></div></section>
+{% endif %}
+{% schema %}{"name":"Main page","settings":[]}{% endschema %}
