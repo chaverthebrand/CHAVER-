@@ -138,3 +138,40 @@
   .founder-story-actions { display: grid; }
   .founder-story-actions .btn { width: 100%; text-align: center; }
 }
+
+
+.founder-story-text {
+  width: min(760px, 100%);
+  margin: clamp(28px, 4vw, 48px) auto 0;
+}
+
+.founder-story-text p {
+  margin: 0 0 1.25em;
+  color: var(--muted);
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.8;
+}
+
+.founder-story-text p:first-child {
+  color: var(--ink);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.55;
+}
+
+.founder-story-text strong {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: clamp(24px, 3.4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+
+.founder-story-closing .btn-solid {
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .founder-story-text { margin-top: 24px; }
+  .founder-story-text p { line-height: 1.72; }
+}

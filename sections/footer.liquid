@@ -9,16 +9,16 @@
       <div class="eyebrow">Explore</div>
       <p><a href="{{ routes.root_url }}">Home</a></p>
       <p><a href="{{ routes.all_products_collection_url }}">The Collection</a></p>
-      <p><a href="/pages/founder-story">Founder Story</a></p>
+      <p><a href="{{ settings.founder_story_url | default: '/pages/founder-story' }}">Founder Story</a></p>
       <p><a href="{{ routes.search_url }}">Search</a></p>
       {% if settings.instagram_url != blank %}<p><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">Instagram</a></p>{% endif %}
       {% if settings.tiktok_url != blank %}<p><a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener">TikTok</a></p>{% endif %}
     </div>
     <div>
       <div class="eyebrow">Customer care</div>
-      <p><a href="/pages/size-guide">Size Guide</a></p>
-      <p><a href="/pages/customer-care">Customer Care</a></p>
-      <p><a href="/pages/contact">Contact</a></p>
+      <p><a href="{{ settings.size_guide_url | default: '/pages/size-guide' }}">Size Guide</a></p>
+      <p><a href="{{ settings.customer_care_url | default: '/pages/customer-care' }}">Customer Care</a></p>
+      <p><a href="{{ settings.contact_page_url | default: '/pages/contact' }}">Contact</a></p>
     </div>
     <div>
       <div class="eyebrow">Legal</div>
