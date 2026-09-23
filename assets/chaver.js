@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('a[href="#chaver-newsletter"], [data-newsletter-trigger]').forEach(function (trigger) {
     trigger.addEventListener('click', function (event) {
       event.preventDefault();
-      openPopup(trigger);
+      openPopup(trigger.chaverReturnFocus || trigger);
     });
   });
 

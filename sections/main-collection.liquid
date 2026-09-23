@@ -1,6 +1,6 @@
 {{ 'chaver-collection.css' | asset_url | stylesheet_tag }}
 
-{% assign collection_items = 'Signature Heavyweight T-Shirt|chaver-product-tshirt.webp|A first look at the Foundations Collection.|Signature Heavyweight Hoodie|chaver-product-hoodie.webp|A first look at the Foundations Collection.|Signature Crewneck Sweater|chaver-product-crewneck.webp|A first look at the Foundations Collection.|Signature Heavyweight Longsleeve|chaver-product-longsleeve.webp|A first look at the Foundations Collection.|Signature Nylon Cap|chaver-product-cap-studio.webp|A first look at the Foundations Collection.|Premium Crew Socks|chaver-product-socks-studio.webp|A first look at the Foundations Collection.' | split: '|' %}
+{% assign collection_items = 'Signature Heavyweight T-Shirt|t-shirt|chaver-product-tshirt.webp|A clean everyday T-shirt designed as the starting point of the CHAVÉR wardrobe.|Signature Longsleeve|longsleeve|chaver-product-longsleeve.webp|A refined long-sleeved essential built around a relaxed, understated silhouette.|Signature Crewneck Sweater|crewneck|chaver-product-crewneck.webp|A versatile crewneck created for quiet structure, comfort and everyday layering.|Signature Heavyweight Hoodie|hoodie|chaver-product-hoodie.webp|A considered hoodie with a clean profile and the relaxed direction of CHAVÉR.|Nylon 5-Panel Cap|cap|chaver-product-cap-studio.webp|A minimal five-panel cap designed to complete the Foundations wardrobe.|Premium Crew Socks|socks|chaver-product-socks-studio.webp|An understated everyday finishing piece developed for comfort and repeat wear.' | split: '|' %}
 
 <section class="collection-showcase section" data-collection-showcase>
   <div class="page-width">
@@ -12,17 +12,19 @@
 
     <div class="collection-showcase-grid" role="list">
       {% for item in collection_items %}
-        {% assign item_index = forloop.index0 | modulo: 3 %}
+        {% assign item_index = forloop.index0 | modulo: 4 %}
         {% if item_index == 0 %}
           {% assign title_index = forloop.index0 %}
-          {% assign asset_index = title_index | plus: 1 %}
-          {% assign detail_index = title_index | plus: 2 %}
+          {% assign handle_index = title_index | plus: 1 %}
+          {% assign asset_index = title_index | plus: 2 %}
+          {% assign detail_index = title_index | plus: 3 %}
           {% assign item_title = collection_items[title_index] %}
+          {% assign item_handle = collection_items[handle_index] %}
           {% assign item_asset = collection_items[asset_index] %}
           {% assign item_detail = collection_items[detail_index] %}
           {% assign item_image = item_asset | asset_url %}
 
-          <article class="collection-product" role="listitem">
+          <article class="collection-product" id="collection-{{ item_handle }}" role="listitem">
             <button
               class="collection-product-trigger"
               type="button"

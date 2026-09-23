@@ -46,7 +46,7 @@
 
     <p class="popup-privacy">
       {{ section.settings.privacy_text }}
-      <a href="/policies/privacy-policy">Privacy</a>
+      {% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Privacy</a>{% endif %}
     </p>
   </section>
 </div>

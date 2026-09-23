@@ -7,6 +7,7 @@
   const image = lightbox && lightbox.querySelector('[data-product-lightbox-image]');
   const title = lightbox && lightbox.querySelector('[data-product-lightbox-title]');
   const detail = lightbox && lightbox.querySelector('[data-product-lightbox-detail]');
+  const closeButton = lightbox && lightbox.querySelector('.product-lightbox-close');
   let lastTrigger = null;
 
   if (!lightbox || !dialog || !image || !title || !detail) return;
@@ -20,15 +21,18 @@
     lightbox.hidden = false;
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('product-lightbox-open');
-    window.requestAnimationFrame(function () { dialog.focus(); });
+    window.requestAnimationFrame(function () {
+      if (closeButton) closeButton.focus();
+      else dialog.focus();
+    });
   }
 
-  function closeProduct() {
+  function closeProduct(restoreFocus) {
     lightbox.hidden = true;
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('product-lightbox-open');
     image.src = '';
-    if (lastTrigger) lastTrigger.focus();
+    if (restoreFocus !== false && lastTrigger) lastTrigger.focus();
   }
 
   showcase.querySelectorAll('[data-product-open]').forEach(function (trigger) {
@@ -36,18 +40,43 @@
   });
 
   lightbox.querySelectorAll('[data-product-close]').forEach(function (close) {
-    close.addEventListener('click', closeProduct);
+    close.addEventListener('click', function () { closeProduct(true); });
   });
 
   const newsletterTrigger = lightbox.querySelector('[data-newsletter-trigger]');
   if (newsletterTrigger) {
-    newsletterTrigger.addEventListener('click', closeProduct);
+    newsletterTrigger.addEventListener('click', function () {
+      newsletterTrigger.chaverReturnFocus = lastTrigger;
+      closeProduct(false);
+    });
   }
 
   document.addEventListener('keydown', function (event) {
-    if (!lightbox.hidden && event.key === 'Escape') {
+    if (lightbox.hidden) return;
+
+    if (event.key === 'Escape') {
       event.preventDefault();
-      closeProduct();
+      closeProduct(true);
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusable = Array.from(dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 })();

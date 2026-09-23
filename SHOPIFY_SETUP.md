@@ -2,11 +2,11 @@
 
 This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use it to prepare the theme package, import it into Shopify as a draft, complete the store-specific setup, and decide whether the pre-launch storefront is safe to publish.
 
-> **Current decision:** the earlier version was imported into Shopify as a **draft theme** on 8 September 2026. A completed pre-launch code pass was prepared on 15 September 2026 and must be imported as a new draft for final Shopify-hosted QA. The theme is not yet approved for public pre-launch publication.
+> **Current decision:** the earlier version was imported into Shopify as a **draft theme** on 8 September 2026. PR #3 was merged on 18 September 2026, and the final site-completion pass was prepared on 23 September 2026. This latest version must be imported as a new draft for final Shopify-hosted QA. The theme is not yet approved for public pre-launch publication.
 >
 > **Store mode:** PRE-LAUNCH. Ordering remains closed while products, samples, fit, quality, final specifications, and production are being approved. Current storefront messaging points to Q1 2027.
 >
-> **Reviewed baseline:** `main` at `9024177d882231af3a238e994d710fca535b1166` (15 September 2026).
+> **Reviewed baseline:** `main` at `7d27b62c9815d39a849534cbadc73a172ed10f81` (PR #3 merge, 18 September 2026), followed by the 23 September final site-completion pass.
 
 ## 1. Status at handoff
 
@@ -14,7 +14,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 | --- | --- | --- |
 | Theme file structure | Complete | Required Shopify theme folders and `layout/theme.liquid` are present. |
 | JSON and section references | Checked | Theme JSON, section schema JSON, template-to-section references, asset references, and JavaScript syntax passed local static checks on 8 September 2026. |
-| Shopify-hosted import | Re-import required | The 8 September draft predates the latest completion pass. Upload the new ZIP as a separate draft and run preview QA. |
+| Shopify-hosted import | Re-import required | The 8 September draft predates PR #3 and the 23 September completion pass. Upload the new ZIP as a separate draft and run preview QA. |
 | Store content and admin data | Pending | Pages, products, policies, domain, email, privacy, and store settings live in Shopify and are not supplied by this repository. |
 | Public pre-launch safety | Pending | The storefront removes normal purchase controls, but Shopify inventory and sales-channel settings must also prevent orders. |
 | Commerce launch | Not ready by design | Purchasing, final product data, payments, shipping, taxes, and order-flow testing belong to a later commerce-launch pass. |
@@ -34,9 +34,11 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Search results and empty state
 - Cart and empty-cart states
 - Branded 404 page
+- Branded password-protection landing page with newsletter and store-password forms
 - Compact, accessible newsletter popup using Shopify's customer form
 - Desktop and responsive mobile navigation
-- Footer navigation and standard Shopify policy URLs
+- Footer navigation that lists only policies actually published in Shopify
+- Branded styling for Shopify's native policy pages
 - Theme color settings and announcement-bar text setting
 - English default locale
 - Storefront-level pre-launch purchase protection
@@ -44,6 +46,8 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Configurable CHAVÉR logo, favicon, launch period, brand statement, social links and social-sharing image
 - Open Graph and Twitter sharing metadata
 - Connected muted-text and border colors
+- Direct product-preview anchors from the home page to all six collection items
+- Search access in desktop, mobile and footer navigation
 
 ### Deliberately not included or not yet connected
 
@@ -57,7 +61,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 
 ## 2. Validation already completed
 
-The following repository-only checks passed on 15 September 2026:
+The following repository-only checks passed after the 23 September 2026 completion pass:
 
 - [x] Required theme directories are present: `assets`, `config`, `layout`, `locales`, `sections`, and `templates`.
 - [x] `layout/theme.liquid`, `config/settings_schema.json`, and the core JSON templates are present.
@@ -94,11 +98,11 @@ Example from the repository root:
 zip -r CHAVER-Foundations-Prelaunch.zip assets config layout locales sections templates
 ```
 
-Recommended archive name: `CHAVER-Foundations-Prelaunch-2026-09-15.zip`.
+Recommended archive name: `CHAVER-Foundations-Prelaunch-2026-09-23.zip`.
 
 ## 4. Import as a draft theme
 
-> **Status:** an older draft was imported on 8 September 2026. The 15 September release package must now be uploaded as a new draft and kept unpublished while the remaining checks are completed.
+> **Status:** an older draft was imported on 8 September 2026. The 23 September release package must now be uploaded as a new draft and kept unpublished while the remaining checks are completed.
 
 1. In Shopify Admin, open **Online Store > Themes**.
 2. In **Draft themes**, choose **Import theme > Upload zip file**.
@@ -126,7 +130,7 @@ Complete these items in order. Check a box only after saving the setting and ver
 
 Create the following pages in **Online Store > Pages**. Keep the exact handles because header, footer, product, and customer-care links are hard-coded to them.
 
-> **Current navigation decision (8 September 2026):** FAQ is postponed. Its template remains in the repository, but it is not linked and is not required for the current pre-launch.
+> **Current navigation decision:** FAQ is postponed. Its template remains in the repository, but it is not linked and is not required for the current pre-launch. Search and Contact are the current secondary navigation destinations.
 
 | Page title | Required handle | Theme template | Page content field |
 | --- | --- | --- | --- |
@@ -235,7 +239,7 @@ In **Settings > Policies**, complete and publish:
 - [ ] Shipping policy
 - [ ] Contact information and any other policy required for the enabled markets
 
-The footer already targets Shopify's standard URLs:
+The footer automatically lists every policy that is actually published in Shopify. The newsletter and contact consent copy use Shopify's standard privacy-policy URL. Configure and verify:
 
 - `/policies/shipping-policy`
 - `/policies/refund-policy`
@@ -298,6 +302,7 @@ Test on the Shopify draft preview with realistic product data. Record evidence f
 - [ ] **IMP-03:** Both CSS files and JavaScript load successfully; browser console shows no theme error.
 - [ ] **IMP-04:** Theme Customize opens and connected settings save and persist.
 - [ ] **IMP-05:** No draft-theme preview link or password is exposed publicly before approval.
+- [ ] **IMP-06:** The branded `/password` page renders, newsletter signup works, and the store-password form accepts the correct password.
 
 ### Navigation and content
 
@@ -382,8 +387,8 @@ Do not reuse the pre-launch approval as permission to accept orders. Before comm
 
 | Field | Value |
 | --- | --- |
-| Repository baseline | `9024177d882231af3a238e994d710fca535b1166` |
-| ZIP filename | `CHAVER-Foundations-Prelaunch-2026-09-15.zip` |
+| Repository baseline | `7d27b62c9815d39a849534cbadc73a172ed10f81` + 23 September completion pass |
+| ZIP filename | `CHAVER-Foundations-Prelaunch-2026-09-23.zip` |
 | Shopify store URL |  |
 | Draft theme name |  |
 | Draft preview URL |  |

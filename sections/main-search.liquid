@@ -1,21 +1,8 @@
-{% if settings.prelaunch_mode %}
-<section class="section search-page">
-  <div class="page-width narrow">
-    <div class="eyebrow">CHAVÉR / PRE-LAUNCH</div>
-    <h1 class="section-title">DISCOVER<br>CHAVÉR.</h1>
-    <p class="section-intro">Search is intentionally unavailable during pre-launch. Explore the Foundations Collection, read the Founder Story or join the newsletter for regular updates.</p>
-    <div class="error-actions">
-      <a class="btn" href="{{ routes.all_products_collection_url }}">Explore collection</a>
-      <a class="text-link" href="/pages/founder-story">Founder Story</a>
-    </div>
-  </div>
-</section>
-{% else %}
 <section class="section search-page">
   <div class="page-width">
     <div class="eyebrow">SEARCH CHAVÉR</div>
     <h1 class="section-title">Find what you’re looking for.</h1>
-    <p class="section-intro">Search the collection, pages and stories behind CHAVÉR.</p>
+    <p class="section-intro">Search the collection, pages and story behind CHAVÉR. Product results remain a pre-launch preview without prices or ordering.</p>
     <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
       <label class="visually-hidden" for="SearchInput">Search CHAVÉR</label>
       <div class="search-row"><input id="SearchInput" class="field" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search CHAVÉR" autocomplete="off"><button class="btn" type="submit">Search</button></div>
@@ -34,5 +21,4 @@
     {% endif %}
   </div>
 </section>
-{% endif %}
 {% schema %}{"name":"Main search","settings":[]}{% endschema %}
