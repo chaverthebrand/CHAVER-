@@ -169,3 +169,19 @@
   .founder-story-closing h2 { font-size: clamp(38px, 11vw, 76px); line-height: .94; }
   .founder-story-text p { line-height: 1.72; }
 }
+
+/* Show only the photographic areas of the original artwork. */
+.founder-story-photo-pair { display: grid; gap: 16px; }
+.founder-story-photo-crop {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--crop-ratio);
+}
+.founder-story-photo-crop img {
+  position: absolute;
+  width: var(--crop-width);
+  max-width: none;
+  height: auto;
+  left: var(--crop-left);
+  top: var(--crop-top);
+}
