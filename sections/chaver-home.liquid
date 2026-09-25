@@ -3,7 +3,7 @@
     {% if section.settings.hero_image != blank %}
       {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
     {% else %}
-      <img class="hero-media-image" src="{{ 'chaver-hero-foundations-4k.webp' | asset_url }}" width="2160" height="3840" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+      <img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
     {% endif %}
   </div>
   <div class="hero-panel"><div class="hero-panel-inner">
@@ -17,29 +17,15 @@
 <section class="editorial-feature" aria-label="CHAVÉR Foundations editorial">
   <div class="page-width">
     <div class="editorial-frame">
-      <img class="editorial-image" src="{{ 'chaver-editorial-foundations-4k.webp' | asset_url }}" width="2160" height="3840" loading="lazy" alt="CHAVÉR Foundations editorial in warm architectural light">
+      <img class="editorial-image" src="{{ 'chaver-home-editorial-v2.webp' | asset_url }}" width="940" height="1672" loading="lazy" alt="Two models wearing black CHAVÉR essentials in a coastal pavilion">
     </div>
   </div>
 </section>
 
-<section class="section home-foundations"><div class="page-width">
-  <div class="eyebrow">The Collection</div>
-  <h2 class="section-title">{{ section.settings.collection_heading | newline_to_br }}</h2>
-  <div class="home-product-grid" role="list">
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-t-shirt" role="listitem"><img src="{{ 'chaver-product-tshirt.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight T-Shirt"><span><small>Signature Heavyweight T-Shirt</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-longsleeve" role="listitem"><img src="{{ 'chaver-product-longsleeve.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Longsleeve"><span><small>Signature Longsleeve</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-crewneck" role="listitem"><img src="{{ 'chaver-product-crewneck.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Crewneck Sweater"><span><small>Signature Crewneck Sweater</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-hoodie" role="listitem"><img src="{{ 'chaver-product-hoodie.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Signature Heavyweight Hoodie"><span><small>Signature Heavyweight Hoodie</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-cap" role="listitem"><img src="{{ 'chaver-product-cap-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Nylon 5-Panel Cap"><span><small>Nylon 5-Panel Cap</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-socks" role="listitem"><img src="{{ 'chaver-product-socks-studio.webp' | asset_url }}" width="800" height="1000" loading="lazy" alt="Premium Crew Socks"><span><small>Premium Crew Socks</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-  </div>
-  <div class="home-collection-action"><a class="btn" href="{{ routes.all_products_collection_url }}">View Foundations Collection</a></div>
-</div></section>
-
 <section class="section home-founder-teaser">
   <div class="page-width home-founder-teaser-inner">
     <div class="home-founder-teaser-media">
-      <img src="{{ 'chaver-founder-story-part-1.webp' | asset_url }}" width="1254" height="1254" loading="lazy" alt="CHAVÉR Founder Story — where it started">
+      <img src="{{ 'chaver-home-founder-v2.webp' | asset_url }}" width="1254" height="1254" loading="lazy" alt="A clothing designer examining a sample in a warm, sunlit studio">
     </div>
     <div class="home-founder-teaser-copy">
       <div class="eyebrow">Founder Story</div>
@@ -56,5 +42,5 @@
 </div></section>
 
 {% schema %}
-{"name":"CHAVER Home","settings":[{"type":"image_picker","id":"hero_image","label":"Hero image"},{"type":"text","id":"hero_alt","label":"Hero image alt text","default":"Two CHAVÉR models wearing navy and black Foundations essentials"},{"type":"textarea","id":"heading","label":"Hero heading","default":"BUILT WITH\nINTENTION."},{"type":"text","id":"button_label","label":"Hero button","default":"Discover Foundations"},{"type":"textarea","id":"collection_heading","label":"Collection heading","default":"THE FIRST\nCHAPTER."}],"presets":[{"name":"CHAVER Home"}]}
+{"name": "CHAVER Home", "settings": [{"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
 {% endschema %}
