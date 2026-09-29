@@ -1,5 +1,21 @@
 # CHAVÉR — Shopify Import & Pre-launch Handoff
 
+## Latest GitHub-to-Shopify handoff — PR #14 follow-up
+
+The visual changes from merged PR #14 are already in `main`: upward-scroll navigation, mobile Foundations heading, the bold **The Founder Story** title, and consistent use of the existing CHAVÉR Sans font family. Do not cherry-pick or duplicate PR #14.
+
+To make these changes visible in Shopify:
+
+1. Open **Online Store > Themes** and identify whether the CHAVÉR draft is GitHub-connected or was uploaded as a ZIP. A GitHub merge does not update an independently uploaded ZIP.
+2. For a GitHub-connected theme, verify the repository is `chaverthebrand/CHAVER-` and branch is `main`. Check its latest sync status and preview the draft.
+3. For a ZIP-based draft, export a new theme ZIP from the latest `main` containing `assets/`, `config/`, `layout/`, `locales/`, `sections/`, and `templates/` at the archive root. Import it as a **new unpublished draft**; do not overwrite the live theme without verification.
+4. In the draft preview, test the home, collection, Founder Story, contact, search, and mobile menu. Confirm the header reappears when scrolling upward, the mobile Foundations heading fits, and the Founder Story title reads **The Founder Story**.
+5. Confirm pre-launch mode is enabled and no add-to-cart or checkout route can complete an order; verify zero tracked inventory and overselling disabled for visible variants. Keep Q1 2027 messaging.
+6. Only after those checks pass, publish the approved draft if the public preview is intended to replace the current storefront. Publishing is a separate Shopify action; merging this documentation PR does not publish anything.
+
+**Typography note:** the code uses the existing bundled CHAVÉR Sans family, not a verified exact match of the logo artwork's typeface. The wordmark image remains unchanged.
+
+
 This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use it to prepare the theme package, import it into Shopify as a draft, complete the store-specific setup, and decide whether the pre-launch storefront is safe to publish.
 
 > **Current decision:** the earlier version was imported into Shopify as a **draft theme** on 8 September 2026. PR #3 was merged on 18 September 2026, and the final site-completion pass was prepared on 23 September 2026. This latest version must be imported as a new draft for final Shopify-hosted QA. The theme is not yet approved for public pre-launch publication.
