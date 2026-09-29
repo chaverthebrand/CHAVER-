@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const announcement = document.querySelector('.announcement');
   const mobileMenu = document.getElementById('mobile-menu');
   if (header) {
+    const headerSpacer = document.createElement('div');
+    headerSpacer.setAttribute('aria-hidden', 'true');
+    headerSpacer.style.display = 'none';
+    header.parentNode.insertBefore(headerSpacer, header.nextSibling);
     let previousY = window.scrollY;
     let directionDistance = 0;
     let scheduled = false;
@@ -45,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       const floating = pastTop;
       header.classList.toggle('header-floating', floating);
+      headerSpacer.style.display = floating ? 'block' : 'none';
+      headerSpacer.style.height = floating ? header.offsetHeight + 'px' : '0';
       if (mobileMenu) mobileMenu.classList.toggle('mobile-menu-floating', floating);
       previousY = currentY;
       scheduled = false;
@@ -74,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle.setAttribute('aria-expanded', String(!open));
       menu.hidden = open;
       document.body.classList.toggle('menu-open', !open);
+      if (!open && header) header.classList.remove('header-hidden');
     });
 
     menu.querySelectorAll('a').forEach(function (link) {
