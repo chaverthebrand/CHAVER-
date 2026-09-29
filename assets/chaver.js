@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Shopify renders policy text from Admin, not from the theme repository.
+  // Enhance its headings without deleting or changing the legal content.
+  if (/^\\/policies\\/privacy-policy\\/?$/.test(window.location.pathname)) {
+    const policyBody = document.querySelector('.shopify-policy__body');
+    const content = policyBody && (policyBody.querySelector('.rte') || policyBody);
+    if (content) {
+      const headings = Array.from(content.children).filter(function (element) {
+        return /^H[2-4]$/.test(element.tagName);
+      });
+      headings.forEach(function (heading) {
+        const details = document.createElement('details');
+        details.className = 'chaver-policy-accordion';
+        const summary = document.createElement('summary');
+        summary.textContent = heading.textContent.trim();
+        details.appendChild(summary);
+        const panel = document.createElement('div');
+        panel.className = 'chaver-policy-panel';
+        let next = heading.nextSibling;
+        while (next && !(next.nodeType === 1 && /^H[2-4]$/.test(next.tagName))) {
+          const current = next;
+          next = next.nextSibling;
+          panel.appendChild(current);
+        }
+        details.appendChild(panel);
+        heading.replaceWith(details);
+      });
+    }
+  }
+
   const prelaunchEnabled = document.body.dataset.prelaunch === 'true';
 
   if (prelaunchEnabled) {
