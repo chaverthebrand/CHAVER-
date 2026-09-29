@@ -18,19 +18,40 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const header = document.querySelector('.site-header');
+  const announcement = document.querySelector('.announcement');
+  const mobileMenu = document.getElementById('mobile-menu');
   if (header) {
+    const headerSpacer = document.createElement('div');
+    headerSpacer.setAttribute('aria-hidden', 'true');
+    headerSpacer.style.display = 'none';
+    header.parentNode.insertBefore(headerSpacer, header.nextSibling);
     let previousY = window.scrollY;
+    let directionDistance = 0;
     let scheduled = false;
     function updateHeader() {
       const currentY = window.scrollY;
       const delta = currentY - previousY;
-      if (currentY < 20 || document.body.classList.contains('menu-open')) {
+      const menuOpen = document.body.classList.contains('menu-open');
+      const pastTop = currentY > (announcement ? announcement.offsetHeight : 0) + header.offsetHeight;
+      if (!pastTop || menuOpen) {
         header.classList.remove('header-hidden');
-      } else if (delta > 4 && currentY > header.offsetHeight) {
-        header.classList.add('header-hidden');
-      } else if (delta < -4) {
-        header.classList.remove('header-hidden');
+        directionDistance = 0;
+      } else {
+        if (delta * directionDistance < 0) directionDistance = 0;
+        directionDistance += delta;
+        if (directionDistance <= -3) {
+          header.classList.remove('header-hidden');
+          directionDistance = 0;
+        } else if (directionDistance >= 8) {
+          header.classList.add('header-hidden');
+          directionDistance = 0;
+        }
       }
+      const floating = pastTop;
+      header.classList.toggle('header-floating', floating);
+      headerSpacer.style.display = floating ? 'block' : 'none';
+      headerSpacer.style.height = floating ? header.offsetHeight + 'px' : '0';
+      if (mobileMenu) mobileMenu.classList.toggle('mobile-menu-floating', floating);
       previousY = currentY;
       scheduled = false;
     }
@@ -40,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.requestAnimationFrame(updateHeader);
       }
     }, { passive: true });
+    updateHeader();
   }
 
   const toggle = document.querySelector('.menu-toggle');
@@ -58,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle.setAttribute('aria-expanded', String(!open));
       menu.hidden = open;
       document.body.classList.toggle('menu-open', !open);
+      if (!open && header) header.classList.remove('header-hidden');
     });
 
     menu.querySelectorAll('a').forEach(function (link) {
