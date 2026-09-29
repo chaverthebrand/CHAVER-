@@ -20,7 +20,9 @@ html,body,button,input,textarea,select{font-family:var(--font-brand)}body{font-s
 }
 
 /* Navigation returns on upward scroll; announcement stays in document flow. */
-.site-header{position:sticky;top:0;z-index:45;background:var(--cream);transition:transform .25s ease;will-change:transform}
+.site-header{position:relative;z-index:45;background:var(--cream);transition:transform .25s ease;will-change:transform}
+.site-header.header-floating{position:fixed;top:0;left:0;right:0;width:100%}
+.mobile-menu.mobile-menu-floating:not([hidden]){position:fixed;top:70px;left:0;right:0;z-index:44;max-height:calc(100dvh - 70px);overflow-y:auto}
 .site-header.header-hidden{transform:translateY(-100%)}
 .announcement{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.site-header{transition:none}}
