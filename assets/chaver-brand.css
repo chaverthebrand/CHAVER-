@@ -43,3 +43,14 @@ html, body, body *, button, input, textarea, select, option, ::placeholder { fon
 .shopify-policy__body .chaver-policy-accordion summary:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 .shopify-policy__body .chaver-policy-panel{padding:0 0 22px;overflow-wrap:anywhere}
 .shopify-policy__body .chaver-policy-panel > :first-child{margin-top:0}
+
+/* Keep the mobile campaign framing consistent across Safari and in-app browsers. */
+@media (max-width: 800px) {
+  .hero--campaign,
+  .hero--campaign .hero-panel {
+    min-height: max(calc(100svh - 110px), 162vw);
+  }
+  .hero--campaign .hero-media-image {
+    object-position: center 50%;
+  }
+}
