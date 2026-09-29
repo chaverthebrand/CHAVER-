@@ -1,5 +1,10 @@
 # CHAVÉR — Shopify Import & Pre-launch Handoff
 
+## Privacy policy: required Shopify Admin edit before publishing
+
+The privacy policy at `/policies/privacy-policy` is **Shopify-managed content**, not text in this GitHub repository. The theme now enhances its section headings as accessible, initially closed disclosure panels; it does not remove or rewrite legal text. In **Shopify Admin → Settings → Customer privacy → Privacy policy** (or **Settings → Policies**, depending on the admin version), edit the actual policy: remove the personal phone number and home address from the contact paragraph and replace them with an appropriate public business contact method; review and remove the section about children's data only if the remaining policy accurately describes the store's actual data practices and applicable legal requirements. Check the Shopify-generated policy after saving because regeneration may restore default wording. Verify the public policy in a mobile and desktop preview, including every accordion heading and the contact details. Do not publish until the underlying Shopify policy itself is corrected; hiding sensitive text with CSS or JavaScript is not a privacy fix.
+
+
 ## Latest GitHub-to-Shopify handoff — PR #14 follow-up
 
 The visual changes from merged PR #14 are already in `main`: upward-scroll navigation, mobile Foundations heading, the bold **The Founder Story** title, and consistent use of the existing CHAVÉR Sans font family. Do not cherry-pick or duplicate PR #14.
