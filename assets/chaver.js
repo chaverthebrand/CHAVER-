@@ -17,6 +17,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  const header = document.querySelector('.site-header');
+  if (header) {
+    let previousY = window.scrollY;
+    let scheduled = false;
+    function updateHeader() {
+      const currentY = window.scrollY;
+      const delta = currentY - previousY;
+      if (currentY < 20 || document.body.classList.contains('menu-open')) {
+        header.classList.remove('header-hidden');
+      } else if (delta > 4 && currentY > header.offsetHeight) {
+        header.classList.add('header-hidden');
+      } else if (delta < -4) {
+        header.classList.remove('header-hidden');
+      }
+      previousY = currentY;
+      scheduled = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!scheduled) {
+        scheduled = true;
+        window.requestAnimationFrame(updateHeader);
+      }
+    }, { passive: true });
+  }
+
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('mobile-menu');
 
