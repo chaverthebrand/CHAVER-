@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Shopify renders policy text from Admin, not from the theme repository.
   // Enhance its headings without deleting or changing the legal content.
-  if (/^\\/policies\\/privacy-policy\\/?$/.test(window.location.pathname)) {
+  if (window.location.pathname === '/policies/privacy-policy' || window.location.pathname === '/policies/privacy-policy/') {
     const policyBody = document.querySelector('.shopify-policy__body');
     const content = policyBody && (policyBody.querySelector('.rte') || policyBody);
     if (content) {
