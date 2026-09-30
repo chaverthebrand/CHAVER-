@@ -54,3 +54,6 @@ html, body, body *, button, input, textarea, select, option, ::placeholder { fon
     object-position: center 50%;
   }
 }
+
+/* Explicit newsletter marketing consent */
+.popup-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem;font-size:.8rem;line-height:1.5;text-align:left}.popup-consent input{flex:0 0 auto;width:1rem;height:1rem;margin:.15rem 0 0;accent-color:var(--ink)}.popup-consent a{text-decoration:underline;text-underline-offset:2px}
