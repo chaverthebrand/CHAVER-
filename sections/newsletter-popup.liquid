@@ -41,6 +41,7 @@
           >
           <button type="submit">{{ section.settings.button_label }}</button>
         </div>
+        <label class="popup-consent" for="ChaverNewsletterConsent"><input id="ChaverNewsletterConsent" type="checkbox" required> I agree to receive CHAVÉR emails about collection development, behind-the-scenes updates and launch news. I can unsubscribe at any time. {% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Read the privacy policy</a>.{% endif %}</label>
       {% endif %}
     {% endform %}
 
