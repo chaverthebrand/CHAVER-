@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const storageKey = 'chaverNewsletterDismissedAt';
   const dismissalLength = 14 * 24 * 60 * 60 * 1000;
   let lastFocusedElement = null;
+  let popupTimer = null;
 
   function readDismissedAt() {
     try {
@@ -165,6 +166,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function openPopup(trigger) {
+    if (popupTimer !== null) { window.clearTimeout(popupTimer); popupTimer = null; }
+    if (!popupLayer.hidden) return;
     lastFocusedElement = trigger || document.activeElement;
     popupLayer.hidden = false;
     popupLayer.setAttribute('aria-hidden', 'false');
@@ -242,8 +245,9 @@ document.addEventListener('DOMContentLoaded', function () {
     openPopup(null);
   } else if (!dismissedRecently) {
     const delay = Number(popup.dataset.delay || 3000);
-    window.setTimeout(function () {
-      openPopup(null);
+    popupTimer = window.setTimeout(function () {
+      popupTimer = null;
+      if (popupLayer.hidden && Date.now() - readDismissedAt() >= dismissalLength) openPopup(null);
     }, delay);
   }
 });
