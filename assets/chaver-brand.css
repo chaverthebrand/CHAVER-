@@ -57,3 +57,22 @@ html, body, body *, button, input, textarea, select, option, ::placeholder { fon
 
 /* Explicit newsletter marketing consent */
 .popup-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem;font-size:.8rem;line-height:1.5;text-align:left}.popup-consent input{flex:0 0 auto;width:1rem;height:1rem;margin:.15rem 0 0;accent-color:var(--ink)}.popup-consent a{text-decoration:underline;text-underline-offset:2px}
+
+
+/* CHAVÉR World — homepage teaser and editorial page */
+.home-world{border-bottom:1px solid var(--line)}
+.home-world-inner{display:grid;grid-template-columns:minmax(320px,.85fr) minmax(0,1.15fr);gap:clamp(42px,8vw,120px);align-items:center}
+.home-world-copy{max-width:560px}
+.home-world-copy p{max-width:480px;margin:0 0 30px;color:var(--muted);font-size:15px;line-height:1.75}
+.home-world-media{overflow:hidden;background:#d8d0c2}
+.home-world-media img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover}
+.home-world-placeholder{display:grid;place-items:center;aspect-ratio:9/16;background:#d8d0c2;color:var(--muted);font-size:12px;letter-spacing:.2em}
+.chaver-world-page{padding:clamp(72px,10vw,150px) 0}
+.chaver-world-intro{max-width:760px;margin-bottom:clamp(60px,9vw,130px)}
+.chaver-world-intro h1{margin:12px 0 28px;font-size:clamp(54px,9vw,128px);line-height:.86;letter-spacing:-.06em}
+.chaver-world-intro p{max-width:620px;color:var(--muted);font-size:clamp(15px,1.6vw,18px);line-height:1.75}
+.chaver-world-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,48px)}
+.chaver-world-gallery figure{margin:0}
+.chaver-world-gallery img{display:block;width:100%;height:auto}
+.chaver-world-gallery figure:nth-child(3n+1){grid-column:1/-1}
+@media(max-width:800px){.home-world-inner{grid-template-columns:1fr;gap:32px}.home-world-copy{max-width:none}.chaver-world-page{padding:58px 0}.chaver-world-gallery{grid-template-columns:1fr;gap:20px}.chaver-world-gallery figure:nth-child(3n+1){grid-column:auto}}

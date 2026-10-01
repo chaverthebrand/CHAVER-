@@ -14,10 +14,20 @@
   </div></div>
 </section>
 
-<section class="editorial-feature" aria-label="CHAVÉR Foundations editorial">
-  <div class="page-width">
-    <div class="editorial-frame">
-      <img class="editorial-image" src="{{ 'chaver-home-editorial-v2.webp' | asset_url }}" width="940" height="1672" loading="lazy" alt="Two models wearing black CHAVÉR essentials in a coastal pavilion">
+<section class="section home-world">
+  <div class="page-width home-world-inner">
+    <div class="home-world-copy">
+      <div class="eyebrow">CHAVÉR WORLD</div>
+      <h2 class="section-title">BEYOND THE<br>CLOTHES.</h2>
+      <p>CHAVÉR is built around more than clothing. A world shaped by ambition, timeless design and the freedom to build your own future.</p>
+      <a class="btn" href="/pages/chaver-world">Enter CHAVÉR World</a>
+    </div>
+    <div class="home-world-media">
+      {% if section.settings.world_image != blank %}
+        {{ section.settings.world_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 55vw', loading: 'lazy', alt: 'CHAVÉR World — timeless places and atmosphere' }}
+      {% else %}
+        <div class="home-world-placeholder" aria-label="CHAVÉR World image placeholder"><span>CHAVÉR WORLD</span></div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -42,5 +52,5 @@
 </div></section>
 
 {% schema %}
-{"name": "CHAVER Home", "settings": [{"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
+{"name": "CHAVER Home", "settings": [{"type":"image_picker","id":"world_image","label":"CHAVÉR World image"}, {"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
 {% endschema %}

@@ -2,6 +2,7 @@
   <nav class="nav" aria-label="Primary navigation">
     <a href="{{ routes.root_url }}"{% if request.path == routes.root_url %} aria-current="page"{% endif %}>Home</a>
     <a href="{{ routes.all_products_collection_url }}"{% if request.path contains '/collections/' %} aria-current="page"{% endif %}>Collection</a>
+    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>World</a>
     <a href="{{ settings.founder_story_url | default: '/pages/founder-story' }}"{% if request.path == '/pages/founder-story' %} aria-current="page"{% endif %}>Founder Story</a>
   </nav>
 

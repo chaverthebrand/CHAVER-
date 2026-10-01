@@ -1,0 +1,26 @@
+<section class="chaver-world-page">
+  <div class="page-width">
+    <header class="chaver-world-intro">
+      <div class="eyebrow">CHAVÉR WORLD</div>
+      <h1>BEYOND THE<br>CLOTHES.</h1>
+      <p>CHAVÉR WORLD is a visual exploration of the places, architecture and atmosphere that shape our perspective. A world built around ambition, timeless design and the freedom to build your own future.</p>
+    </header>
+    {% if section.blocks.size > 0 %}
+      <div class="chaver-world-gallery">
+        {% for block in section.blocks %}
+          {% if block.settings.image != blank %}
+            <figure {{ block.shopify_attributes }}>
+              {{ block.settings.image | image_url: width: 2200 | image_tag: widths: '600, 900, 1200, 1800, 2200', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: block.settings.alt }}
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="home-world-placeholder"><span>CHAVÉR WORLD</span></div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{"name":"CHAVÉR World","max_blocks":24,"blocks":[{"type":"image","name":"World image","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"text","id":"alt","label":"Alt text","default":"CHAVÉR World editorial landscape"}]}],"presets":[{"name":"CHAVÉR World"}]}
+{% endschema %}
