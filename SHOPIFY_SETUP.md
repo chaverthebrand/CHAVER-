@@ -436,3 +436,19 @@ Do not reuse the pre-launch approval as permission to accept orders. Before comm
 ---
 
 CHAVÉR — Timeless essentials made with patience and purpose.
+
+
+## PR21 premium-site verification
+
+Before merging or publishing the PR21 upgrade, verify the following in a fresh Shopify draft:
+
+- Home: hero, THE FOUNDATIONS, CHAVÉR WORLD, Founder Story and Private Access render correctly on desktop and mobile.
+- Collection: spacious two-column desktop grid becomes a single-column mobile editorial feed; all six lightboxes remain keyboard accessible.
+- Product: sticky information column works on desktop and becomes normal flow on mobile; development disclosures and newsletter trigger work.
+- Search: results remain functional and the theme outputs noindex,follow for search pages.
+- SEO/share: canonical, description, Open Graph image and Twitter image render from the correct Shopify page/social image.
+- Performance: confirm the hero remains the only high-priority image; below-fold editorial/product imagery stays lazy-loaded; check for layout shift.
+- Accessibility: keyboard-test skip link, header, mobile menu, product lightbox, details elements and newsletter modal; test reduced motion and 200% zoom.
+- Pre-launch: prelaunch_mode MUST remain enabled until the commerce release checklist is complete. Confirm cart/add/checkout paths remain unavailable.
+- Release switch: before disabling prelaunch_mode, configure and test inventory, overselling, prices, product variants, payment providers, shipping, taxes, returns information and every enabled sales channel.
+- Legal/Shopify-managed content: re-check privacy/cookie/policy content in Shopify Admin because those texts are not controlled solely by this repository.
