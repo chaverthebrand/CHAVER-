@@ -25,8 +25,8 @@
 
 .collection-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(46px, 7vw, 104px) clamp(20px, 3vw, 48px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(58px, 8vw, 120px) clamp(24px, 5vw, 76px);
 }
 
 .collection-product-trigger {
@@ -261,3 +261,6 @@ body.product-lightbox-open {
   .product-lightbox-copy { padding: 42px 18px 18px; }
   .product-lightbox-copy h2 { font-size: 24px; }
 }
+
+.collection-product:nth-child(even){margin-top:clamp(28px,5vw,76px)}
+@media(max-width:760px){.collection-product:nth-child(even){margin-top:0}.collection-product-copy{padding-top:13px}.collection-product-media{background:#e9e1d5}}
