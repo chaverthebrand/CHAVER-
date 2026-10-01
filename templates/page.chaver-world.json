@@ -11,6 +11,18 @@
   "sections": {
     "main": {
       "type": "chaver-world",
+      "blocks": {
+        "image_J7iqdb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/8CAB898F-2DBE-46D7-8458-A1495617AFEE.png",
+            "alt": "CHAVÉR World editorial landscape"
+          }
+        }
+      },
+      "block_order": [
+        "image_J7iqdb"
+      ],
       "settings": {}
     }
   },
