@@ -57,15 +57,3 @@ html, body, body *, button, input, textarea, select, option, ::placeholder { fon
 
 /* Explicit newsletter marketing consent */
 .popup-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem;font-size:.8rem;line-height:1.5;text-align:left}.popup-consent input{flex:0 0 auto;width:1rem;height:1rem;margin:.15rem 0 0;accent-color:var(--ink)}.popup-consent a{text-decoration:underline;text-underline-offset:2px}
-
-
-/* PR21 — premium editorial system */
-.home-section-head,.chaver-world-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(32px,8vw,120px);align-items:end;margin-bottom:clamp(42px,6vw,78px)}
-.home-section-head p,.chaver-world-head p{max-width:520px;margin:0;color:var(--muted);font-size:15px;line-height:1.75}
-.home-foundations{border-bottom:1px solid var(--line)}
-.chaver-world{border-bottom:1px solid var(--line)}
-.chaver-world-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(260px,.82fr);gap:clamp(18px,3vw,42px);align-items:end}
-.world-frame{margin:0}.world-frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#ddd4c7}.world-frame--tall{max-width:760px}.world-frame--tall img{aspect-ratio:3/4}.world-frame figcaption{padding-top:12px;border-top:1px solid var(--line);font-size:9px;font-weight:700;letter-spacing:.15em}
-.product-info--sticky{align-self:start;position:sticky;top:100px}.development-stamp{margin:28px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.development-stamp span{font-size:10px;font-weight:700;letter-spacing:.14em}.development-stamp p{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
-.popup-benefits{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px}.popup-benefits span{padding:7px 8px;border:1px solid var(--line);font-size:8px;font-weight:700;letter-spacing:.11em}
-@media(max-width:800px){.home-section-head,.chaver-world-head{grid-template-columns:1fr;gap:20px}.chaver-world-grid{grid-template-columns:1fr}.world-frame--tall{max-width:none}.product-info--sticky{position:static}.home-product-grid{grid-template-columns:1fr}.home-product-card img{aspect-ratio:4/5;object-fit:contain;background:#e9e1d5}}

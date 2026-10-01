@@ -1,23 +1,46 @@
 <section class="hero hero--campaign">
-  <div class="hero-media">{% if section.settings.hero_image != blank %}{{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}{% else %}<img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">{% endif %}</div>
-  <div class="hero-panel"><div class="hero-panel-inner"><div class="eyebrow">{{ settings.brand_name | default: 'CHAVÉR' }} / FOUNDATIONS COLLECTION</div><h1>{{ section.settings.heading | newline_to_br }}</h1><p class="hero-sub">{{ settings.brand_statement }}</p><a class="btn hero-button" href="{{ routes.all_products_collection_url }}">{{ section.settings.button_label }}</a></div></div>
+  <div class="hero-media">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
+    {% else %}
+      <img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+    {% endif %}
+  </div>
+  <div class="hero-panel"><div class="hero-panel-inner">
+    <div class="eyebrow">{{ settings.brand_name | default: 'CHAVÉR' }} / FOUNDATIONS COLLECTION</div>
+    <h1>{{ section.settings.heading | newline_to_br }}</h1>
+    <p class="hero-sub">{{ settings.brand_statement }}</p>
+    <a class="btn hero-button" href="{{ routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+  </div></div>
 </section>
 
-<section class="section home-foundations" aria-labelledby="HomeFoundationsTitle"><div class="page-width">
-  <div class="home-section-head"><div><div class="eyebrow">01 / THE COLLECTION</div><h2 id="HomeFoundationsTitle" class="section-title">THE<br>FOUNDATIONS.</h2></div><p>Six considered essentials. Built around proportion, comfort and understated detail. This is the starting point of CHAVÉR.</p></div>
-  <div class="home-product-grid">
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-t-shirt"><img src="{{ 'chaver-product-tshirt.webp' | asset_url }}" width="1600" height="2000" loading="lazy" alt="CHAVÉR Signature Heavyweight T-Shirt"><span><small>SIGNATURE T-SHIRT</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-hoodie"><img src="{{ 'chaver-product-hoodie.webp' | asset_url }}" width="1600" height="2000" loading="lazy" alt="CHAVÉR Signature Heavyweight Hoodie"><span><small>SIGNATURE HOODIE</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-    <a class="home-product-card" href="{{ routes.all_products_collection_url }}#collection-crewneck"><img src="{{ 'chaver-product-crewneck.webp' | asset_url }}" width="1600" height="2000" loading="lazy" alt="CHAVÉR Signature Crewneck Sweater"><span><small>SIGNATURE CREWNECK</small><strong>COMING {{ settings.launch_label }}</strong></span></a>
-  </div><div class="home-collection-action"><a class="btn" href="{{ routes.all_products_collection_url }}">Explore all six pieces</a></div>
+<section class="editorial-feature" aria-label="CHAVÉR Foundations editorial">
+  <div class="page-width">
+    <div class="editorial-frame">
+      <img class="editorial-image" src="{{ 'chaver-home-editorial-v2.webp' | asset_url }}" width="940" height="1672" loading="lazy" alt="Two models wearing black CHAVÉR essentials in a coastal pavilion">
+    </div>
+  </div>
+</section>
+
+<section class="section home-founder-teaser">
+  <div class="page-width home-founder-teaser-inner">
+    <div class="home-founder-teaser-media">
+      <img src="{{ 'chaver-home-founder-v2.webp' | asset_url }}" width="1254" height="1254" loading="lazy" alt="A clothing designer examining a sample in a warm, sunlit studio">
+    </div>
+    <div class="home-founder-teaser-copy">
+      <div class="eyebrow">Founder Story</div>
+      <h2 class="section-title">BUILT FROM<br>THE BEGINNING.</h2>
+      <p>CHAVÉR started with a simple idea: create timeless essentials for people building their own future. Discover the story behind the brand, the process and the vision ahead.</p>
+      <a class="btn" href="{{ settings.founder_story_url | default: '/pages/founder-story' }}">Read the Founder Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section home-early-access"><div class="page-width home-early-access-inner">
+  <div><div class="eyebrow">Newsletter</div><h2 class="section-title">FOLLOW THE<br>BUILD.</h2></div>
+  <div><p>Sign up for the CHAVÉR newsletter to receive regular updates from the brand, including collection development, behind-the-scenes progress and launch news.</p><button class="btn btn-solid" type="button" data-newsletter-trigger>Join for early access</button><p class="microcopy">No orders are taken during pre-launch.</p></div>
 </div></section>
 
-<section class="section chaver-world" aria-labelledby="ChaverWorldTitle"><div class="page-width">
-  <div class="chaver-world-head"><div class="eyebrow">02 / CHAVÉR WORLD</div><h2 id="ChaverWorldTitle" class="section-title">A WORLD BUILT<br>AROUND INTENTION.</h2><p>CHAVÉR is more than the pieces themselves. Architecture, movement, restraint and everyday ambition shape the visual world around the brand.</p></div>
-  <div class="chaver-world-grid"><figure class="world-frame world-frame--tall"><img src="{{ 'chaver-home-editorial-v2.webp' | asset_url }}" width="940" height="1672" loading="lazy" alt="CHAVÉR editorial campaign in a warm architectural setting"><figcaption>THE WORLD / 001</figcaption></figure><figure class="world-frame"><img src="{{ 'chaver-editorial-foundations-4k.webp' | asset_url }}" width="1600" height="2000" loading="lazy" alt="CHAVÉR Foundations editorial"><figcaption>FOUNDATIONS / 001</figcaption></figure></div>
-</div></section>
-
-<section class="section home-founder-teaser"><div class="page-width home-founder-teaser-inner"><div class="home-founder-teaser-media"><img src="{{ 'chaver-home-founder-v2.webp' | asset_url }}" width="1254" height="1254" loading="lazy" alt="A clothing designer examining a sample in a warm, sunlit studio"></div><div class="home-founder-teaser-copy"><div class="eyebrow">03 / Founder Story</div><h2 class="section-title">BUILT FROM<br>THE BEGINNING.</h2><p>CHAVÉR started with a simple idea: create timeless essentials for people building their own future. Discover the story behind the brand, the process and the vision ahead.</p><a class="btn" href="{{ settings.founder_story_url | default: '/pages/founder-story' }}">Read the Founder Story</a></div></div></section>
-
-<section class="section home-early-access"><div class="page-width home-early-access-inner"><div><div class="eyebrow">04 / Private Access</div><h2 class="section-title">BE FIRST<br>TO KNOW.</h2></div><div><p>Follow the development before release. Subscribers receive collection progress, private previews, behind-the-scenes updates and launch information.</p><button class="btn btn-solid" type="button" data-newsletter-trigger>Join the CHAVÉR list</button><p class="microcopy">No orders or payments are taken during pre-launch.</p></div></div></section>
-{% schema %}{"name":"CHAVER Home","settings":[{"type":"image_picker","id":"hero_image","label":"Hero image"},{"type":"text","id":"hero_alt","label":"Hero image alt text","default":"Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"},{"type":"textarea","id":"heading","label":"Hero heading","default":"REFINED.\nRELAXED.\nTIMELESS."},{"type":"text","id":"button_label","label":"Hero button","default":"Discover Foundations"}],"presets":[{"name":"CHAVER Home"}]}{% endschema %}
+{% schema %}
+{"name": "CHAVER Home", "settings": [{"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
+{% endschema %}

@@ -15,8 +15,7 @@
   {% if seo_description %}<meta property="og:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
   {% assign sharing_image = page_image | default: settings.social_sharing_image %}
   {% if sharing_image %}<meta property="og:image" content="https:{{ sharing_image | image_url: width: 1200 }}"><meta property="og:image:width" content="1200">{% endif %}
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ page_title | escape }}">{% if sharing_image %}<meta name="twitter:image" content="https:{{ sharing_image | image_url: width: 1200 }}">{% endif %}{% if seo_description %}<meta name="twitter:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
-  <meta name="robots" content="{% if request.page_type == 'search' %}noindex,follow{% else %}index,follow,max-image-preview:large{% endif %}">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ page_title | escape }}">{% if seo_description %}<meta name="twitter:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
   {% if settings.favicon != blank %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64, height: 64 }}" type="image/png">{% endif %}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":{{ settings.brand_name | default: shop.name | json }},"url":{{ shop.url | json }}{% if settings.logo != blank %},"logo":{{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}{% endif %}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":{{ settings.brand_name | default: shop.name | json }},"url":{{ shop.url | json }},"potentialAction":{"@type":"SearchAction","target":{{ shop.url | append: routes.search_url | append: '?q={search_term_string}' | json }},"query-input":"required name=search_term_string"}}</script>
@@ -28,7 +27,6 @@
     @font-face{font-family:'CHAVER Sans';src:url('{{ 'chaver-sans-bold-italic.woff' | asset_url }}') format('woff');font-style:italic;font-weight:700 900;font-display:swap}
     :root{--cream:{{ settings.background_color | default: '#eee9df' }};--ink:{{ settings.text_color | default: '#111111' }};--accent:{{ settings.accent_color | default: '#111111' }};--muted:{{ settings.muted_text_color | default: '#6f6a62' }};--line:{{ settings.border_color | default: '#cfc8bc' }};--font-brand:'CHAVER Sans','Helvetica Neue',Arial,sans-serif;}
   </style>
-  <link rel="preload" href="{{ 'chaver-sans-regular.woff' | asset_url }}" as="font" type="font/woff" crossorigin>
   {{ 'chaver.css' | asset_url | stylesheet_tag }}
   {{ 'chaver-enhancements.css' | asset_url | stylesheet_tag }}
   {{ 'chaver-brand.css' | asset_url | stylesheet_tag }}
