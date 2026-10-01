@@ -1,1 +1,56 @@
-{"current":{"background_color":"#eee9df","text_color":"#111111","accent_color":"#111111","muted_text_color":"#6f6a62","border_color":"#cfc8bc","brand_name":"CHAVÉR","logo_width":140,"launch_label":"Q1 2027","brand_statement":"Timeless essentials made with patience and purpose for men building their own future.","prelaunch_mode":true,"instagram_url":"https://www.instagram.com/chaver.thebrand/"},"presets":{}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "background_color": "#eee9df",
+    "text_color": "#111111",
+    "accent_color": "#111111",
+    "muted_text_color": "#6f6a62",
+    "border_color": "#cfc8bc",
+    "brand_name": "CHAVÉR",
+    "logo_width": 140,
+    "launch_label": "Q1 2027",
+    "brand_statement": "Timeless essentials made with patience and purpose for men building their own future.",
+    "prelaunch_mode": true,
+    "instagram_url": "https://www.instagram.com/chaver.thebrand/",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "FOUNDATIONS COLLECTION — ARRIVING Q1 2027",
+          "secondary_text": "REFINED. RELAXED. TIMELESS.",
+          "speed": 24
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "enabled": false,
+          "eyebrow": "PRIVATE ACCESS",
+          "heading": "JOIN THE CHAVÉR LIST.",
+          "text": "Sign up for the newsletter and receive regular CHAVÉR updates, including collection development, behind-the-scenes progress and launch news.",
+          "button_label": "JOIN",
+          "privacy_text": "No noise. Only meaningful updates.",
+          "delay": 12
+        }
+      }
+    },
+    "content_for_index": []
+  },
+  "presets": {}
+}
