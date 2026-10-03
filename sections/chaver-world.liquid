@@ -1,26 +1,166 @@
-<section class="chaver-world-page">
+{{ 'chaver-world.css' | asset_url | stylesheet_tag }}
+
+<section class="world-page">
   <div class="page-width">
-    <header class="chaver-world-intro">
-      <div class="eyebrow">CHAVÉR WORLD</div>
-      <h1>BEYOND THE<br>CLOTHES.</h1>
-      <p>CHAVÉR WORLD is a visual exploration of the places, architecture and atmosphere that shape our perspective. A world built around ambition, timeless design and the freedom to build your own future.</p>
+    <header class="world-intro">
+      <div class="eyebrow">CHAVÉR / WORLD</div>
+      <h1>CHAVÉR<br>WORLD.</h1>
     </header>
-    {% if section.blocks.size > 0 %}
-      <div class="chaver-world-gallery">
-        {% for block in section.blocks %}
-          {% if block.settings.image != blank %}
-            <figure {{ block.shopify_attributes }}>
-              {{ block.settings.image | image_url: width: 2200 | image_tag: widths: '600, 900, 1200, 1800, 2200', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: block.settings.alt }}
-            </figure>
-          {% endif %}
-        {% endfor %}
-      </div>
+  </div>
+
+  <div class="world-hero">
+    {% assign hero_mobile = section.settings.hero_mobile | default: section.settings.hero_image %}
+    {% if section.settings.hero_image != blank %}
+      <picture>
+        {% if hero_mobile != blank %}
+          <source media="(max-width: 800px)" srcset="{{ hero_mobile | image_url: width: 1200 }}">
+        {% endif %}
+        {{ section.settings.hero_image | image_url: width: 2600 | image_tag: widths: '900, 1400, 1800, 2200, 2600', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
+      </picture>
     {% else %}
-      <div class="home-world-placeholder"><span>CHAVÉR WORLD</span></div>
+      <div class="world-image-placeholder"><span>ADD HERO IMAGE IN SHOPIFY</span></div>
     {% endif %}
   </div>
+
+  <div class="page-width">
+    <section class="world-opening">
+      <div class="eyebrow">THE WORLD OF CHAVÉR</div>
+      <div class="world-opening-grid">
+        <h2>MORE THAN WHAT YOU WEAR.<br>IT’S WHAT YOU’RE BUILDING.</h2>
+        <div class="world-text">
+          <p>CHAVÉR was created for those who refuse to stand still.</p>
+          <p>For people with ambition. People who choose their own direction, value their freedom and understand that meaningful things take time.</p>
+          <p>CHAVÉR WORLD is where those ideas come together — clothing, architecture, travel, creativity and the moments that shape the way we live.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="world-stories">
+      <article class="world-story">
+        <div class="world-marker"><span>THE MINDSET</span><span>CHAVÉR / WORLD</span></div>
+        <div class="world-story-grid">
+          <figure class="world-story-image">
+            {% assign mindset_mobile = section.settings.mindset_mobile | default: section.settings.mindset_image %}
+            {% if section.settings.mindset_image != blank %}
+              <picture>
+                {% if mindset_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ mindset_mobile | image_url: width: 1000 }}">{% endif %}
+                {{ section.settings.mindset_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.mindset_alt }}
+              </picture>
+            {% else %}
+              <div class="world-image-placeholder"><span>ADD MINDSET IMAGE</span></div>
+            {% endif %}
+          </figure>
+          <div class="world-story-copy">
+            <div class="eyebrow">THE MINDSET</div>
+            <h2>REFINED.<br>RELAXED.<br>TIMELESS.</h2>
+            <div class="world-text">
+              <p>We believe progress doesn't have to be loud.</p>
+              <p>It's found in the decisions you make when nobody is watching. In choosing quality over quantity. In staying focused on where you're going, even when the destination still feels far away.</p>
+              <p>CHAVÉR represents that mindset.</p>
+              <p><strong>Keep building. Keep moving. Do it your way.</strong></p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="world-story">
+        <div class="world-marker"><span>THE WORLD WE CREATE</span><span>CHAVÉR / WORLD</span></div>
+        <div class="world-story-grid">
+          <figure class="world-story-image">
+            {% assign create_mobile = section.settings.create_mobile | default: section.settings.create_image %}
+            {% if section.settings.create_image != blank %}
+              <picture>
+                {% if create_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ create_mobile | image_url: width: 1000 }}">{% endif %}
+                {{ section.settings.create_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.create_alt }}
+              </picture>
+            {% else %}
+              <div class="world-image-placeholder"><span>ADD WORLD IMAGE</span></div>
+            {% endif %}
+          </figure>
+          <div class="world-story-copy">
+            <div class="eyebrow">THE WORLD WE CREATE</div>
+            <h2>INSPIRATION<br>BEYOND FASHION.</h2>
+            <div class="world-text">
+              <p>Our inspiration goes beyond fashion.</p>
+              <p>It can come from a quiet street in Paris, modern architecture in Copenhagen, an early morning coffee, a late-night drive or simply the feeling of being somewhere you've never been before.</p>
+              <p>Different places. Different moments. The same feeling.</p>
+              <p>That feeling shapes the world of CHAVÉR.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="world-story">
+        <div class="world-marker"><span>MORE THAN CLOTHING</span><span>CHAVÉR / WORLD</span></div>
+        <div class="world-story-grid">
+          <figure class="world-story-image">
+            {% assign clothing_mobile = section.settings.clothing_mobile | default: section.settings.clothing_image %}
+            {% if section.settings.clothing_image != blank %}
+              <picture>
+                {% if clothing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ clothing_mobile | image_url: width: 1000 }}">{% endif %}
+                {{ section.settings.clothing_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.clothing_alt }}
+              </picture>
+            {% else %}
+              <div class="world-image-placeholder"><span>ADD LIFESTYLE IMAGE</span></div>
+            {% endif %}
+          </figure>
+          <div class="world-story-copy">
+            <div class="eyebrow">MORE THAN CLOTHING</div>
+            <h2>BUILT AROUND<br>A WAY OF LIFE.</h2>
+            <div class="world-text">
+              <p>We don't want CHAVÉR to be defined only by the clothes we create.</p>
+              <p>The clothing is part of something bigger — a lifestyle built around freedom, authenticity, ambition and the confidence to create your own future.</p>
+              <p>Every collection, image and story is another part of that world.</p>
+              <p>And we're only getting started.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <footer class="world-closing">
+    {% assign closing_mobile = section.settings.closing_mobile | default: section.settings.closing_image %}
+    {% if section.settings.closing_image != blank %}
+      <picture class="world-closing-media">
+        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1200 }}">{% endif %}
+        {{ section.settings.closing_image | image_url: width: 2600 | image_tag: widths: '900, 1400, 1800, 2200, 2600', sizes: '100vw', loading: 'lazy', alt: section.settings.closing_alt }}
+      </picture>
+    {% endif %}
+    <div class="world-closing-overlay"></div>
+    <div class="page-width world-closing-inner">
+      <div class="eyebrow">CHAVÉR / WORLD</div>
+      <h2>WELCOME TO<br>CHAVÉR WORLD.</h2>
+      <p>And we're only getting started.</p>
+    </div>
+  </footer>
 </section>
 
 {% schema %}
-{"name":"CHAVÉR World","max_blocks":24,"blocks":[{"type":"image","name":"World image","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"text","id":"alt","label":"Alt text","default":"CHAVÉR World editorial landscape"}]}],"presets":[{"name":"CHAVÉR World"}]}
+{
+  "name": "CHAVÉR World",
+  "settings": [
+    {"type":"header","content":"Hero"},
+    {"type":"image_picker","id":"hero_image","label":"Hero image — desktop"},
+    {"type":"image_picker","id":"hero_mobile","label":"Hero image — mobile (optional)"},
+    {"type":"text","id":"hero_alt","label":"Hero alt text","default":"CHAVÉR World editorial"},
+    {"type":"header","content":"The Mindset"},
+    {"type":"image_picker","id":"mindset_image","label":"Mindset image — desktop"},
+    {"type":"image_picker","id":"mindset_mobile","label":"Mindset image — mobile (optional)"},
+    {"type":"text","id":"mindset_alt","label":"Mindset alt text","default":"CHAVÉR mindset editorial"},
+    {"type":"header","content":"The World We Create"},
+    {"type":"image_picker","id":"create_image","label":"World image — desktop"},
+    {"type":"image_picker","id":"create_mobile","label":"World image — mobile (optional)"},
+    {"type":"text","id":"create_alt","label":"World image alt text","default":"CHAVÉR World inspiration"},
+    {"type":"header","content":"More Than Clothing"},
+    {"type":"image_picker","id":"clothing_image","label":"Lifestyle image — desktop"},
+    {"type":"image_picker","id":"clothing_mobile","label":"Lifestyle image — mobile (optional)"},
+    {"type":"text","id":"clothing_alt","label":"Lifestyle alt text","default":"CHAVÉR lifestyle"},
+    {"type":"header","content":"Closing"},
+    {"type":"image_picker","id":"closing_image","label":"Closing image — desktop"},
+    {"type":"image_picker","id":"closing_mobile","label":"Closing image — mobile (optional)"},
+    {"type":"text","id":"closing_alt","label":"Closing alt text","default":"Welcome to CHAVÉR World"}
+  ],
+  "presets": [{"name":"CHAVÉR World"}]
+}
 {% endschema %}
