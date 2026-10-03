@@ -23,13 +23,13 @@
 .world-story:nth-child(even) .world-story-copy { grid-column:1; grid-row:1; }
 .world-image-placeholder { display:grid; place-items:center; min-height:420px; background:#eeeae3; color:rgba(20,20,20,.5); font-size:10px; font-weight:700; letter-spacing:.16em; text-align:center; }
 .world-hero .world-image-placeholder { aspect-ratio:16/8; min-height:480px; }
-.world-closing { position:relative; min-height:min(86vh,980px); display:flex; align-items:flex-end; overflow:hidden; color:#fff; background:var(--ink); }
+.world-closing { position:relative; min-height:min(86vh,980px); display:flex; align-items:flex-end; overflow:hidden; color:#fff; background:#5b4a3d; }
 .world-closing-media, .world-closing-media img { position:absolute; inset:0; width:100%; height:100%; display:block; }
 .world-closing-media img { object-fit:cover; }
 .world-closing-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.58)); }
 .world-closing-inner { position:relative; z-index:2; padding-top:clamp(100px,15vw,220px); padding-bottom:clamp(60px,9vw,130px); }
 .world-closing .eyebrow { color:rgba(255,255,255,.72); }
-.world-closing h2 { max-width:1100px; margin:18px 0 24px; color:#fff; font-size:clamp(54px,9vw,132px); font-weight:900; line-height:.82; letter-spacing:-.065em; }
+.world-closing h2 { max-width:1100px; margin:18px 0 24px; color:#fff; font-size:clamp(54px,9vw,132px); font-weight:900; line-height:.82; letter-spacing:-.035em; }
 .world-closing p { margin:0; color:rgba(255,255,255,.8); font-size:15px; }
 @media (max-width:800px) {
  .world-intro { padding-top:26px; }
