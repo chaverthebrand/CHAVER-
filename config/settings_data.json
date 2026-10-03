@@ -40,7 +40,7 @@
       "newsletter-popup": {
         "type": "newsletter-popup",
         "settings": {
-          "enabled": false,
+          "enabled": true,
           "eyebrow": "PRIVATE ACCESS",
           "heading": "JOIN THE CHAVÉR LIST.",
           "text": "Sign up for the newsletter and receive regular CHAVÉR updates, including collection development, behind-the-scenes progress and launch news.",
