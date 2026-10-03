@@ -2,7 +2,6 @@
   <nav class="nav" aria-label="Primary navigation">
     <a href="{{ routes.root_url }}"{% if request.path == routes.root_url %} aria-current="page"{% endif %}>Home</a>
     <a href="{{ routes.all_products_collection_url }}"{% if request.path contains '/collections/' %} aria-current="page"{% endif %}>Collection</a>
-    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>World</a>
     <a href="{{ settings.founder_story_url | default: '/pages/founder-story' }}"{% if request.path == '/pages/founder-story' %} aria-current="page"{% endif %}>Founder Story</a>
   </nav>
 
@@ -10,21 +9,12 @@
   <a class="brand" href="{{ routes.root_url }}" aria-label="{{ settings.brand_name | default: shop.name | escape }} home">
     {% if settings.logo != blank %}
       {% assign logo_height = logo_width | divided_by: settings.logo.aspect_ratio | round %}
-      <img
-        class="brand-logo"
-        src="{{ settings.logo | image_url: width: 480 }}"
-        srcset="{{ settings.logo | image_url: width: 160 }} 160w, {{ settings.logo | image_url: width: 240 }} 240w, {{ settings.logo | image_url: width: 320 }} 320w, {{ settings.logo | image_url: width: 480 }} 480w"
-        sizes="{{ logo_width }}px"
-        width="{{ logo_width }}"
-        height="{{ logo_height }}"
-        alt="{{ settings.brand_name | default: 'CHAVÉR' | escape }}"
-      >
-    {% else %}
-      {{ settings.brand_name | default: 'CHAVÉR' }}
-    {% endif %}
+      <img class="brand-logo" src="{{ settings.logo | image_url: width: 480 }}" srcset="{{ settings.logo | image_url: width: 160 }} 160w, {{ settings.logo | image_url: width: 240 }} 240w, {{ settings.logo | image_url: width: 320 }} 320w, {{ settings.logo | image_url: width: 480 }} 480w" sizes="{{ logo_width }}px" width="{{ logo_width }}" height="{{ logo_height }}" alt="{{ settings.brand_name | default: 'CHAVÉR' | escape }}">
+    {% else %}{{ settings.brand_name | default: 'CHAVÉR' }}{% endif %}
   </a>
 
   <nav class="nav right" aria-label="Secondary navigation">
+    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>CHAVÉR World</a>
     <a href="{{ routes.search_url }}"{% if request.path == routes.search_url %} aria-current="page"{% endif %}>Search</a>
     <a href="{{ settings.contact_page_url | default: '/pages/contact' }}"{% if request.path == '/pages/contact' %} aria-current="page"{% endif %}>Contact</a>
     {% unless settings.prelaunch_mode %}<a href="{{ routes.cart_url }}">Bag</a>{% endunless %}
@@ -38,12 +28,11 @@
     <a href="{{ routes.root_url }}"{% if request.path == routes.root_url %} aria-current="page"{% endif %}>Home</a>
     <a href="{{ routes.all_products_collection_url }}"{% if request.path contains '/collections/' %} aria-current="page"{% endif %}>Collection</a>
     <a href="{{ settings.founder_story_url | default: '/pages/founder-story' }}"{% if request.path == '/pages/founder-story' %} aria-current="page"{% endif %}>Founder Story</a>
+    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>CHAVÉR World</a>
     <a href="{{ routes.search_url }}"{% if request.path == routes.search_url %} aria-current="page"{% endif %}>Search</a>
     <a href="{{ settings.contact_page_url | default: '/pages/contact' }}"{% if request.path == '/pages/contact' %} aria-current="page"{% endif %}>Contact</a>
     {% unless settings.prelaunch_mode %}<a href="{{ routes.cart_url }}">Bag</a>{% endunless %}
   </nav>
 </div>
 
-{% schema %}
-{"name":"Header","settings":[]}
-{% endschema %}
+{% schema %}{"name":"Header","settings":[]}{% endschema %}
