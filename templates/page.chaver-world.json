@@ -1,32 +1,16 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "chaver-world",
-      "blocks": {
-        "image_J7iqdb": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/8CAB898F-2DBE-46D7-8458-A1495617AFEE.png",
-            "alt": "CHAVÉR World editorial landscape"
-          }
-        }
-      },
-      "block_order": [
-        "image_J7iqdb"
-      ],
-      "settings": {}
+      "settings": {
+        "hero_image": "shopify://shop_images/8CAB898F-2DBE-46D7-8458-A1495617AFEE.png",
+        "hero_alt": "CHAVÉR World editorial",
+        "mindset_alt": "CHAVÉR mindset editorial",
+        "create_alt": "CHAVÉR World inspiration",
+        "clothing_alt": "CHAVÉR lifestyle",
+        "closing_alt": "Welcome to CHAVÉR World"
+      }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
