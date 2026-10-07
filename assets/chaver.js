@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Fallback for Shopify theme syncs that have not yet refreshed theme.liquid.
+  // Derive the active theme asset path so this also works in theme previews.
+  if (!document.querySelector('link[rel~="icon"]')) {
+    const themeStylesheet = document.querySelector('link[href*="/assets/chaver.css"]');
+    if (themeStylesheet) {
+      const faviconUrl = new URL(themeStylesheet.href, window.location.href);
+      faviconUrl.pathname = faviconUrl.pathname.replace(/\/assets\/chaver\.css$/, '/assets/chaver-favicon.svg');
+      faviconUrl.search = '';
+      const favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.type = 'image/svg+xml';
+      favicon.sizes = 'any';
+      favicon.href = faviconUrl.toString();
+      document.head.appendChild(favicon);
+    }
+  }
+
   // Shopify renders policy text from Admin, not from the theme repository.
   // Enhance its headings without deleting or changing the legal content.
   if (window.location.pathname === '/policies/privacy-policy' || window.location.pathname === '/policies/privacy-policy/') {
