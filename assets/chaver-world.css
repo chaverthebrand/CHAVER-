@@ -46,8 +46,8 @@
  .world-marker { font-size:8px; }
  .world-story-grid { gap:28px; padding-top:24px; }
  .world-story-image picture, .world-story-image > img { position:static; height:auto; }
- .world-story-image img { height:auto; aspect-ratio:4/5; }
- .world-story-image .world-image-placeholder { position:static; min-height:420px; aspect-ratio:4/5; }
+ .world-story-image img { height:auto; aspect-ratio:4/3; object-position:center; }
+ .world-story-image .world-image-placeholder { position:static; min-height:0; aspect-ratio:4/3; }
  .world-story:nth-child(even) .world-story-image, .world-story:nth-child(even) .world-story-copy { grid-column:auto; grid-row:auto; }
  .world-story-copy { padding-top:0; }
  .world-story-copy h2 { font-size:clamp(38px,11vw,60px); margin:14px 0 24px; }

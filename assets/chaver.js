@@ -48,19 +48,57 @@ document.addEventListener('DOMContentLoaded', function () {
   const prelaunchEnabled = document.body.dataset.prelaunch === 'true';
 
   if (prelaunchEnabled) {
+    const injectedPurchaseSelector = [
+      'form[action*="/cart/add"]',
+      'form[action*="/checkout"]',
+      '[name="add"]',
+      '[name="checkout"]',
+      '.shopify-payment-button',
+      'shopify-accelerated-checkout',
+      'shopify-accelerated-checkout-cart'
+    ].join(',');
+
+    function lockInjectedPurchaseControls(root) {
+      if (!root || root.nodeType !== 1) return;
+      const controls = [];
+      if (root.matches && root.matches(injectedPurchaseSelector)) controls.push(root);
+      if (root.querySelectorAll) controls.push.apply(controls, root.querySelectorAll(injectedPurchaseSelector));
+
+      controls.forEach(function (control) {
+        control.setAttribute('data-prelaunch-locked', 'true');
+        control.setAttribute('aria-disabled', 'true');
+        if ('disabled' in control) control.disabled = true;
+        if (control.matches('.shopify-payment-button, shopify-accelerated-checkout, shopify-accelerated-checkout-cart')) {
+          control.hidden = true;
+        }
+      });
+    }
+
+    lockInjectedPurchaseControls(document.documentElement);
+
+    const purchaseControlObserver = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(lockInjectedPurchaseControls);
+      });
+    });
+    purchaseControlObserver.observe(document.documentElement, { childList: true, subtree: true });
+
     document.addEventListener('submit', function (event) {
       const form = event.target;
-      if (form instanceof HTMLFormElement && /\/cart\/add(?:\.js)?(?:\?|$)/.test(form.action)) {
+      if (form instanceof HTMLFormElement && /\/(?:cart(?:\/add)?|checkout)(?:\.js)?(?:\?|$)/.test(form.action)) {
         event.preventDefault();
+        event.stopImmediatePropagation();
       }
-    });
+    }, true);
 
     document.addEventListener('click', function (event) {
-      const purchaseControl = event.target.closest('a[href*="/cart"], a[href*="/checkout"], [name="add"], [name="checkout"]');
+      const target = event.target instanceof Element ? event.target : null;
+      const purchaseControl = target && target.closest('a[href*="/cart"], a[href*="/checkout"], [name="add"], [name="checkout"], .shopify-payment-button, shopify-accelerated-checkout, shopify-accelerated-checkout-cart');
       if (purchaseControl) {
         event.preventDefault();
+        event.stopImmediatePropagation();
       }
-    });
+    }, true);
   }
 
   const header = document.querySelector('.site-header');

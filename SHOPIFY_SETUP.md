@@ -2,7 +2,13 @@
 
 ## Privacy policy: required Shopify Admin edit before publishing
 
-The privacy policy at `/policies/privacy-policy` is **Shopify-managed content**, not text in this GitHub repository. The theme now enhances its section headings as accessible, initially closed disclosure panels; it does not remove or rewrite legal text. In **Shopify Admin → Settings → Customer privacy → Privacy policy** (or **Settings → Policies**, depending on the admin version), edit the actual policy: remove the personal phone number and home address from the contact paragraph and replace them with an appropriate public business contact method; review and remove the section about children's data only if the remaining policy accurately describes the store's actual data practices and applicable legal requirements. Check the Shopify-generated policy after saving because regeneration may restore default wording. Verify the public policy in a mobile and desktop preview, including every accordion heading and the contact details. Do not publish until the underlying Shopify policy itself is corrected; hiding sensitive text with CSS or JavaScript is not a privacy fix.
+The privacy policy at `/policies/privacy-policy` is **Shopify-managed content**, not text in this GitHub repository. The theme enhances its section headings as accessible, initially closed disclosure panels; it does not remove or rewrite legal text. In **Shopify Admin → Settings → Customer privacy → Privacy policy** (or **Settings → Policies**, depending on the admin version), edit the actual policy.
+
+The live policy audit on 7 October 2026 found a broken final contact sentence. Replace the entire final **Contact** paragraph with the following approved working copy, then have the complete policy checked for the markets in which CHAVÉR operates:
+
+> Mocht je vragen hebben over onze privacypraktijken of dit privacybeleid, of als je gebruik wilt maken van een van de rechten waarover je beschikt, e-mail ons dan via chaver.official1@gmail.com. Voor de doeleinden van de toepasselijke wetgeving inzake gegevensbescherming zijn wij de verwerkingsverantwoordelijke voor jouw persoonlijke informatie.
+
+Do not add a personal phone number or home address. Review any section about children's data and remove it only if the remaining policy accurately describes the store's actual data practices and applicable legal requirements. Check the Shopify-generated policy after saving because regeneration may restore default wording. Verify the public policy in a mobile and desktop preview, including every accordion heading and the contact details. Do not publish until the underlying Shopify policy itself is corrected; hiding or replacing legal text with CSS or JavaScript is not a privacy fix.
 
 
 ## Latest GitHub-to-Shopify handoff — PR #14 follow-up
@@ -68,7 +74,7 @@ This is the operational handoff for the CHAVÉR Foundations Shopify theme. Use i
 - Open Graph and Twitter sharing metadata
 - Connected muted-text and border colors
 - Direct product-preview anchors from the home page to all six collection items
-- Search access in desktop, mobile and footer navigation
+- Search access in the mobile menu and on the direct search page; desktop and footer search links are intentionally omitted during pre-launch
 
 ### Deliberately not included or not yet connected
 
@@ -228,7 +234,7 @@ Open the imported draft in **Customize** and save the intended values.
 | Logo and favicon | Configurable; text CHAVÉR remains the fallback when no image logo is uploaded. |
 | Instagram and TikTok URLs | Render in the footer after URLs are saved. |
 | Social-sharing image | Connected to Open Graph metadata. |
-| Pre-launch mode | Enabled by default; removes Bag links and adds a theme-level add-to-cart form guard. |
+| Pre-launch mode | Enabled by default; removes Bag links, blocks purchase submissions and disables purchase controls injected into the storefront. |
 
 - [ ] Set and visually verify all five connected colors.
 - [ ] Confirm the announcement reads `FOUNDATIONS COLLECTION — ARRIVING Q1 2027`, or replace it with the approved message.
@@ -275,6 +281,17 @@ In **Settings > Customer privacy**:
 - [ ] Review data-sharing, marketing, analytics, and installed-app permissions.
 - [ ] Verify the privacy-policy link from the banner and footer.
 - [ ] Confirm newsletter data collection matches the published privacy explanation.
+
+### Pre-launch platform lock (required in Shopify Admin)
+
+The theme guard is defence in depth; it cannot secure Shopify's cart and checkout endpoints on its own. The storefront audit on 7 October 2026 returned zero public product records from `/products.json`, so no purchasable catalog was exposed at that moment. Preserve that platform-level protection while the website remains an information-only preview:
+
+- [ ] Keep every Shopify product in **Draft** status until product pages are intentionally needed.
+- [ ] If a product must be publicly visible, enable inventory tracking, keep available inventory at `0`, and leave **Continue selling when out of stock** disabled for every variant.
+- [ ] Remove pre-launch products from Shop, Buy Button and every other sales channel that is not required for the website preview.
+- [ ] Do not create shareable checkout links, draft-order payment links or active purchase buttons during pre-launch.
+- [ ] Test a direct add request for every visible variant and confirm Shopify rejects it; hiding buttons in the theme is not sufficient.
+- [ ] Re-run these checks whenever products, variants, inventory, apps or sales-channel settings change.
 
 ### H. Domain, email, and access
 
