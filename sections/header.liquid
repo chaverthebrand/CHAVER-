@@ -3,6 +3,7 @@
     <a href="{{ routes.root_url }}"{% if request.path == routes.root_url %} aria-current="page"{% endif %}>Home</a>
     <a href="{{ routes.all_products_collection_url }}"{% if request.path contains '/collections/' %} aria-current="page"{% endif %}>Collection</a>
     <a href="{{ settings.founder_story_url | default: '/pages/founder-story' }}"{% if request.path == '/pages/founder-story' %} aria-current="page"{% endif %}>Founder Story</a>
+    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>CHAVÉR World</a>
   </nav>
 
   {% assign logo_width = settings.logo_width | default: 140 %}
@@ -14,7 +15,6 @@
   </a>
 
   <nav class="nav right" aria-label="Secondary navigation">
-    <a href="/pages/chaver-world"{% if request.path == '/pages/chaver-world' %} aria-current="page"{% endif %}>CHAVÉR World</a>
     <a href="{{ routes.search_url }}"{% if request.path == routes.search_url %} aria-current="page"{% endif %}>Search</a>
     <a href="{{ settings.contact_page_url | default: '/pages/contact' }}"{% if request.path == '/pages/contact' %} aria-current="page"{% endif %}>Contact</a>
     {% unless settings.prelaunch_mode %}<a href="{{ routes.cart_url }}">Bag</a>{% endunless %}
