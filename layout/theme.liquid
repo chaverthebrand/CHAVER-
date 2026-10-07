@@ -5,17 +5,65 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.background_color | default: '#eee9df' }}">
   <link rel="canonical" href="{{ canonical_url }}">
-  <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
-  {% assign seo_description = page_description | default: settings.brand_statement %}
+  {% liquid
+    assign brand_name = settings.brand_name | default: shop.name
+    assign seo_title = page_title
+    unless seo_title contains brand_name
+      assign seo_title = seo_title | append: ' — ' | append: brand_name
+    endunless
+    assign seo_description = page_description | default: settings.brand_statement
+
+    case request.page_type
+      when 'index'
+        assign seo_title = 'CHAVÉR — Refined. Relaxed. Timeless.'
+        assign seo_description = 'Discover CHAVÉR: refined, relaxed and timeless essentials built with patience and purpose. Explore the Foundations Collection, arriving Q1 2027.'
+      when 'collection'
+        if collection.handle == 'all'
+          assign seo_title = 'Foundations Collection — CHAVÉR'
+          assign seo_description = 'Explore the CHAVÉR Foundations Collection: six refined everyday essentials currently in development for the official Q1 2027 launch.'
+        endif
+      when 'search'
+        assign seo_title = 'Search — CHAVÉR'
+        assign seo_description = 'Search the CHAVÉR collection, Founder Story and CHAVÉR World.'
+      when 'cart'
+        assign seo_title = 'Pre-launch — CHAVÉR'
+        assign seo_description = 'Ordering is closed while the CHAVÉR Foundations Collection is being developed for Q1 2027.'
+    endcase
+
+    if request.page_type == 'page'
+      case page.handle
+        when 'founder-story'
+          assign seo_title = 'The Founder Story — CHAVÉR'
+          assign seo_description = 'Read the story behind CHAVÉR, from the first idea by founder Chanan Dorff to the patient development of the Foundations Collection.'
+        when 'chaver-world'
+          assign seo_title = 'CHAVÉR World — Beyond the Clothes'
+          assign seo_description = 'Step into CHAVÉR World: a perspective shaped by ambition, timeless design, architecture, travel and the freedom to build your own future.'
+        when 'contact'
+          assign seo_title = 'Contact — CHAVÉR'
+          assign seo_description = 'Contact CHAVÉR with questions about the brand, the Foundations Collection or the Q1 2027 launch.'
+        when 'customer-care'
+          assign seo_title = 'Customer Care — CHAVÉR'
+          assign seo_description = 'Read current pre-launch information about CHAVÉR products, care, shipping and customer support.'
+        when 'size-guide'
+          assign seo_title = 'Size Guide — CHAVÉR'
+          assign seo_description = 'View the provisional CHAVÉR size guide while the Foundations Collection fits are being finalized.'
+        when 'faq'
+          assign seo_title = 'Frequently Asked Questions — CHAVÉR'
+          assign seo_description = 'Find answers about CHAVÉR, the Foundations Collection, pre-launch access and the planned Q1 2027 release.'
+      endcase
+    endif
+  %}
+  <title>{{ seo_title | escape }}</title>
   {% if seo_description %}<meta name="description" content="{{ seo_description | strip_html | truncate: 160 | escape }}">{% endif %}
+  {% if request.page_type == 'search' or request.page_type == 'cart' %}<meta name="robots" content="noindex,follow">{% endif %}
   <meta property="og:site_name" content="{{ settings.brand_name | default: shop.name | escape }}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:title" content="{{ seo_title | escape }}">
   <meta property="og:type" content="{% if request.page_type == 'product' %}product{% else %}website{% endif %}">
   {% if seo_description %}<meta property="og:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
   {% assign sharing_image = page_image | default: settings.social_sharing_image %}
   {% if sharing_image %}<meta property="og:image" content="https:{{ sharing_image | image_url: width: 1200 }}"><meta property="og:image:width" content="1200">{% endif %}
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ page_title | escape }}">{% if seo_description %}<meta name="twitter:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ seo_title | escape }}">{% if seo_description %}<meta name="twitter:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
   {% if settings.favicon != blank %}
     <link rel="icon" href="{{ settings.favicon | image_url: width: 64, height: 64 }}" type="image/png">
   {% else %}
