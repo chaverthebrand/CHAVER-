@@ -16,7 +16,11 @@
   {% assign sharing_image = page_image | default: settings.social_sharing_image %}
   {% if sharing_image %}<meta property="og:image" content="https:{{ sharing_image | image_url: width: 1200 }}"><meta property="og:image:width" content="1200">{% endif %}
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ page_title | escape }}">{% if seo_description %}<meta name="twitter:description" content="{{ seo_description | strip_html | truncate: 200 | escape }}">{% endif %}
-  {% if settings.favicon != blank %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64, height: 64 }}" type="image/png">{% endif %}
+  {% if settings.favicon != blank %}
+    <link rel="icon" href="{{ settings.favicon | image_url: width: 64, height: 64 }}" type="image/png">
+  {% else %}
+    <link rel="icon" href="{{ 'chaver-favicon.svg' | asset_url }}" type="image/svg+xml" sizes="any">
+  {% endif %}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":{{ settings.brand_name | default: shop.name | json }},"url":{{ shop.url | json }}{% if settings.logo != blank %},"logo":{{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}{% endif %}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":{{ settings.brand_name | default: shop.name | json }},"url":{{ shop.url | json }},"potentialAction":{"@type":"SearchAction","target":{{ shop.url | append: routes.search_url | append: '?q={search_term_string}' | json }},"query-input":"required name=search_term_string"}}</script>
   {{ content_for_header }}
