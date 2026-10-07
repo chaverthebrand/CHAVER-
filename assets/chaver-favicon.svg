@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">CHAVÉR</title>
+  <rect width="64" height="64" rx="10" fill="#111111"/>
+  <path d="M47 18.5C43.4 14.1 38.1 11.5 32 11.5 20.7 11.5 11.5 20.7 11.5 32S20.7 52.5 32 52.5c6.1 0 11.4-2.6 15-7" fill="none" stroke="#eee9df" stroke-width="7" stroke-linecap="square"/>
+</svg>
