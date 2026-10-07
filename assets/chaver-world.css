@@ -13,10 +13,13 @@
 .world-text strong { color:var(--ink); }
 .world-stories { display:grid; gap:clamp(76px,11vw,154px); padding:clamp(78px,11vw,154px) 0 clamp(90px,13vw,180px); }
 .world-marker { display:flex; justify-content:space-between; gap:20px; padding-bottom:16px; border-bottom:1px solid var(--line); font-size:10px; font-weight:700; letter-spacing:.15em; }
-.world-story-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,6vw,96px); align-items:start; padding-top:32px; }
-.world-story-image { margin:0; min-width:0; }
-.world-story-image picture, .world-story-image img { display:block; width:100%; }
-.world-story-image img, .world-image-placeholder { aspect-ratio:4/5; object-fit:cover; }
+.world-story-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,6vw,96px); align-items:stretch; padding-top:32px; }
+.world-story-image { position:relative; margin:0; min-width:0; min-height:0; }
+.world-story-image picture { position:absolute; inset:0; display:block; width:100%; height:100%; }
+.world-story-image > img { position:absolute; inset:0; }
+.world-story-image img { display:block; width:100%; height:100%; object-fit:cover; }
+.world-story-image .world-image-placeholder { position:absolute; inset:0; min-height:0; aspect-ratio:auto; }
+.world-image-placeholder { aspect-ratio:4/5; object-fit:cover; }
 .world-story-copy { min-width:0; padding-top:8px; }
 .world-story-copy h2 { margin:16px 0 32px; font-size:clamp(40px,5.2vw,76px); font-weight:900; line-height:.9; letter-spacing:-.06em; overflow-wrap:break-word; }
 .world-story:nth-child(even) .world-story-image { grid-column:2; grid-row:1; }
@@ -42,6 +45,9 @@
  .world-stories { gap:76px; padding:72px 0 90px; }
  .world-marker { font-size:8px; }
  .world-story-grid { gap:28px; padding-top:24px; }
+ .world-story-image picture, .world-story-image > img { position:static; height:auto; }
+ .world-story-image img { height:auto; aspect-ratio:4/5; }
+ .world-story-image .world-image-placeholder { position:static; min-height:420px; aspect-ratio:4/5; }
  .world-story:nth-child(even) .world-story-image, .world-story:nth-child(even) .world-story-copy { grid-column:auto; grid-row:auto; }
  .world-story-copy { padding-top:0; }
  .world-story-copy h2 { font-size:clamp(38px,11vw,60px); margin:14px 0 24px; }
