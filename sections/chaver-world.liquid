@@ -47,7 +47,13 @@
                 {{ section.settings.mindset_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.mindset_alt }}
               </picture>
             {% else %}
-              <div class="world-image-placeholder"><span>ADD MINDSET IMAGE</span></div>
+              <img
+                src="{{ 'chaver-world-mindset-editorial.webp' | asset_url }}"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                alt="{{ section.settings.mindset_alt | escape }}"
+              >
             {% endif %}
           </figure>
           <div class="world-story-copy">
@@ -74,7 +80,13 @@
                 {{ section.settings.create_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.create_alt }}
               </picture>
             {% else %}
-              <div class="world-image-placeholder"><span>ADD WORLD IMAGE</span></div>
+              <img
+                src="{{ 'chaver-world-inspiration-editorial.webp' | asset_url }}"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                alt="{{ section.settings.create_alt | escape }}"
+              >
             {% endif %}
           </figure>
           <div class="world-story-copy">
@@ -101,7 +113,13 @@
                 {{ section.settings.clothing_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.clothing_alt }}
               </picture>
             {% else %}
-              <div class="world-image-placeholder"><span>ADD LIFESTYLE IMAGE</span></div>
+              <img
+                src="{{ 'chaver-world-lifestyle-editorial.webp' | asset_url }}"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                alt="{{ section.settings.clothing_alt | escape }}"
+              >
             {% endif %}
           </figure>
           <div class="world-story-copy">
