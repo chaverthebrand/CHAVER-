@@ -1,9 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "chaver-world",
       "settings": {
-        "hero_image": "shopify://shop_images/8CAB898F-2DBE-46D7-8458-A1495617AFEE.png",
+        "hero_image": "shopify://shop_images/Italiaans_meer_bij_blauw_uur.png",
+        "hero_mobile": "shopify://shop_images/Italiaans_meer_bij_blauw_uur.png",
         "hero_alt": "CHAVÉR World editorial",
         "mindset_alt": "CHAVÉR mindset editorial",
         "create_alt": "CHAVÉR World inspiration",
@@ -12,5 +22,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
