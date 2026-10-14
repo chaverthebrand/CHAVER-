@@ -105,7 +105,7 @@
    slides.forEach(function(slide,i){slide.classList.toggle('is-active',i===index);slide.setAttribute('aria-hidden',i===index?'false':'true')});
    dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index);dot.setAttribute('aria-current',i===index?'true':'false')});
   }
-  function start(){clearInterval(timer);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(function(){show(index+1)},5500)}
+  function start(){clearInterval(timer);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(function(){show(index+1)},4000)}
   root.querySelector('[data-slide-prev]')?.addEventListener('click',function(){show(index-1);start()});
   root.querySelector('[data-slide-next]')?.addEventListener('click',function(){show(index+1);start()});
   dots.forEach(function(dot,i){dot.addEventListener('click',function(){show(i);start()})});
