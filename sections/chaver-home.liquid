@@ -1,9 +1,33 @@
 <section class="hero hero--campaign">
-  <div class="hero-media">
-    {% if section.settings.hero_image != blank %}
-      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
-    {% else %}
-      <img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+  <div class="hero-media chaver-hero-slideshow" data-chaver-slideshow aria-label="CHAVÉR campaign slideshow">
+    {% assign slide_count = 0 %}
+    {% for block in section.blocks %}
+      {% if block.type == 'hero_slide' and block.settings.image != blank %}
+        {% assign slide_count = slide_count | plus: 1 %}
+        <div class="chaver-hero-slide{% if slide_count == 1 %} is-active{% endif %}" data-chaver-slide {{ block.shopify_attributes }} {% unless slide_count == 1 %}aria-hidden="true"{% endunless %}>
+          {{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', alt: block.settings.alt }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    {% if slide_count == 0 %}
+      <div class="chaver-hero-slide is-active" data-chaver-slide>
+        {% if section.settings.hero_image != blank %}
+          {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
+        {% else %}
+          <img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if slide_count > 1 %}
+      <button class="chaver-slide-arrow chaver-slide-prev" type="button" data-slide-prev aria-label="Previous image">‹</button>
+      <button class="chaver-slide-arrow chaver-slide-next" type="button" data-slide-next aria-label="Next image">›</button>
+      <div class="chaver-slide-dots" aria-label="Choose campaign image">
+        {% for block in section.blocks %}
+          {% if block.type == 'hero_slide' and block.settings.image != blank %}
+            <button type="button" class="chaver-slide-dot{% if forloop.first %} is-active{% endif %}" data-slide-dot aria-label="Show image {{ forloop.index }}"></button>
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif %}
   </div>
   <div class="hero-panel"><div class="hero-panel-inner">
@@ -52,5 +76,46 @@
 </div></section>
 
 {% schema %}
-{"name": "CHAVER Home", "settings": [{"type":"image_picker","id":"world_image","label":"CHAVÉR World image"}, {"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
+{"name":"CHAVER Home","settings":[{"type":"image_picker","id":"world_image","label":"CHAVÉR World image"},{"type":"image_picker","id":"hero_image","label":"Hero image"},{"type":"text","id":"hero_alt","label":"Hero image alt text","default":"Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"},{"type":"textarea","id":"heading","label":"Hero heading","default":"REFINED.\nRELAXED.\nTIMELESS."},{"type":"text","id":"button_label","label":"Hero button","default":"Discover Foundations"}],"presets":[{"name":"CHAVER Home"}],"blocks":[{"type":"hero_slide","name":"Campaign slide","limit":3,"settings":[{"type":"image_picker","id":"image","label":"Slide image"},{"type":"text","id":"alt","label":"Image description","default":"CHAVÉR editorial campaign"}]}]}
 {% endschema %}
+
+<style>
+.chaver-hero-slideshow{position:relative;overflow:hidden}
+.chaver-hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.chaver-hero-slide.is-active{position:relative;opacity:1;visibility:visible}
+.chaver-hero-slide .hero-media-image{width:100%;height:100%;object-fit:cover}
+.chaver-slide-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:0;background:rgba(0,0,0,.24);color:#fff;width:40px;height:48px;font-size:30px;cursor:pointer}
+.chaver-slide-prev{left:12px}.chaver-slide-next{right:12px}
+.chaver-slide-dots{position:absolute;z-index:3;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.chaver-slide-dot{width:9px;height:9px;border:1px solid white;border-radius:50%;background:transparent;cursor:pointer;padding:0}
+.chaver-slide-dot.is-active{background:white}
+@media(prefers-reduced-motion:reduce){.chaver-hero-slide{transition:none}}
+</style>
+<script>
+(function(){
+ function init(root){
+  if(root.dataset.slideshowReady)return;
+  root.dataset.slideshowReady='true';
+  var slides=Array.from(root.querySelectorAll('[data-chaver-slide]'));
+  var dots=Array.from(root.querySelectorAll('[data-slide-dot]'));
+  if(slides.length<2)return;
+  var index=0,timer;
+  function show(next){
+   index=(next+slides.length)%slides.length;
+   slides.forEach(function(slide,i){slide.classList.toggle('is-active',i===index);slide.setAttribute('aria-hidden',i===index?'false':'true')});
+   dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===index);dot.setAttribute('aria-current',i===index?'true':'false')});
+  }
+  function start(){clearInterval(timer);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(function(){show(index+1)},5500)}
+  root.querySelector('[data-slide-prev]')?.addEventListener('click',function(){show(index-1);start()});
+  root.querySelector('[data-slide-next]')?.addEventListener('click',function(){show(index+1);start()});
+  dots.forEach(function(dot,i){dot.addEventListener('click',function(){show(i);start()})});
+  root.addEventListener('mouseenter',function(){clearInterval(timer)});
+  root.addEventListener('mouseleave',start);
+  root.addEventListener('focusin',function(){clearInterval(timer)});
+  root.addEventListener('focusout',start);
+  start();
+ }
+ document.querySelectorAll('[data-chaver-slideshow]').forEach(init);
+ document.addEventListener('shopify:section:load',function(e){e.target.querySelectorAll('[data-chaver-slideshow]').forEach(init)});
+})();
+</script>
