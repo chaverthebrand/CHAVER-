@@ -23,11 +23,7 @@
       <a class="btn" href="/pages/chaver-world">Enter CHAVÉR World</a>
     </div>
     <div class="home-world-media">
-      {% if section.settings.world_image != blank %}
-        {{ section.settings.world_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 55vw', loading: 'lazy', alt: 'CHAVÉR World — timeless places and atmosphere' }}
-      {% else %}
-        <div class="home-world-placeholder" aria-label="CHAVÉR World image placeholder"><span>CHAVÉR WORLD</span></div>
-      {% endif %}
+      <img src="{{ 'chaver-world-homepage.webp' | asset_url }}" width="1122" height="1402" loading="lazy" alt="Warm stone courtyard with olive trees and late-afternoon light, CHAVÉR World">
     </div>
   </div>
 </section>
