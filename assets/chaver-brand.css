@@ -76,3 +76,17 @@ html, body, body *, button, input, textarea, select, option, ::placeholder { fon
 .chaver-world-gallery img{display:block;width:100%;height:auto}
 .chaver-world-gallery figure:nth-child(3n+1){grid-column:1/-1}
 @media(max-width:800px){.home-world-inner{grid-template-columns:1fr;gap:32px}.home-world-copy{max-width:none}.chaver-world-page{padding:58px 0}.chaver-world-gallery{grid-template-columns:1fr;gap:20px}.chaver-world-gallery figure:nth-child(3n+1){grid-column:auto}}
+
+/* Homepage hero: full-width campaign image with the copy overlaid on the left. */
+.hero--campaign{position:relative;display:block;isolation:isolate;height:min(72svh,820px);min-height:560px;padding:0;overflow:hidden;background:#54483b;color:#fff}
+.hero--campaign .hero-media{position:absolute;inset:0;min-height:0;background:#54483b}
+.hero--campaign .hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,19,16,.66) 0%,rgba(22,19,16,.44) 32%,rgba(22,19,16,.08) 64%,rgba(22,19,16,0) 100%),linear-gradient(0deg,rgba(22,19,16,.16),transparent 40%)}
+.hero--campaign .hero-media-image{position:absolute;inset:0;width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 48%}
+.hero--campaign .hero-panel{position:relative;z-index:1;display:flex;align-items:center;width:min(100%,1440px);height:100%;min-height:0;margin:0 auto;padding:clamp(38px,7vw,100px) clamp(24px,7vw,108px)}
+.hero--campaign .hero-panel-inner{width:min(660px,56%)}
+.hero--campaign .eyebrow{margin-bottom:22px;color:rgba(255,255,255,.86)}
+.hero--campaign h1{max-width:650px;font-size:clamp(48px,7.4vw,104px);line-height:.88;letter-spacing:-.06em}
+.hero--campaign .hero-sub{max-width:440px;margin:24px 0 0;color:rgba(255,255,255,.9);font-size:15px;line-height:1.65}
+.hero--campaign .hero-button{border-color:rgba(255,255,255,.9);background:rgba(20,18,16,.14);color:#fff}
+.hero--campaign .hero-button:hover{background:#fff;color:#171512}
+@media(max-width:800px){.hero--campaign{height:64svh;min-height:500px;max-height:680px}.hero--campaign .hero-media-image{object-position:65% center}.hero--campaign .hero-media::after{background:linear-gradient(0deg,rgba(20,18,16,.76) 0%,rgba(20,18,16,.38) 44%,rgba(20,18,16,.04) 100%)}.hero--campaign .hero-panel{align-items:flex-end;padding:34px 22px 38px}.hero--campaign .hero-panel-inner{width:100%;max-width:580px}.hero--campaign h1{font-size:clamp(44px,12vw,76px)}.hero--campaign .hero-sub{max-width:360px;margin-top:18px;font-size:14px}}

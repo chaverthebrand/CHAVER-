@@ -3,7 +3,7 @@
     {% if section.settings.hero_image != blank %}
       {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
     {% else %}
-      <img class="hero-media-image" src="{{ 'chaver-home-campaign-v2.webp' | asset_url }}" width="941" height="1672" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+      <img class="hero-media-image" src="{{ 'chaver-home-hero-fullwidth.webp' | asset_url }}" width="1672" height="941" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
     {% endif %}
   </div>
   <div class="hero-panel"><div class="hero-panel-inner">
@@ -52,5 +52,5 @@
 </div></section>
 
 {% schema %}
-{"name": "CHAVER Home", "settings": [{"type":"image_picker","id":"world_image","label":"CHAVÉR World image"}, {"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Three models wearing black CHAVÉR Foundations essentials in a sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
+{"name": "CHAVER Home", "settings": [{"type":"image_picker","id":"world_image","label":"CHAVÉR World image"}, {"type": "image_picker", "id": "hero_image", "label": "Hero image"}, {"type": "text", "id": "hero_alt", "label": "Hero image alt text", "default": "Two models wearing dark green and navy CHAVÉR essentials in a warm sunlit courtyard"}, {"type": "textarea", "id": "heading", "label": "Hero heading", "default": "REFINED.\nRELAXED.\nTIMELESS."}, {"type": "text", "id": "button_label", "label": "Hero button", "default": "Discover Foundations"}], "presets": [{"name": "CHAVER Home"}]}
 {% endschema %}
