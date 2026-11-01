@@ -1,9 +1,9 @@
 <section class="hero hero--campaign">
   <div class="hero-media">
     {% if section.settings.hero_image != blank %}
-      {{ section.settings.hero_image | image_url: width: 3200 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400, 2800, 3200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
+      {{ section.settings.hero_image | image_url: width: 3200 | image_tag: class: 'hero-media-image', widths: '750, 1100, 1500, 2000, 2400, 2800, 3200', sizes: '(max-width: 800px) 100vw, 60vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
     {% else %}
-      <img class="hero-media-image" src="{{ 'chaver-home-hero-fullwidth.webp' | asset_url }}" width="1672" height="941" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
+      <img class="hero-media-image" src="{{ 'chaver-home-hero-fullwidth.webp' | asset_url }}" width="1672" height="941" loading="eager" alt="{{ section.settings.hero_alt | escape }}" fetchpriority="high">
     {% endif %}
   </div>
   <div class="hero-panel"><div class="hero-panel-inner">
