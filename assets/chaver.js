@@ -152,9 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const menu = document.getElementById('mobile-menu');
 
   if (toggle && menu) {
+    menu.setAttribute('aria-hidden', String(menu.hidden));
     function closeMobileMenu(returnFocus) {
       toggle.setAttribute('aria-expanded', 'false');
       menu.hidden = true;
+      menu.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('menu-open');
       if (returnFocus) toggle.focus();
     }
@@ -163,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
       menu.hidden = open;
+      menu.setAttribute('aria-hidden', String(open));
       document.body.classList.toggle('menu-open', !open);
       if (!open && header) header.classList.remove('header-hidden');
     });
@@ -184,7 +187,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const popupLayer = document.getElementById('chaver-newsletter-layer');
   const popup = document.getElementById('chaver-newsletter');
 
-  if (!popupLayer || !popup) return;
+  if (!popupLayer || !popup) {
+    // Avoid dead-end early-access buttons when the popup is disabled in Shopify.
+    document.querySelectorAll('[data-newsletter-trigger], a[href="#chaver-newsletter"]').forEach(function (trigger) {
+      trigger.setAttribute('aria-disabled', 'true');
+      trigger.setAttribute('title', 'Early access signup is temporarily unavailable');
+      if (trigger.tagName === 'BUTTON') trigger.disabled = true;
+      if (trigger.tagName === 'A') trigger.addEventListener('click', function (event) { event.preventDefault(); });
+    });
+    return;
+  }
 
   const closeButton = popup.querySelector('.popup-close');
   const emailField = popup.querySelector('input[type="email"]');
@@ -226,6 +238,11 @@ document.addEventListener('DOMContentLoaded', function () {
     lastFocusedElement = trigger || document.activeElement;
     popupLayer.hidden = false;
     popupLayer.setAttribute('aria-hidden', 'false');
+    if (toggle && toggle.getAttribute('aria-expanded') === 'true') {
+      toggle.setAttribute('aria-expanded', 'false');
+      if (menu) { menu.hidden = true; menu.setAttribute('aria-hidden', 'true'); }
+      document.body.classList.remove('menu-open');
+    }
     document.body.classList.add('popup-open');
 
     window.requestAnimationFrame(function () {
@@ -277,7 +294,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    if (event.shiftKey && document.activeElement === firstElement) {
+    if (!popup.contains(document.activeElement)) {
+      event.preventDefault();
+      (event.shiftKey ? lastElement : firstElement).focus();
+    } else if (event.shiftKey && document.activeElement === firstElement) {
       event.preventDefault();
       lastElement.focus();
     } else if (!event.shiftKey && document.activeElement === lastElement) {
