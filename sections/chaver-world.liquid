@@ -140,7 +140,7 @@
     {% assign closing_mobile = section.settings.closing_mobile | default: section.settings.closing_image %}
     {% if section.settings.closing_image != blank %}
       <picture class="world-closing-media">
-        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1600 }} 1600w, {{ hero_mobile | image_url: width: 800 }} 800w">{% endif %}
+        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1600 }} 1600w, {{ closing_mobile | image_url: width: 800 }} 800w">{% endif %}
         {{ section.settings.closing_image | image_url: width: 3200 | image_tag: widths: '900, 1400, 1800, 2200, 2600, 3200', sizes: '100vw', loading: 'lazy', alt: section.settings.closing_alt }}
       </picture>
     {% endif %}
