@@ -13,9 +13,9 @@
     {% if section.settings.hero_image != blank %}
       <picture>
         {% if hero_mobile != blank %}
-          <source media="(max-width: 800px)" srcset="{{ hero_mobile | image_url: width: 1200 }}">
+          <source media="(max-width: 800px)" srcset="{{ hero_mobile | image_url: width: 1600 }} 1600w, {{ hero_mobile | image_url: width: 800 }} 800w">
         {% endif %}
-        {{ section.settings.hero_image | image_url: width: 2600 | image_tag: widths: '900, 1400, 1800, 2200, 2600', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
+        {{ section.settings.hero_image | image_url: width: 3200 | image_tag: widths: '900, 1400, 1800, 2200, 2600, 3200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
       </picture>
     {% else %}
       <div class="world-image-placeholder"><span>ADD HERO IMAGE IN SHOPIFY</span></div>
@@ -43,8 +43,8 @@
             {% assign mindset_mobile = section.settings.mindset_mobile | default: section.settings.mindset_image %}
             {% if section.settings.mindset_image != blank %}
               <picture>
-                {% if mindset_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ mindset_mobile | image_url: width: 1000 }}">{% endif %}
-                {{ section.settings.mindset_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.mindset_alt }}
+                {% if mindset_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ mindset_mobile | image_url: width: 1600 }}">{% endif %}
+                {{ section.settings.mindset_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.mindset_alt }}
               </picture>
             {% else %}
               <img
@@ -76,8 +76,8 @@
             {% assign create_mobile = section.settings.create_mobile | default: section.settings.create_image %}
             {% if section.settings.create_image != blank %}
               <picture>
-                {% if create_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ create_mobile | image_url: width: 1000 }}">{% endif %}
-                {{ section.settings.create_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.create_alt }}
+                {% if create_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ create_mobile | image_url: width: 1600 }}">{% endif %}
+                {{ section.settings.create_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.create_alt }}
               </picture>
             {% else %}
               <img
@@ -109,8 +109,8 @@
             {% assign clothing_mobile = section.settings.clothing_mobile | default: section.settings.clothing_image %}
             {% if section.settings.clothing_image != blank %}
               <picture>
-                {% if clothing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ clothing_mobile | image_url: width: 1000 }}">{% endif %}
-                {{ section.settings.clothing_image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.clothing_alt }}
+                {% if clothing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ clothing_mobile | image_url: width: 1600 }}">{% endif %}
+                {{ section.settings.clothing_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.clothing_alt }}
               </picture>
             {% else %}
               <img
@@ -140,8 +140,8 @@
     {% assign closing_mobile = section.settings.closing_mobile | default: section.settings.closing_image %}
     {% if section.settings.closing_image != blank %}
       <picture class="world-closing-media">
-        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1200 }}">{% endif %}
-        {{ section.settings.closing_image | image_url: width: 2600 | image_tag: widths: '900, 1400, 1800, 2200, 2600', sizes: '100vw', loading: 'lazy', alt: section.settings.closing_alt }}
+        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1600 }} 1600w, {{ closing_mobile | image_url: width: 800 }} 800w">{% endif %}
+        {{ section.settings.closing_image | image_url: width: 3200 | image_tag: widths: '900, 1400, 1800, 2200, 2600, 3200', sizes: '100vw', loading: 'lazy', alt: section.settings.closing_alt }}
       </picture>
     {% endif %}
     <div class="world-closing-overlay"></div>
