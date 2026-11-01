@@ -22,7 +22,7 @@
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
 </header>
 
-<div class="mobile-menu" id="mobile-menu" hidden>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true" hidden>
   <nav aria-label="Mobile navigation">
     <a href="{{ routes.root_url }}"{% if request.path == routes.root_url %} aria-current="page"{% endif %}>Home</a>
     <a href="{{ routes.all_products_collection_url }}"{% if request.path contains '/collections/' %} aria-current="page"{% endif %}>Collection</a>
