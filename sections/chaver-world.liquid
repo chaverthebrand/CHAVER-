@@ -13,7 +13,7 @@
     {% if section.settings.hero_image != blank %}
       <picture>
         {% if hero_mobile != blank %}
-          <source media="(max-width: 800px)" srcset="{{ hero_mobile | image_url: width: 1600 }} 1600w, {{ hero_mobile | image_url: width: 800 }} 800w">
+          <source media="(max-width: 800px)" srcset="{{ hero_mobile | image_url: width: 800 }} 800w, {{ hero_mobile | image_url: width: 1200 }} 1200w, {{ hero_mobile | image_url: width: 1600 }} 1600w" sizes="100vw">
         {% endif %}
         {{ section.settings.hero_image | image_url: width: 3200 | image_tag: widths: '900, 1400, 1800, 2200, 2600, 3200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_alt }}
       </picture>
@@ -43,7 +43,7 @@
             {% assign mindset_mobile = section.settings.mindset_mobile | default: section.settings.mindset_image %}
             {% if section.settings.mindset_image != blank %}
               <picture>
-                {% if mindset_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ mindset_mobile | image_url: width: 1600 }}">{% endif %}
+                {% if mindset_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ mindset_mobile | image_url: width: 800 }} 800w, {{ mindset_mobile | image_url: width: 1200 }} 1200w, {{ mindset_mobile | image_url: width: 1600 }} 1600w" sizes="100vw">{% endif %}
                 {{ section.settings.mindset_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.mindset_alt }}
               </picture>
             {% else %}
@@ -76,7 +76,7 @@
             {% assign create_mobile = section.settings.create_mobile | default: section.settings.create_image %}
             {% if section.settings.create_image != blank %}
               <picture>
-                {% if create_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ create_mobile | image_url: width: 1600 }}">{% endif %}
+                {% if create_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ create_mobile | image_url: width: 800 }} 800w, {{ create_mobile | image_url: width: 1200 }} 1200w, {{ create_mobile | image_url: width: 1600 }} 1600w" sizes="100vw">{% endif %}
                 {{ section.settings.create_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.create_alt }}
               </picture>
             {% else %}
@@ -109,7 +109,7 @@
             {% assign clothing_mobile = section.settings.clothing_mobile | default: section.settings.clothing_image %}
             {% if section.settings.clothing_image != blank %}
               <picture>
-                {% if clothing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ clothing_mobile | image_url: width: 1600 }}">{% endif %}
+                {% if clothing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ clothing_mobile | image_url: width: 800 }} 800w, {{ clothing_mobile | image_url: width: 1200 }} 1200w, {{ clothing_mobile | image_url: width: 1600 }} 1600w" sizes="100vw">{% endif %}
                 {{ section.settings.clothing_image | image_url: width: 2400 | image_tag: widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '(max-width: 800px) 100vw, 50vw', loading: 'lazy', alt: section.settings.clothing_alt }}
               </picture>
             {% else %}
@@ -140,7 +140,7 @@
     {% assign closing_mobile = section.settings.closing_mobile | default: section.settings.closing_image %}
     {% if section.settings.closing_image != blank %}
       <picture class="world-closing-media">
-        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 1600 }} 1600w, {{ closing_mobile | image_url: width: 800 }} 800w">{% endif %}
+        {% if closing_mobile != blank %}<source media="(max-width: 800px)" srcset="{{ closing_mobile | image_url: width: 800 }} 800w, {{ closing_mobile | image_url: width: 1200 }} 1200w, {{ closing_mobile | image_url: width: 1600 }} 1600w" sizes="100vw">{% endif %}
         {{ section.settings.closing_image | image_url: width: 3200 | image_tag: widths: '900, 1400, 1800, 2200, 2600, 3200', sizes: '100vw', loading: 'lazy', alt: section.settings.closing_alt }}
       </picture>
     {% endif %}
